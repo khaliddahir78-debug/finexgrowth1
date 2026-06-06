@@ -1,0 +1,3576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FenixGrowth — Digital Growth Infrastructure for Restaurants</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --navy:#13253F;/* Softened from #0B1F3A */
+  --mid-navy:#213b5e;/* Softened from #1E3A5F */
+  --foot-navy:#1d3454;/* Softened from #1C3356 */
+  --accent:#2979E8;--teal:#0EA5A0;--yellow:#FDE68A;--yellow-dk:#7A4F00;
+  --light-bg:#F0F5FF;--border:#D1DFF5;--muted:#64748B;
+  --dark-text:#13253F;--white:#FFFFFF;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--dark-text);overflow-x:hidden}
+
+/* ══ NAV — WHITE ══ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:#fff;
+  border-bottom:1px solid #E8EEF8;
+  box-shadow:0 1px 0 rgba(0,0,0,.04);
+  transition:box-shadow .3s;
+}
+nav.scrolled{box-shadow:0 4px 24px rgba(11,31,58,.10)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 32px;height:70px;display:flex;align-items:center;justify-content:space-between;position:relative}
+
+/* 4K SVG LOGO */
+.nav-logo{display:flex;align-items:center;gap:0;text-decoration:none;user-select:none}
+.logo-svg{width:246px;height:44px}
+
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .18s}
+.nav-links a:hover{color:var(--navy)}
+.nav-links a.active{color:var(--accent)}
+.nav-cta{background:var(--accent);color:#fff!important;padding:10px 22px;border-radius:9px;font-weight:600!important;font-size:14px!important;transition:background .18s,transform .15s,box-shadow .18s!important}
+.nav-cta:hover{background:#1a65d6!important;transform:translateY(-1px);box-shadow:0 6px 18px rgba(41,121,232,.32)!important}
+
+/* Language toggle button */
+.lang-switch{
+  display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;
+  color:var(--muted);border:1.5px solid var(--border);border-radius:8px;
+  padding:6px 12px;background:#fff;cursor:pointer;transition:all 0.2s;
+  user-select:none;
+}
+.lang-switch:hover{
+  border-color:var(--accent);color:var(--accent);background:var(--light-bg);
+}
+
+/* ══ HERO ══ */
+#hero{min-height:100vh;background:var(--navy);display:flex;align-items:center;padding:108px 32px 70px;position:relative;overflow:hidden}
+.hero-glow{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(41,121,232,.16) 0%,transparent 70%);top:-120px;right:-80px;pointer-events:none}
+.hero-glow2{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(14,165,160,.11) 0%,transparent 70%);bottom:40px;left:60px;pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;width:100%}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(41,121,232,.14);border:1px solid rgba(41,121,232,.28);border-radius:100px;padding:6px 16px;margin-bottom:28px}
+.hero-badge-dot{width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0;animation:pdot 2s infinite}
+@keyframes pdot{0%,100%{box-shadow:0 0 0 0 rgba(14,165,160,.6)}50%{box-shadow:0 0 0 7px rgba(14,165,160,0)}}
+.hero-badge-txt{font-size:12px;font-weight:600;color:rgba(168,196,255,.9);letter-spacing:.4px}
+.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(40px,5vw,66px);font-weight:900;line-height:1.07;color:#fff;margin-bottom:24px}
+.hero-h1 em{font-style:italic;color:var(--yellow)}
+.hero-sub{font-size:16px;color:rgba(168,196,255,.78);line-height:1.72;margin-bottom:38px;max-width:480px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:44px}
+.btn-primary{background:var(--accent);color:#fff;padding:14px 30px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15px;transition:all .2s;display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer}
+.btn-primary:hover{background:#1a65d6;transform:translateY(-2px);box-shadow:0 10px 28px rgba(41,121,232,.38)}
+.btn-ghost{background:transparent;color:#fff;padding:14px 28px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15px;border:1.5px solid rgba(255,255,255,.22);transition:all .2s;cursor:pointer}
+.btn-ghost:hover{border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.06)}
+.hero-trust{display:flex;align-items:center;gap:12px}
+.hero-avatars{display:flex}
+.hero-avatars span{width:36px;height:36px;border-radius:50%;border:2px solid var(--navy);background:var(--mid-navy);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--yellow);margin-left:-10px}
+.hero-avatars span:first-child{margin-left:0}
+.hero-trust-txt{font-size:13px;color:rgba(168,196,255,.68)}
+.hero-trust-txt strong{color:#fff}
+/* floating cards */
+.hero-cards{display:flex;flex-direction:column;gap:14px}
+.hc{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.11);border-radius:16px;padding:20px 24px;backdrop-filter:blur(10px);transition:transform 0.3s ease, border-color 0.3s ease}
+.hc:hover{transform:translateY(-4px);border-color:rgba(255,255,255,0.22)}
+.hc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.hc-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:19px}
+.hc-icon.b{background:rgba(41,121,232,.22)}
+.hc-icon.t{background:rgba(14,165,160,.22)}
+.hc-badge{font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px;background:rgba(14,165,160,.2);color:#2dd4bf}
+.hc-num{font-family:'Playfair Display',serif;font-size:38px;font-weight:900;color:#fff;line-height:1}
+.hc-lbl{font-size:13px;color:rgba(168,196,255,.62);margin-top:4px}
+.mini-bars{display:flex;align-items:flex-end;gap:4px;height:38px;margin-top:10px}
+.mb{border-radius:3px;opacity:.55;flex:1;transition:height 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s}
+.hc:hover .mb{opacity: 0.75}
+.hc:hover .mb:hover{opacity: 1; transform: scaleY(1.05)}
+.mb:last-child{opacity:1!important}
+.mb.blue{background:var(--accent)}
+.mb.teal{background:var(--teal)}
+.live-card{background:rgba(14,165,160,.11);border:1px solid rgba(14,165,160,.28);border-radius:14px;padding:13px 18px;display:flex;align-items:center;gap:12px;transition:all 0.3s ease}
+.live-dot{width:10px;height:10px;border-radius:50%;background:var(--teal);flex-shrink:0;animation:pdot 2s infinite}
+.live-txt{font-size:13px;color:rgba(255,255,255,.85);font-weight:500}
+.live-time{font-size:11px;color:rgba(168,196,255,.48);margin-top:2px}
+
+/* ══ TRUST BAR ══ */
+#trust{background:var(--white);padding:24px 32px;border-bottom:1px solid var(--border)}
+.trust-inner{max-width:1200px;margin:0 auto}
+.trust-lbl{text-align:center;font-size:11px;font-weight:700;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:16px}
+.trust-logos{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 28px}
+.trust-logos span{font-size:13px;font-weight:600;color:#94A3B8;letter-spacing:.2px}
+
+/* ══ STATS — LIGHT (image 4 style) ══ */
+#stats{background:var(--white);padding:64px 32px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stats-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.stat-block{padding:32px 28px;text-align:left;position:relative}
+.stat-block+.stat-block::before{content:'';position:absolute;left:0;top:20%;height:60%;width:1px;background:var(--border)}
+.stat-big{font-family:'DM Sans',sans-serif;font-size:52px;font-weight:700;color:var(--teal);line-height:1;margin-bottom:8px;letter-spacing:-1px}
+.stat-desc{font-size:14px;color:var(--muted);line-height:1.4;font-weight:400}
+
+/* ══ PROBLEM / SOLUTION ══ */
+#problem{background:var(--white);padding:100px 32px}
+.section-inner{max-width:1200px;margin:0 auto}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:14px}
+.section-h2{font-family:'Playfair Display',serif;font-size:clamp(30px,3.8vw,46px);font-weight:900;line-height:1.15;color:var(--dark-text);margin-bottom:18px}
+.section-h2 em{font-style:italic;color:var(--accent)}
+.section-sub{font-size:16px;color:var(--muted);line-height:1.7;max-width:520px;margin-bottom:46px}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+.pain-list{display:flex;flex-direction:column;gap:18px}
+.pain-item{display:flex;gap:16px;align-items:flex-start;padding:20px;border-radius:12px;background:var(--light-bg);border:1px solid var(--border);transition:border-color .2s,box-shadow .2s}
+.pain-item:hover{border-color:var(--accent);box-shadow:0 4px 16px rgba(41,121,232,.08)}
+.pain-icon{width:44px;height:44px;border-radius:10px;background:rgba(41,121,232,.1);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.pain-title{font-weight:700;font-size:14px;color:var(--dark-text);margin-bottom:4px}
+.pain-desc{font-size:13px;color:var(--muted);line-height:1.6}
+.solution-box{background:var(--navy);border-radius:20px;padding:38px;position:relative;overflow:hidden}
+.solution-box::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(41,121,232,.22) 0%,transparent 70%)}
+.sol-ey{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--teal);text-transform:uppercase;margin-bottom:12px}
+.sol-h3{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:#fff;margin-bottom:10px;line-height:1.25}
+.sol-sub{font-size:14px;color:rgba(168,196,255,.7);margin-bottom:26px;line-height:1.6}
+.sol-feats{display:flex;flex-direction:column;gap:11px}
+.sol-feat{display:flex;align-items:center;gap:12px;font-size:14px;font-weight:500;color:rgba(255,255,255,.9)}
+.chk{width:22px;height:22px;border-radius:6px;background:rgba(41,121,232,.28);border:1px solid rgba(41,121,232,.5);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;color:var(--accent)}
+
+/* ══ PILLARS — ZIGZAG (images 1 & 2) ══ */
+#pillars{background:var(--light-bg);padding:120px 32px}
+.pillars-header{text-align:center;margin-bottom:88px}
+.zz-row{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;margin-bottom:100px}
+.zz-row:last-child{margin-bottom:0}
+.zz-row.flip{direction:rtl}
+.zz-row.flip>*{direction:ltr}
+.zz-text{}
+.zz-num{font-family:'Playfair Display',serif;font-size:76px;font-weight:900;line-height:1;background:linear-gradient(180deg,#93B4E9 0%,rgba(147,180,233,0.4) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px;letter-spacing:-3px}
+.zz-icon-title{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.zz-icon-wrap{width:48px;height:48px;border-radius:12px;background:rgba(41,121,232,.10);border:1px solid rgba(41,121,232,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.2s, transform 0.2s}
+.zz-row:hover .zz-icon-wrap{background:rgba(41,121,232,.16);transform:scale(1.06)}
+.zz-icon-svg{width:24px;height:24px;stroke:var(--accent);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.zz-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:var(--dark-text);line-height:1.2}
+.zz-desc{font-size:15px;color:var(--muted);line-height:1.72;margin-bottom:18px}
+.pillar-tag{display:inline-block;background:#FFFBEB;border:1px solid #FDE68A;border-radius:100px;padding:4px 14px;font-size:10px;font-weight:700;color:var(--yellow-dk);letter-spacing:.7px}
+/* visual mock card for each pillar */
+.zz-visual{border-radius:20px;overflow:hidden;box-shadow:0 16px 48px rgba(11,31,58,.12);background:var(--white);border:1px solid var(--border);transition:transform 0.3s ease, box-shadow 0.3s ease}
+.zz-visual:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(11,31,58,0.18)}
+.zz-visual-inner{padding:28px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between;position:relative}
+.zz-vi-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(41,121,232,.1);border-radius:100px;padding:5px 12px;font-size:11px;font-weight:700;color:var(--accent);width:fit-content;margin-bottom:14px}
+.zz-vi-stat{font-family:'Playfair Display',serif;font-size:44px;font-weight:900;color:var(--accent);line-height:1}
+.zz-vi-lbl{font-size:13px;color:var(--muted);margin-top:4px}
+.zz-vi-bars{display:flex;align-items:flex-end;gap:5px;height:60px;margin-top:16px}
+.zz-bar{border-radius:4px;flex:1;transition:height 0.8s cubic-bezier(0.16, 1, 0.3, 1)}
+.zz-vi-map{background:var(--light-bg);border-radius:12px;padding:16px;display:flex;align-items:center;gap:14px;margin-top:10px;transition:background 0.3s}
+.map-pin{font-size:32px;transition:transform 0.3s}
+.zz-vi-map:hover .map-pin{transform:scale(1.1) rotate(5deg)}
+.map-text .mt1{font-weight:700;font-size:14px;color:var(--dark-text)}
+.map-text .mt2{font-size:12px;color:var(--teal);font-weight:600}
+.zz-vi-posts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.post-cell{border-radius:8px;height:60px;display:flex;align-items:center;justify-content:center;font-size:22px;transition:all 0.3s ease;border:2px solid transparent}
+.post-cell:hover, .post-cell.active-anim{transform:scale(1.08);box-shadow:0 6px 18px rgba(41,121,232,0.18);border-color:var(--accent)}
+.post-cell.active-anim .post-hover-card{opacity:1;transform:translateX(-50%) translateY(-10px) scale(1)}
+.zz-vi-ad{background:linear-gradient(135deg,var(--navy),var(--mid-navy));border-radius:12px;padding:18px;color:#fff;margin-top:8px;transition:all 0.3s}
+.ad-kpi{display:flex;gap:24px}
+.ad-kpi-item .k1{font-size:11px;color:rgba(168,196,255,.6);margin-bottom:2px}
+.ad-kpi-item .k2{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--accent)}
+.zz-vi-brand{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.brand-row{display:flex;gap:8px}
+.brand-chip{border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;transition:transform 0.2s, box-shadow 0.2s}
+.brand-chip:hover{transform:translateY(-2px);box-shadow:0 4px 10px rgba(0,0,0,0.08)}
+
+/* ══ WEBSITE DESIGN ANIMATION CARD ══ */
+.web-browser-card{background:#0B1F3A;border-radius:16px;overflow:hidden;margin-top:10px}
+.web-browser-bar{background:#1E3A5F;padding:10px 14px;display:flex;align-items:center;gap:8px}
+.web-dots{display:flex;gap:5px}.web-dot{width:9px;height:9px;border-radius:50%}
+.web-dot.r{background:#FF5F57}.web-dot.y{background:#FFBD2E}.web-dot.g{background:#28C840}
+.web-url-bar{flex:1;background:rgba(255,255,255,.08);border-radius:6px;padding:4px 10px;font-size:10px;color:rgba(168,196,255,.7);font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:5px}
+.web-url-lock{color:#28C840;font-size:9px}
+.web-load-bar{height:2px;background:rgba(41,121,232,.2);position:relative;overflow:hidden}
+.web-load-progress{height:100%;background:linear-gradient(90deg,#2979E8,#0EA5A0);border-radius:2px;width:0%;transition:width 0.6s ease}
+.web-content-area{padding:12px 14px 16px}
+.web-content-row{display:flex;gap:8px;margin-bottom:8px}
+.web-hero-block{background:linear-gradient(135deg,rgba(41,121,232,.3),rgba(14,165,160,.2));border-radius:8px;height:52px;flex:2;display:flex;align-items:center;padding:10px;gap:8px;overflow:hidden}
+.web-hero-text-lines{display:flex;flex-direction:column;gap:4px;flex:1}
+.web-text-line{height:6px;border-radius:3px;background:rgba(255,255,255,.2)}
+.web-text-line.w70{width:70%}.web-text-line.w50{width:50%}
+.web-cta-btn-anim{background:linear-gradient(90deg,#2979E8,#0EA5A0);border-radius:5px;padding:5px 10px;font-size:8px;font-weight:700;color:#fff;white-space:nowrap;transform:scale(0);transition:transform 0.4s cubic-bezier(.34,1.56,.64,1)}
+.web-cta-btn-anim.visible{transform:scale(1)}
+.web-sidebar{background:rgba(255,255,255,.05);border-radius:8px;height:52px;flex:1;padding:8px;display:flex;flex-direction:column;gap:4px}
+.web-sidebar-item{height:6px;border-radius:3px;background:rgba(255,255,255,.1)}
+.web-metrics-row{display:flex;gap:6px}
+.web-metric-box{flex:1;background:rgba(255,255,255,.05);border-radius:8px;padding:8px;text-align:center}
+.web-metric-num{font-family:'Playfair Display',serif;font-size:15px;font-weight:900;color:#2979E8;line-height:1}
+.web-metric-lbl{font-size:8px;color:rgba(168,196,255,.6);margin-top:2px}
+.web-visitor-chart{background:rgba(255,255,255,.04);border-radius:8px;padding:8px;display:flex;flex-direction:column;gap:5px}
+.web-chart-bars{display:flex;align-items:flex-end;gap:3px;height:28px}
+.web-chart-bar{flex:1;border-radius:2px 2px 0 0;background:rgba(41,121,232,.4);transition:height 1s cubic-bezier(.16,1,.3,1)}
+.web-chart-bar.accent{background:#2979E8}
+.web-chart-lbl{font-size:8px;color:rgba(168,196,255,.5);display:flex;justify-content:space-between}
+.web-cursor{width:10px;height:16px;position:absolute;pointer-events:none;z-index:10;transition:all 0.6s cubic-bezier(.25,.46,.45,.94)}
+.web-cursor svg{width:10px;height:16px}
+.web-click-ripple{position:absolute;width:20px;height:20px;border-radius:50%;background:rgba(41,121,232,.4);transform:scale(0);opacity:0;pointer-events:none;z-index:11}
+@keyframes web-ripple{0%{transform:scale(0);opacity:0.8}100%{transform:scale(3);opacity:0}}
+
+/* ══ SOCIAL MEDIA ANIMATION CARD ══ */
+.sm-card{background:#0B1F3A;border-radius:16px;overflow:hidden;margin-top:10px;padding:14px}
+.sm-tabs{display:flex;gap:6px;margin-bottom:12px}
+.sm-tab{flex:1;padding:6px 4px;border-radius:8px;font-size:10px;font-weight:700;text-align:center;cursor:pointer;transition:all 0.2s;border:none;display:flex;align-items:center;justify-content:center;gap:4px;opacity:.6}
+.sm-tab.active{opacity:1;transform:scale(1.02)}
+.sm-tab.fb{background:rgba(24,119,242,.2);color:#1877F2}
+.sm-tab.fb.active{background:rgba(24,119,242,.3)}
+.sm-tab.ig{background:rgba(225,48,108,.15);color:#E1306C}
+.sm-tab.ig.active{background:rgba(225,48,108,.25)}
+.sm-tab.tt{background:rgba(255,255,255,.08);color:#fff}
+.sm-tab.tt.active{background:rgba(255,255,255,.15)}
+.sm-platform-view{display:none}
+.sm-platform-view.active{display:block;animation:sm-fade-in 0.4s ease}
+@keyframes sm-fade-in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.sm-post-card{background:rgba(255,255,255,.05);border-radius:10px;padding:10px;margin-bottom:8px}
+.sm-post-header{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.sm-avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;flex-shrink:0}
+.sm-post-name{font-size:11px;font-weight:700;color:#fff}
+.sm-post-time{font-size:9px;color:rgba(168,196,255,.5)}
+.sm-post-img{width:100%;height:70px;border-radius:8px;object-fit:cover;display:block;margin-bottom:8px}
+.sm-post-img-placeholder{width:100%;height:70px;border-radius:8px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;font-size:28px}
+.sm-engagement{display:flex;align-items:center;gap:14px}
+.sm-eng-item{display:flex;align-items:center;gap:4px;font-size:10px;font-weight:600;color:rgba(168,196,255,.7)}
+.sm-eng-item svg{flex-shrink:0}
+.sm-like-count,.sm-share-count,.sm-comment-count{transition:all 0.3s ease}
+.sm-like-btn{cursor:pointer;display:flex;align-items:center;gap:4px;font-size:10px;font-weight:700;transition:all 0.2s;padding:3px 6px;border-radius:6px;border:none;background:transparent}
+.sm-like-btn.liked{color:#E1306C;animation:sm-like-pop 0.4s cubic-bezier(.34,1.56,.64,1)}
+@keyframes sm-like-pop{0%{transform:scale(1)}40%{transform:scale(1.4)}100%{transform:scale(1)}}
+.sm-followers-bar{background:rgba(255,255,255,.05);border-radius:10px;padding:10px}
+.sm-fol-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.sm-fol-label{font-size:10px;color:rgba(168,196,255,.7);font-weight:600}
+.sm-fol-count{font-size:13px;font-weight:900;color:#fff}
+.sm-fol-delta{font-size:9px;color:#28C840;font-weight:700;background:rgba(40,200,64,.15);padding:2px 6px;border-radius:100px}
+.sm-growth-track{height:5px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden}
+.sm-growth-fill{height:100%;border-radius:3px;width:0%;transition:width 1.4s cubic-bezier(.16,1,.3,1)}
+.sm-growth-fill.fb-fill{background:linear-gradient(90deg,#1877F2,#42a5f5)}
+.sm-growth-fill.ig-fill{background:linear-gradient(90deg,#E1306C,#FFDC80)}
+.sm-growth-fill.tt-fill{background:linear-gradient(90deg,#fff,#69C9D0)}
+.sm-ticker{display:flex;flex-direction:column;gap:5px;margin-top:8px}
+.sm-tick-item{display:flex;align-items:center;gap:6px;font-size:9px;color:rgba(168,196,255,.7);background:rgba(255,255,255,.04);border-radius:6px;padding:5px 8px;opacity:0;transform:translateX(-8px);transition:all 0.4s ease}
+.sm-tick-item.show{opacity:1;transform:none}
+.sm-tick-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.sm-heart-burst{position:absolute;pointer-events:none;font-size:16px;animation:sm-heart-float 1s ease forwards}
+@keyframes sm-heart-float{0%{opacity:1;transform:translateY(0) scale(0.5)}100%{opacity:0;transform:translateY(-40px) scale(1.2)}}
+
+/* ══ HOW IT WORKS ══ */
+#howto{background:var(--white);padding:120px 32px}
+.howto-header{text-align:center;margin-bottom:60px}
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;max-width:1000px;margin:0 auto}
+.steps-grid::before{content:'';position:absolute;top:31px;left:8%;right:8%;height:2px;background:linear-gradient(90deg,var(--accent),var(--teal));z-index:0}
+.step-item{text-align:center;padding:0 16px;position:relative;z-index:1}
+.step-circle{width:62px;height:62px;border-radius:50%;background:#fff;border:2.5px solid var(--accent);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-family:'DM Sans',sans-serif;font-size:18px;font-weight:700;color:var(--accent);box-shadow:0 0 0 6px rgba(41,121,232,.08);transition:all 0.3s ease}
+.step-item:hover .step-circle{transform:scale(1.08) rotate(5deg);background:var(--accent);color:#fff;box-shadow:0 0 0 8px rgba(41,121,232,0.15)}
+.step-title{font-weight:700;font-size:15px;color:var(--dark-text);margin-bottom:8px}
+.step-desc{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* ══ FEATURES ══ */
+#features{background:var(--light-bg);padding:120px 32px}
+.features-header{text-align:center;margin-bottom:72px}
+.features-list{display:flex;flex-direction:column;gap:0;border-radius:16px;overflow:hidden;border:1px solid var(--border);max-width:900px;margin:0 auto}
+.feat-row{display:grid;grid-template-columns:1fr 140px;align-items:center;padding:22px 28px;background:var(--white);border-bottom:1px solid var(--border);transition:background .18s}
+.feat-row:last-child{border-bottom:none}
+.feat-row:nth-child(even){background:var(--light-bg)}
+.feat-row:hover{background:#E8EFFD}
+.feat-left{display:flex;align-items:flex-start;gap:16px}
+.feat-emoji{font-size:24px;flex-shrink:0;margin-top:2px}
+.feat-title{font-weight:700;font-size:14px;color:var(--dark-text);margin-bottom:3px}
+.feat-desc{font-size:13px;color:var(--muted);line-height:1.5}
+.feat-stat{text-align:right;font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--accent);line-height:1.2}
+.feat-stat small{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;color:var(--teal);display:block}
+
+/* ══ INTEGRATIONS — SCROLLING (image 3) ══ */
+#integrations{background:var(--white);padding:100px 32px;overflow:hidden}
+.int-header{text-align:center;margin-bottom:60px}
+.int-header .section-h2 em{color:var(--teal)}
+.int-track-wrap{position:relative;overflow:hidden}
+.int-track-wrap::before,.int-track-wrap::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none}
+.int-track-wrap::before{left:0;background:linear-gradient(90deg,#fff,transparent)}
+.int-track-wrap::after{right:0;background:linear-gradient(-90deg,#fff,transparent)}
+.int-row{display:flex;gap:0;margin-bottom:16px}
+.int-track{display:flex;gap:0;animation:scroll-left 28s linear infinite;width:max-content}
+.int-track2{display:flex;gap:0;animation:scroll-right 34s linear infinite;width:max-content}
+.int-row:hover .int-track, .int-row:hover .int-track2{animation-play-state:paused}
+@keyframes scroll-left{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes scroll-right{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
+.int-chip{display:flex;align-items:center;gap:9px;padding:10px 22px;margin:0 8px;background:var(--white);border:1px solid var(--border);border-radius:12px;white-space:nowrap;font-size:14px;font-weight:600;color:var(--muted);box-shadow:0 2px 8px rgba(11,31,58,.05);transition:all 0.2s}
+.int-chip span.i{font-size:20px}
+.int-chip:hover{border-color:var(--accent);color:var(--dark-text);transform:translateY(-2px);box-shadow:0 4px 12px rgba(41,121,232,0.12);cursor:pointer}
+
+/* ══ TESTIMONIALS ══ */
+#testimonials{background:var(--navy);padding:120px 32px}
+.testi-header{text-align:center;margin-bottom:72px}
+.testi-header .eyebrow{color:var(--teal)}
+.testi-header .section-h2{color:#fff}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:0 auto}
+.testi-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:28px;transition:all .22s}
+.testi-card:hover{background:rgba(255,255,255,.08);border-color:rgba(41,121,232,.4);transform:translateY(-3px)}
+.testi-stars{color:var(--yellow);font-size:14px;margin-bottom:14px;letter-spacing:3px}
+.testi-quote{font-size:14px;color:rgba(168,196,255,.8);line-height:1.72;margin-bottom:20px;font-style:italic}
+.testi-quote::before{content:'"';font-family:'Playfair Display',serif;font-size:38px;color:var(--accent);line-height:0;vertical-align:-14px;margin-right:3px}
+.testi-name{font-weight:700;font-size:14px;color:#fff}
+.testi-biz{font-size:12px;color:rgba(168,196,255,.48)}
+
+/* ══ PRICING ══ */
+#pricing{background:var(--light-bg);padding:120px 32px}
+.pricing-header{text-align:center;margin-bottom:28px}
+.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:1100px;margin:0 auto}
+.price-card{border-radius:20px;border:1.5px solid var(--border);overflow:hidden;transition:all .22s;background:var(--white);display:flex;flex-direction:column;justify-content:space-between}
+.price-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 20px 50px rgba(41,121,232,.1)}
+.price-card.popular{border-color:var(--accent);box-shadow:0 8px 32px rgba(41,121,232,.16)}
+.price-head{background:var(--navy);padding:28px 24px}
+.popular-badge{display:inline-flex;align-items:center;gap:5px;background:var(--yellow);color:var(--yellow-dk);font-size:10px;font-weight:700;padding:4px 10px;border-radius:100px;letter-spacing:.5px;margin-bottom:12px}
+.price-name{font-size:16px;font-weight:700;color:#fff;margin-bottom:6px}
+.price-amount{font-family:'Playfair Display',serif;font-size:38px;font-weight:900;color:var(--accent);line-height:1}
+.price-amount .p-val{transition:opacity 0.2s, transform 0.2s; display: inline-block}
+.price-cadence{font-size:13px;color:rgba(168,196,255,.5);margin-top:4px}
+.price-body{padding:24px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.price-features li{font-size:13px;color:var(--muted);display:flex;align-items:flex-start;gap:8px;line-height:1.4}
+.price-features li::before{content:'✓';color:var(--teal);font-weight:700;flex-shrink:0}
+.price-btn{display:block;text-align:center;padding:12px;border-radius:10px;font-weight:600;font-size:14px;text-decoration:none;transition:all .2s;cursor:pointer}
+.price-btn-out{border:1.5px solid var(--border);color:var(--dark-text)}
+.price-btn-out:hover{border-color:var(--accent);color:var(--accent)}
+.price-btn-fill{background:var(--accent);color:#fff;border:none}
+.price-btn-fill:hover{background:#1a65d6;box-shadow:0 6px 20px rgba(41,121,232,.32)}
+
+/* ══ CTA ══ */
+#cta{background:var(--navy);padding:120px 32px;position:relative;overflow:hidden}
+#cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(41,121,232,.14) 0%,transparent 60%),radial-gradient(ellipse at 80% 50%,rgba(14,165,160,.1) 0%,transparent 60%)}
+.cta-inner{max-width:680px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.cta-inner .eyebrow{color:var(--teal)}
+.cta-inner .section-h2{color:#fff;margin-bottom:16px}
+.cta-sub{font-size:16px;color:rgba(168,196,255,.74);margin-bottom:36px;line-height:1.7}
+.cta-inner .btn-primary{margin:0 auto 26px;display:inline-flex}
+.cta-email{font-size:14px;color:rgba(168,196,255,.52)}
+.cta-email a{color:rgba(168,196,255,.78);text-decoration:none}
+.cta-email a:hover{text-decoration:underline;color:#fff}
+.trust-badges{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:30px}
+.trust-badge{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:6px 14px;font-size:12px;font-weight:500;color:rgba(168,196,255,.68)}
+
+/* ══ BLOG ══ */
+#blog{background:var(--light-bg);padding:120px 32px}
+.blog-header{text-align:center;margin-bottom:72px}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1100px;margin:0 auto}
+.blog-card{background:var(--white);border-radius:16px;border:1px solid var(--border);overflow:hidden;transition:all .22s;cursor:pointer}
+.blog-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 12px 32px rgba(41,121,232,.09)}
+
+/* Professional SVG Icons for blog cards */
+.blog-img{height:140px;display:flex;align-items:center;justify-content:center;transition:transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);position:relative;overflow:hidden}
+.blog-img::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.08)}
+.blog-card:hover .blog-img{transform:scale(1.04)}
+.blog-svg-icon {
+  width: 60px;
+  height: 60px;
+  stroke: rgba(255,255,255,0.95);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.30));
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  z-index: 1;
+}
+.blog-card:hover .blog-svg-icon {
+  transform: scale(1.15) translateY(-4px);
+}
+
+.g1{background:linear-gradient(135deg,#1E3A5F,#13253F)}
+.g2{background:linear-gradient(135deg,#1E3A5F,#0EA5A0)}
+.g3{background:linear-gradient(135deg,#0EA5A0,#2979E8)}
+.g4{background:linear-gradient(135deg,#2979E8,#13253F)}
+.g5{background:linear-gradient(135deg,#FDE68A,#0EA5A0)}
+.g6{background:linear-gradient(135deg,#13253F,#FDE68A)}
+.blog-body{padding:18px}
+.blog-tag{display:inline-block;background:rgba(41,121,232,.1);color:var(--accent);font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;letter-spacing:.5px;margin-bottom:9px}
+.blog-title{font-weight:700;font-size:14px;color:var(--dark-text);line-height:1.5;margin-bottom:7px}
+.blog-date{font-size:12px;color:var(--muted)}
+
+/* ══ FOOTER ══ */
+footer{background:var(--foot-navy);padding:88px 32px 40px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px;margin-bottom:48px}
+.footer-tagline{font-size:14px;color:rgba(255,255,255,.48);line-height:1.6;max-width:260px;margin-top:14px}
+.footer-col h4{font-size:12px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-links a{color:rgba(255,255,255,.48);text-decoration:none;font-size:14px;transition:color .18s}
+.footer-links a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-copy{font-size:13px;color:rgba(255,255,255,.32)}
+.footer-socials{display:flex;gap:12px;margin-top:20px}
+.social-link{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.05);color:rgba(255,255,255,.48);transition:all .2s ease;border:1px solid rgba(255,255,255,.08)}
+.social-link:hover{background:var(--accent);color:#fff;transform:translateY(-2px);border-color:transparent;box-shadow:0 4px 12px rgba(41,121,232,.3)}
+.social-link svg{width:18px;height:18px}
+
+/* ══ ANIMATIONS ══ */
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+/* ══ INTERACTIVE ELEMENTS STYLING ══ */
+/* Nav toggle */
+.nav-toggle{display:none;flex-direction:column;justify-content:space-between;width:24px;height:18px;background:transparent;border:none;cursor:pointer;z-index:210}
+.nav-toggle span{width:100%;height:2px;background-color:var(--navy);transition:all 0.3s ease;transform-origin:left center}
+.nav-toggle.open span:nth-child(1){transform:rotate(45deg) translate(-2px, -3px)}
+.nav-toggle.open span:nth-child(2){opacity:0;width:0}
+.nav-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(-2px, 3px)}
+
+/* Modals */
+.modal{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s ease}
+.modal.open{opacity:1;pointer-events:auto}
+.modal-backdrop{position:absolute;inset:0;background:rgba(11,31,58,0.5);backdrop-filter:blur(6px)}
+.modal-content{position:relative;background:var(--white);border-radius:24px;width:550px;max-width:calc(100% - 40px);max-height:90vh;overflow-y:auto;padding:40px;box-shadow:0 24px 60px rgba(11,31,58,0.25);z-index:10;transform:translateY(30px) scale(0.95);transition:transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)}
+.modal.open .modal-content{transform:translateY(0) scale(1)}
+.modal-close{position:absolute;top:20px;right:20px;font-size:24px;border:none;background:transparent;color:var(--muted);cursor:pointer;transition:color 0.2s}
+.modal-close:hover{color:var(--navy)}
+.modal-step{display:none}
+.modal-step.active{display:block}
+.modal-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--navy);margin-bottom:8px}
+.modal-desc{font-size:14px;color:var(--muted);margin-bottom:24px}
+
+/* Calendar & Times */
+.calendar-container{background:var(--light-bg);border-radius:16px;padding:20px;margin-bottom:20px;border:1px solid var(--border)}
+.calendar-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.calendar-header button{background:transparent;border:none;font-weight:700;color:var(--accent);cursor:pointer;padding:4px 8px;font-size:16px}
+.calendar-header span{font-weight:700;font-size:14px;color:var(--navy)}
+.calendar-weekdays{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px}
+.calendar-days{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;gap:4px}
+.calendar-day{font-size:12px;font-weight:600;color:var(--navy);height:32px;display:flex;align-items:center;justify-content:center;border-radius:8px;cursor:pointer;transition:all 0.2s}
+.calendar-day:hover:not(.disabled){background:rgba(41,121,232,0.1);color:var(--accent)}
+.calendar-day.selected{background:var(--accent);color:#fff!important}
+.calendar-day.disabled{color:var(--border);pointer-events:none}
+.calendar-day.today{border:1px solid var(--accent);color:var(--accent)}
+.time-slots-container{margin-bottom:24px}
+.time-slots-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:12px}
+.time-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.time-slot{font-size:12px;font-weight:600;text-align:center;padding:10px;background:var(--light-bg);border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.2s;color:var(--navy)}
+.time-slot:hover:not(.disabled){border-color:var(--accent);color:var(--accent);background:#fff}
+.time-slot.selected{background:var(--accent);color:#fff;border-color:var(--accent)}
+.time-slot.disabled{opacity:0.4;pointer-events:none}
+.full-width{width:100%;text-align:center;justify-content:center}
+.btn-primary.disabled{background:var(--border);color:var(--muted);pointer-events:none;box-shadow:none}
+
+/* Forms */
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px}
+.form-group input, .form-group textarea{width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:8px;font-size:14px;outline:none;transition:border-color 0.2s, box-shadow 0.2s;font-family:inherit}
+.form-group input:focus, .form-group textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(41,121,232,0.12)}
+.form-group textarea{height:80px;resize:none}
+.form-btns{display:flex;gap:12px;margin-top:28px}
+.form-btns button, .form-btns type{flex:1;text-align:center;justify-content:center}
+
+/* Success Step */
+.success-icon{width:64px;height:64px;border-radius:50%;background:rgba(14,165,160,0.1);border:2px solid var(--teal);color:var(--teal);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 20px}
+.text-center{text-align:center}
+.booking-summary-card{background:var(--light-bg);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:28px;text-align:left}
+.bsc-row{display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid rgba(209,223,245,0.4)}
+.bsc-row:last-child{border-bottom:none;padding-bottom:0}
+.bsc-row span{color:var(--muted)}
+.bsc-row strong{color:var(--navy)}
+
+/* Blog Modal Body */
+.blog-modal-content{width:700px;padding:0}
+.blog-article-body{max-height:90vh;overflow-y:auto;display:flex;flex-direction:column}
+.blog-article-header{padding:40px 40px 24px}
+.blog-article-title{font-family:'Playfair Display',serif;font-size:clamp(22px, 3.2vw, 32px);font-weight:900;color:var(--navy);line-height:1.2;margin:12px 0 10px}
+.blog-article-meta{font-size:13px;color:var(--muted)}
+.blog-article-hero-img{height:200px;display:flex;align-items:center;justify-content:center;font-size:72px;color:white}
+.blog-article-text{padding:32px 40px;font-size:15px;line-height:1.75;color:var(--dark-text)}
+.blog-article-text p{margin-bottom:18px}
+.blog-article-text h4{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--navy);margin:24px 0 12px}
+.blog-article-text ul{padding-left:20px;margin-bottom:18px}
+.blog-article-text li{margin-bottom:8px}
+.blog-article-footer{padding:24px 40px 40px;background:var(--light-bg);border-top:1px solid var(--border);text-align:center}
+.blog-article-footer p{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:16px}
+
+/* Post Hover Cards */
+.post-cell {position:relative}
+.post-hover-card {
+  position:absolute;bottom:100%;left:50%;transform:translateX(-50%) translateY(-10px) scale(0.9);
+  width:120px;background:white;border-radius:8px;border:1px solid var(--border);
+  box-shadow:0 8px 24px rgba(11,31,58,0.15);padding:6px;pointer-events:none;
+  opacity:0;transition:opacity 0.2s, transform 0.2s;z-index:10;
+}
+.post-cell:hover .post-hover-card {opacity:1;transform:translateX(-50%) translateY(-10px) scale(1)}
+.phc-img {width:100%;height:68px;border-radius:6px;background-color:var(--light-bg)}
+.phc-meta {font-size:10px;font-weight:700;color:var(--dark-text);margin-top:4px;text-align:center}
+
+/* Pricing Toggle Switch */
+.pricing-toggle-wrap{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:20px;margin-bottom:44px}
+.toggle-lbl{font-size:14px;font-weight:700;color:var(--muted);transition:color 0.2s}
+.toggle-lbl.active{color:var(--dark-text)}
+.switch{position:relative;display:inline-block;width:50px;height:26px}
+.switch input{opacity:0;width:0;height:0}
+.slider{position:absolute;cursor:pointer;inset:0;background-color:var(--border);transition:.3s;border-radius:34px}
+.slider:before{position:absolute;content:"";height:18px;width:18px;left:4px;bottom:4px;background-color:white;transition:.3s;border-radius:50%}
+input:checked + .slider{background-color:var(--accent)}
+input:checked + .slider:before{transform:translateX(24px)}
+
+/* Brand Preview Custom Box */
+.brand-preview-wrap{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.brand-preview-colors{display:flex;gap:6px}
+.brand-color-dot{width:22px;height:22px;border-radius:50%;border:1px solid rgba(0,0,0,0.1)}
+.brand-preview-typo{font-family:'Playfair Display', serif;font-size:24px;font-weight:900;color:var(--navy);line-height:1}
+.brand-preview-typo-sub{font-family:'DM Sans', sans-serif;font-size:12px;color:var(--muted);margin-top:2px}
+.brand-preview-menu{font-size:12px;color:var(--navy);line-height:1.4}
+.brand-preview-menu-item{display:flex;justify-content:space-between;border-bottom:1px dashed var(--border);padding-bottom:2px;margin-bottom:4px}
+.brand-preview-logo{font-family:'Playfair Display', serif;font-size:18px;font-weight:900;color:var(--navy)}
+
+/* Toast Notifications */
+.toast-container{position:fixed;bottom:24px;right:24px;display:flex;flex-direction:column;gap:10px;z-index:1000}
+.toast{
+  background:var(--navy);color:white;border-left:4px solid var(--accent);
+  padding:14px 20px;border-radius:8px;box-shadow:0 6px 20px rgba(11,31,58,0.15);
+  font-size:13px;font-weight:600;min-width:260px;max-width:360px;
+  display:flex;align-items:center;justify-content:space-between;
+  animation:slideInToast 0.3s cubic-bezier(0.16, 1, 0.3, 1), fadeOutToast 0.3s 3.5s forwards;
+  opacity:1;
+}
+.toast.success{border-left-color:var(--teal)}
+.toast-close{background:transparent;border:none;color:rgba(255,255,255,0.6);cursor:pointer;font-size:16px;margin-left:12px}
+@keyframes slideInToast {from {transform:translateX(120%);opacity:0}to {transform:translateX(0);opacity:1}}
+@keyframes fadeOutToast {to {transform:translateY(10px);opacity:0;pointer-events:none}}
+
+/* Leads Panel (Dev Dashboard) */
+.dev-dashboard-trigger{
+  position:fixed;bottom:20px;left:20px;background:var(--navy);color:var(--white);
+  padding:10px 18px;border-radius:50px;font-size:12px;font-weight:700;
+  cursor:pointer;z-index:290;box-shadow:0 4px 12px rgba(11,31,58,0.25);
+  border:1px solid rgba(255,255,255,0.1);transition:transform 0.2s, background 0.2s;
+  display:flex;align-items:center;gap:6px;user-select:none;
+}
+.dev-dashboard-trigger:hover{transform:translateY(-2px);background:var(--accent)}
+.dev-dashboard{
+  position:fixed;bottom:76px;left:20px;width:380px;max-width:calc(100vw - 40px);
+  height:480px;background:var(--white);border:1px solid var(--border);border-radius:16px;
+  box-shadow:0 12px 40px rgba(11,31,58,0.18);z-index:290;
+  display:flex;flex-direction:column;overflow:hidden;
+  transform:scale(0.9) translateY(20px);opacity:0;pointer-events:none;
+  transition:transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+.dev-dashboard.open{transform:scale(1) translateY(0);opacity:1;pointer-events:auto}
+.dev-dashboard-header{padding:16px;background:var(--navy);color:var(--white);display:flex;align-items:center;justify-content:space-between}
+.dev-dashboard-header h4{font-size:14px;font-weight:700}
+.dev-dashboard-header button{background:transparent;border:none;color:rgba(255,255,255,0.6);font-size:20px;cursor:pointer}
+.dev-dashboard-header button:hover{color:var(--white)}
+.dev-dashboard-body{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
+.dev-tabs{display:flex;gap:8px;border-bottom:1px solid var(--border);padding-bottom:8px}
+.dev-tab{
+  flex:1;background:transparent;border:none;padding:8px;font-size:12px;
+  font-weight:700;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;
+  transition:all 0.2s;
+}
+.dev-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.dev-tab-content{display:none;flex:1}
+.dev-tab-content.active{display:block}
+.dev-list{display:flex;flex-direction:column;gap:10px}
+.dev-empty{text-align:center;color:var(--muted);font-size:12px;padding:30px 0}
+.dev-card{background:var(--light-bg);border:1px solid var(--border);border-radius:10px;padding:14px;font-size:12px;position:relative}
+.dev-card-title{font-weight:700;margin-bottom:6px;color:var(--navy)}
+.dev-card-detail{color:var(--muted);margin-bottom:3px}
+.dev-card-detail strong{color:var(--dark-text)}
+.dev-dashboard-footer{padding:12px 16px;border-top:1px solid var(--border);display:flex;justify-content:space-between;background:#f8fafc}
+.dev-delete-item{position:absolute;top:10px;right:10px;background:none;border:none;color:#ef4444;font-size:14px;cursor:pointer}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:1024px){
+  .hero-inner,.problem-grid,.zz-row,.zz-row.flip{grid-template-columns:1fr;gap:36px;direction:ltr}
+  .steps-grid{grid-template-columns:repeat(2,1fr)}.steps-grid::before{display:none}
+  .pricing-grid,.testi-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav-links{
+    display:none;
+    flex-direction:column;
+    position:absolute;
+    top:70px;
+    left:0;
+    right:0;
+    background:#fff;
+    border-bottom:1px solid #E8EEF8;
+    padding:24px;
+    gap:20px;
+    transform:translateY(-150%);
+    transition:transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    opacity:0;
+    pointer-events:none;
+    box-shadow:0 10px 30px rgba(11,31,58,0.08);
+    z-index:199;
+  }
+  .nav-links.active{
+    display:flex !important;
+    transform:translateY(0);
+    opacity:1;
+    pointer-events:auto;
+  }
+  .nav-toggle{display:flex}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .blog-grid,.pricing-grid,.testi-grid{grid-template-columns:1fr}
+  .hero-cards{display:none}
+  .stat-block+.stat-block::before{display:none}
+  .logo-svg{width:201px;height:36px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <!-- 4K SVG LOGO (Geometric abstract bird & chart gradient paths) -->
+    <a href="#hero" class="nav-logo" aria-label="FenixGrowth home">
+      <svg class="logo-svg" viewBox="0 0 280 50" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="FenixGrowth logo">
+        <!-- Sunburst/flower logo graphics -->
+        <g stroke="#2979E8" stroke-width="6" stroke-linecap="round">
+          <line x1="30" y1="15" x2="30" y2="5" />
+          <line x1="30" y1="15" x2="30" y2="5" transform="rotate(45 30 25)" />
+          <line x1="30" y1="15" x2="30" y2="5" transform="rotate(90 30 25)" />
+          <line x1="30" y1="15" x2="30" y2="5" transform="rotate(135 30 25)" />
+          <line x1="30" y1="15" x2="30" y2="5" transform="rotate(180 30 25)" />
+          <line x1="30" y1="15" x2="30" y2="5" transform="rotate(225 30 25)" />
+          <line x1="30" y1="15" x2="30" y2="5" transform="rotate(270 30 25)" />
+          <line x1="30" y1="15" x2="30" y2="5" transform="rotate(315 30 25)" />
+        </g>
+        <!-- 4K clean typography -->
+        <text x="65" y="36" font-family="'DM Sans', Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#13253F" letter-spacing="-1" id="logo-text-fenix">fenix<tspan fill="#2979E8">growth</tspan></text>
+      </svg>
+    </a>
+    
+    <!-- Mobile Hamburger Toggle -->
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    
+    <div class="nav-links" id="nav-links">
+      <a href="#hero" class="nav-link-item active" data-tr="nav-home">Home</a>
+      <a href="#pillars" class="nav-link-item" data-tr="nav-services">Services</a>
+      <a href="#pricing" class="nav-link-item" data-tr="nav-pricing">Pricing</a>
+      <a href="#testimonials" class="nav-link-item" data-tr="nav-results">Results</a>
+      <a href="#blog" class="nav-link-item" data-tr="nav-blog">Blog</a>
+      
+      <!-- Language Translation Switcher -->
+      <div class="lang-switch" id="lang-switch" onclick="toggleLanguage()" title="Switch Language">
+        🌐 <span id="lang-text">EN</span>
+      </div>
+      
+      <a href="#cta" class="nav-cta" onclick="openBookingModal('General')" data-tr="nav-cta">Book Free Call</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        <span class="hero-badge-txt" data-tr="hero-badge">Restaurant Marketing Agency</span>
+      </div>
+      <h1 class="hero-h1" data-tr="hero-title">We Get Customers<br/>For Your <em>Restaurant</em></h1>
+      <p class="hero-sub" data-tr="hero-sub">We build your website, rank your business on Google Maps, run your social media, and launch local ads. Everything you need to fill your tables and increase orders, managed by one professional team.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="openBookingModal('General')" data-tr="hero-btn-start">Start Growing Today →</button>
+        <a href="#testimonials" class="btn-ghost" data-tr="hero-btn-results">See Results</a>
+      </div>
+      <div class="hero-trust">
+        <div class="hero-avatars">
+          <span>AM</span><span>FA</span><span>OI</span><span>+</span>
+        </div>
+        <div class="hero-trust-txt" data-tr="hero-trust"><strong>120+ restaurants</strong> growing with FenixGrowth</div>
+      </div>
+    </div>
+    <div class="hero-cards">
+      <div class="hc">
+        <div class="hc-top">
+          <div class="hc-icon b">📈</div>
+          <span class="hc-badge">↑ 40%</span>
+        </div>
+        <div class="hc-num">+40%</div>
+        <div class="hc-lbl" data-tr="card-order-lbl">Avg. Order Increase</div>
+        <div class="mini-bars">
+          <div class="mb blue" style="height:12%"></div><div class="mb blue" style="height:22%"></div>
+          <div class="mb blue" style="height:38%"></div><div class="mb blue" style="height:50%"></div>
+          <div class="mb blue" style="height:68%"></div><div class="mb blue" style="height:82%"></div>
+          <div class="mb blue" style="height:100%"></div>
+        </div>
+      </div>
+      <div class="hc">
+        <div class="hc-top">
+          <div class="hc-icon t">📍</div>
+          <span class="hc-badge">↑ 3×</span>
+        </div>
+        <div class="hc-num">3×</div>
+        <div class="hc-lbl" data-tr="card-maps-lbl">Google Maps Visibility</div>
+        <div class="mini-bars">
+          <div class="mb teal" style="height:10%"></div><div class="mb teal" style="height:18%"></div>
+          <div class="mb teal" style="height:32%"></div><div class="mb teal" style="height:48%"></div>
+          <div class="mb teal" style="height:68%"></div><div class="mb teal" style="height:84%"></div>
+          <div class="mb teal" style="height:100%"></div>
+        </div>
+      </div>
+      <div class="live-card" id="live-notification">
+        <div class="live-dot"></div>
+        <div>
+          <div class="live-txt" id="live-txt">🍕 New reservation — Casa Mia, Dubai</div>
+          <div class="live-time" id="live-time">Just now</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRUST BAR ══ -->
+<section id="trust">
+  <div class="trust-inner">
+    <p class="trust-lbl" data-tr="trust-lbl">Trusted by restaurants &amp; cafés across the globe</p>
+    <div class="trust-logos">
+      <span>Casa Italiana</span><span>Nomad Café</span><span>Spice Garden</span>
+      <span>The Fig Tree</span><span>Bosphorus Kitchen</span><span>Golden Fork</span>
+      <span>Olive &amp; Co.</span><span>Harbour Grill</span>
+    </div>
+    <div class="partner-badges" style="display:flex; justify-content:center; align-items:center; gap:28px 40px; margin-top:24px; flex-wrap:wrap; border-top:1px solid #E8EEF8; padding-top:20px">
+      <!-- Google Partner Badge -->
+      <div class="partner-badge" style="display:flex; align-items:center; gap:8px; font-size:12px; font-weight:700; color:#475569">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.08H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.92l3.66-2.82z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.08l3.66 2.84c.87-2.6 3.3-4.54 6.16-4.54z" fill="#EA4335"/></svg>
+        <span>Google Partner</span>
+      </div>
+      <!-- Meta Business Partner -->
+      <div class="partner-badge" style="display:flex; align-items:center; gap:8px; font-size:12px; font-weight:700; color:#475569">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#0064E0" style="flex-shrink:0"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        <span>Meta Business Partner</span>
+      </div>
+      <!-- TikTok Partner -->
+      <div class="partner-badge" style="display:flex; align-items:center; gap:8px; font-size:12px; font-weight:700; color:#475569">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.74-3.94-1.74-.22-.2-.41-.43-.61-.65-.02 2.27.01 4.54-.01 6.81-.03 1.65-.4 3.32-1.35 4.67-1.12 1.66-2.98 2.68-4.97 2.89-2.09.28-4.32-.34-5.83-1.85-1.72-1.68-2.42-4.28-1.83-6.64.49-2.14 2.1-3.97 4.19-4.66.72-.25 1.48-.37 2.24-.37.01 2.05-.01 4.11.01 6.17-.41-.12-.86-.16-1.28-.08-.75.12-1.46.59-1.82 1.27-.47.83-.41 1.94.19 2.67.62.79 1.71 1.13 2.67.84.88-.24 1.57-.99 1.83-1.86.13-.48.16-.98.15-1.47.01-4.73.01-9.46.01-14.19z"/></svg>
+        <span>TikTok Partner</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STATS — light clean (image 4) ══ -->
+<section id="stats">
+  <div class="stats-grid">
+    <div class="stat-block fade-up">
+      <div class="stat-big">120+</div>
+      <div class="stat-desc" data-tr="stat-desc-1">Restaurants &amp; cafés served</div>
+    </div>
+    <div class="stat-block fade-up d1">
+      <div class="stat-big">$2M+</div>
+      <div class="stat-desc" data-tr="stat-desc-2">Revenue generated for clients</div>
+    </div>
+    <div class="stat-block fade-up d2">
+      <div class="stat-big">40%</div>
+      <div class="stat-desc" data-tr="stat-desc-3">Avg. increase in online orders</div>
+    </div>
+    <div class="stat-block fade-up d3">
+      <div class="stat-big">3×</div>
+      <div class="stat-desc" data-tr="stat-desc-4">Google Maps visibility boost</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROBLEM / SOLUTION ══ -->
+<section id="problem">
+  <div class="section-inner">
+    <div class="problem-grid">
+      <div>
+        <p class="eyebrow" data-tr="prob-eyebrow">The Challenge</p>
+        <h2 class="section-h2" data-tr="prob-title">Running a great restaurant<br/>shouldn't mean being <em>invisible</em> online</h2>
+        <p class="section-sub" data-tr="prob-sub">Most restaurants lose customers every day because of gaps in their digital presence. Here's what's costing you.</p>
+        <div class="pain-list">
+          <div class="pain-item fade-up">
+            <div class="pain-icon">📍</div>
+            <div><div class="pain-title" data-tr="pain-t-1">No Google Maps presence</div><div class="pain-desc" data-tr="pain-d-1">Customers search and find your competitors instead of you.</div></div>
+          </div>
+          <div class="pain-item fade-up d1">
+            <div class="pain-icon">📱</div>
+            <div><div class="pain-title" data-tr="pain-t-2">Weak social media</div><div class="pain-desc" data-tr="pain-d-2">Inconsistent posting means zero brand loyalty or walk-ins.</div></div>
+          </div>
+          <div class="pain-item fade-up d2">
+            <div class="pain-icon">💸</div>
+            <div><div class="pain-title" data-tr="pain-t-3">Wasted ad spend</div><div class="pain-desc" data-tr="pain-d-3">Generic ads not built for food businesses burn your budget fast.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="solution-box fade-up">
+        <p class="sol-ey" data-tr="sol-eyebrow">The Solution</p>
+        <h3 class="sol-h3" data-tr="sol-title">One agency replaces five separate tools</h3>
+        <p class="sol-sub" data-tr="sol-sub">We handle your entire online presence end-to-end — website, Google, social, ads, and branding — so you focus on the food.</p>
+        <div class="sol-feats">
+          <div class="sol-feat"><div class="chk">✓</div><span data-tr="sol-f-1">Website Design &amp; SEO</span></div>
+          <div class="sol-feat"><div class="chk">✓</div><span data-tr="sol-f-2">Google Maps Optimization</span></div>
+          <div class="sol-feat"><div class="chk">✓</div><span data-tr="sol-f-3">Social Media Management</span></div>
+          <div class="sol-feat"><div class="chk">✓</div><span data-tr="sol-f-4">Targeted Paid Advertising</span></div>
+          <div class="sol-feat"><div class="chk">✓</div><span data-tr="sol-f-5">Menu Design &amp; Brand Identity</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FIVE PILLARS — ZIGZAG (images 1 & 2) ══ -->
+<section id="pillars">
+  <div class="section-inner">
+    <div class="pillars-header fade-up">
+      <p class="eyebrow" data-tr="pillars-eyebrow">Five Pillars. One Agency.</p>
+      <h2 class="section-h2" data-tr="pillars-title">How We Get Customers<br/>For Your <em>Restaurant</em></h2>
+    </div>
+
+    <!-- 01 Google Maps SEO -->
+    <div class="zz-row fade-up">
+      <div class="zz-text">
+        <div class="zz-num">01</div>
+        <div class="zz-icon-title">
+          <div class="zz-icon-wrap">
+            <svg class="zz-icon-svg" viewBox="0 0 24 24">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+          </div>
+          <h3 class="zz-title" data-tr="p1-title">Google Maps SEO</h3>
+        </div>
+        <p class="zz-desc" data-tr="p1-desc">Full Google Business Profile optimization — photos, reviews, keywords, and local ranking strategy so you appear first in local searches. We turn invisible restaurants into the #1 result near you.</p>
+        <span class="pillar-tag" data-tr="p1-tag">HIGH LOCAL IMPACT</span>
+      </div>
+      <div class="zz-visual" id="pillar-maps-card" style="cursor:pointer">
+        <div class="zz-visual-inner">
+          <div class="zz-vi-badge" data-tr="p1-badge">
+            <svg viewBox="0 0 24 24" width="13" height="13" stroke="var(--accent)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            Local Search Ranking
+          </div>
+          <div class="zz-vi-map" id="map-simulation">
+            <svg viewBox="0 0 24 24" width="40" height="40" stroke="#2979E8" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M9 3L3 6v15l6-3 6 3 6-3V3l-6 3-6-3z"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/><path d="M12 8 C10.5 8 9.5 9 9.5 10.5 C9.5 12.5 12 15 12 15 C12 15 14.5 12.5 14.5 10.5 C14.5 9 13.5 8 12 8 Z" fill="rgba(41,121,232,0.25)"/><circle cx="12" cy="10.5" r="1" fill="#2979E8"/></svg>
+            <div class="map-text">
+              <div class="mt1" id="map-rank-text" data-tr="p1-rank-t">#1 "Best restaurant near me"</div>
+              <div class="mt2" id="map-rank-desc" data-tr="p1-rank-d">↑ Jumped from #12 to #1 in 30 days</div>
+            </div>
+          </div>
+          <div style="margin-top:14px">
+            <div class="zz-vi-stat" id="map-rank-stat">3×</div>
+            <div class="zz-vi-lbl" data-tr="p1-stat-lbl">Google Maps visibility increase</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 Website Design -->
+    <div class="zz-row flip fade-up">
+      <div class="zz-text">
+        <div class="zz-num">02</div>
+        <div class="zz-icon-title">
+          <div class="zz-icon-wrap">
+            <svg class="zz-icon-svg" viewBox="0 0 24 24">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <path d="M8 21h8M12 17v4"/>
+              <path d="M7 8l3 3-3 3M14 14h3"/>
+            </svg>
+          </div>
+          <h3 class="zz-title" data-tr="p2-title">Website Design</h3>
+        </div>
+        <p class="zz-desc" data-tr="p2-desc">Fast, mobile-first websites with online menus and booking flows designed to convert visitors into paying customers. Built for speed, SEO, and beautiful on every device.</p>
+        <span class="pillar-tag" data-tr="p2-tag">CORE DELIVERABLE</span>
+      </div>
+      <div class="zz-visual" id="pillar-web-card" style="cursor:pointer;overflow:visible">
+        <div class="zz-visual-inner" style="background:#0B1F3A;padding:18px;position:relative">
+          <div class="zz-vi-badge" style="background:rgba(255,255,255,.1);color:#A8C4FF" data-tr="p2-badge">
+            <svg viewBox="0 0 24 24" width="13" height="13" stroke="#A8C4FF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            Website Performance
+          </div>
+
+          <!-- Animated Browser Window -->
+          <div class="web-browser-card" id="web-browser-card">
+            <div class="web-browser-bar">
+              <div class="web-dots">
+                <div class="web-dot r"></div>
+                <div class="web-dot y"></div>
+                <div class="web-dot g"></div>
+              </div>
+              <div class="web-url-bar">
+                <span class="web-url-lock">🔒</span>
+                <span id="web-url-text">fenixrestaurant.com</span>
+              </div>
+            </div>
+            <div class="web-load-bar"><div class="web-load-progress" id="web-load-bar"></div></div>
+            <div class="web-content-area" style="position:relative">
+              <!-- Cursor -->
+              <div class="web-cursor" id="web-cursor" style="left:20px;top:10px">
+                <svg viewBox="0 0 10 16" fill="none"><path d="M0 0 L0 12 L3 9 L5.5 14 L7 13.5 L4.5 8.5 L8 8.5 Z" fill="white" stroke="#0B1F3A" stroke-width="0.6"/></svg>
+              </div>
+              <div class="web-click-ripple" id="web-ripple"></div>
+              <!-- Hero section -->
+              <div class="web-content-row">
+                <div class="web-hero-block">
+                  <div class="web-hero-text-lines">
+                    <div class="web-text-line w70"></div>
+                    <div class="web-text-line w50"></div>
+                  </div>
+                  <div class="web-cta-btn-anim" id="web-cta">Book Now</div>
+                </div>
+                <div class="web-sidebar">
+                  <div class="web-sidebar-item" style="width:80%"></div>
+                  <div class="web-sidebar-item" style="width:60%"></div>
+                  <div class="web-sidebar-item" style="width:70%"></div>
+                </div>
+              </div>
+              <!-- Metrics -->
+              <div class="web-metrics-row">
+                <div class="web-metric-box">
+                  <div class="web-metric-num" id="web-m1">0</div>
+                  <div class="web-metric-lbl">PageSpeed</div>
+                </div>
+                <div class="web-metric-box">
+                  <div class="web-metric-num" id="web-m2" style="color:#0EA5A0">0%</div>
+                  <div class="web-metric-lbl">Bookings ↑</div>
+                </div>
+                <div class="web-metric-box">
+                  <div class="web-metric-num" id="web-m3" style="color:#FDE68A">0s</div>
+                  <div class="web-metric-lbl">Load Time</div>
+                </div>
+              </div>
+              <!-- Visitor Chart -->
+              <div class="web-visitor-chart">
+                <div class="web-chart-bars" id="web-chart-bars">
+                  <div class="web-chart-bar" style="height:20%" data-h="20"></div>
+                  <div class="web-chart-bar" style="height:35%" data-h="35"></div>
+                  <div class="web-chart-bar" style="height:30%" data-h="30"></div>
+                  <div class="web-chart-bar" style="height:55%" data-h="55"></div>
+                  <div class="web-chart-bar" style="height:48%" data-h="48"></div>
+                  <div class="web-chart-bar" style="height:72%" data-h="72"></div>
+                  <div class="web-chart-bar accent" style="height:100%" data-h="100"></div>
+                </div>
+                <div class="web-chart-lbl"><span>Mon</span><span>Wed</span><span>Today</span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 Social Media -->
+    <div class="zz-row fade-up">
+      <div class="zz-text">
+        <div class="zz-num">03</div>
+        <div class="zz-icon-title">
+          <div class="zz-icon-wrap">
+            <svg class="zz-icon-svg" viewBox="0 0 24 24">
+              <path d="M17 2H7a2 2 0 00-2 2v16a2 2 0 002 2h10a2 2 0 002-2V4a2 2 0 00-2-2z"/>
+              <line x1="12" y1="18" x2="12.01" y2="18" stroke-width="3"/>
+              <path d="M9 6h6M10 9h4"/>
+              <circle cx="12" cy="13" r="2" fill="rgba(41,121,232,0.3)"/>
+            </svg>
+          </div>
+          <h3 class="zz-title" data-tr="p3-title">Social Media Management</h3>
+        </div>
+        <p class="zz-desc" data-tr="p3-desc">Branded content across Instagram, Facebook, and WhatsApp — posts, stories, and reels that build a loyal following and drive walk-ins month after month.</p>
+        <span class="pillar-tag" data-tr="p3-tag">MONTHLY SERVICE</span>
+      </div>
+      <div class="zz-visual" id="pillar-sm-card">
+        <div class="zz-visual-inner" style="background:#0B1F3A;padding:18px;position:relative">
+          <div class="zz-vi-badge" style="background:rgba(255,255,255,.1);color:#A8C4FF" data-tr="p3-badge">
+            <svg viewBox="0 0 24 24" width="13" height="13" stroke="#A8C4FF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px"><path d="M17 2H7a2 2 0 00-2 2v16a2 2 0 002 2h10a2 2 0 002-2V4a2 2 0 00-2-2z"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="3"/></svg>
+            Social Media Growth
+          </div>
+
+          <!-- Platform Tabs -->
+          <div class="sm-tabs">
+            <button class="sm-tab fb active" id="sm-tab-fb" onclick="switchSMTab('fb')">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              Facebook
+            </button>
+            <button class="sm-tab ig" id="sm-tab-ig" onclick="switchSMTab('ig')">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+              Instagram
+            </button>
+            <button class="sm-tab tt" id="sm-tab-tt" onclick="switchSMTab('tt')">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.74-3.94-1.74v6.81c-.03 1.65-.4 3.32-1.35 4.67-1.12 1.66-2.98 2.68-4.97 2.89-2.09.28-4.32-.34-5.83-1.85-1.72-1.68-2.42-4.28-1.83-6.64.49-2.14 2.1-3.97 4.19-4.66.72-.25 1.48-.37 2.24-.37.01 2.05-.01 4.11.01 6.17-.41-.12-.86-.16-1.28-.08-.75.12-1.46.59-1.82 1.27-.47.83-.41 1.94.19 2.67.62.79 1.71 1.13 2.67.84.88-.24 1.57-.99 1.83-1.86.13-.48.16-.98.15-1.47.01-4.73.01-9.46.01-14.19z"/></svg>
+              TikTok
+            </button>
+          </div>
+
+          <!-- Facebook View -->
+          <div class="sm-platform-view active" id="sm-view-fb">
+            <div class="sm-post-card">
+              <div class="sm-post-header">
+                <div class="sm-avatar" style="background:#1877F2">F</div>
+                <div><div class="sm-post-name">Casa Italiana Restaurant</div><div class="sm-post-time">2 minutes ago · 🌍</div></div>
+              </div>
+              <div class="sm-post-img-placeholder" style="background:linear-gradient(135deg,rgba(24,119,242,.2),rgba(66,165,245,.1))">🍝</div>
+              <div class="sm-engagement">
+                <button class="sm-like-btn" id="fb-like-btn" onclick="smLike('fb')" style="color:rgba(168,196,255,.7)">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14z"/><path d="M7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/></svg>
+                  <span id="fb-like-count">2.4k</span>
+                </button>
+                <span class="sm-eng-item">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                  <span id="fb-comment-count">138</span>
+                </span>
+                <span class="sm-eng-item">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                  <span id="fb-share-count">67</span>
+                </span>
+              </div>
+            </div>
+            <div class="sm-followers-bar">
+              <div class="sm-fol-row">
+                <span class="sm-fol-label">Page Followers</span>
+                <div style="display:flex;align-items:center;gap:6px">
+                  <span class="sm-fol-count" id="fb-fol-count">0</span>
+                  <span class="sm-fol-delta">+340 this week</span>
+                </div>
+              </div>
+              <div class="sm-growth-track"><div class="sm-growth-fill fb-fill" id="fb-growth-bar" style="width:0%"></div></div>
+            </div>
+            <div class="sm-ticker" id="fb-ticker"></div>
+          </div>
+
+          <!-- Instagram View -->
+          <div class="sm-platform-view" id="sm-view-ig">
+            <div class="sm-post-card">
+              <div class="sm-post-header">
+                <div class="sm-avatar" style="background:linear-gradient(135deg,#E1306C,#FFDC80)">📸</div>
+                <div><div class="sm-post-name">@casaitaliana_restaurant</div><div class="sm-post-time">58 minutes ago</div></div>
+              </div>
+              <div class="sm-post-img-placeholder" style="background:linear-gradient(135deg,rgba(225,48,108,.2),rgba(255,220,128,.15))">🍕</div>
+              <div class="sm-engagement">
+                <button class="sm-like-btn" id="ig-like-btn" onclick="smLike('ig')" style="color:rgba(168,196,255,.7)">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                  <span id="ig-like-count">3.1k</span>
+                </button>
+                <span class="sm-eng-item">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                  <span id="ig-comment-count">204</span>
+                </span>
+                <span class="sm-eng-item" style="margin-left:auto">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </span>
+              </div>
+            </div>
+            <div class="sm-followers-bar">
+              <div class="sm-fol-row">
+                <span class="sm-fol-label">Followers</span>
+                <div style="display:flex;align-items:center;gap:6px">
+                  <span class="sm-fol-count" id="ig-fol-count">0</span>
+                  <span class="sm-fol-delta" style="background:rgba(225,48,108,.15);color:#E1306C">+820 this week</span>
+                </div>
+              </div>
+              <div class="sm-growth-track"><div class="sm-growth-fill ig-fill" id="ig-growth-bar" style="width:0%"></div></div>
+            </div>
+            <div class="sm-ticker" id="ig-ticker"></div>
+          </div>
+
+          <!-- TikTok View -->
+          <div class="sm-platform-view" id="sm-view-tt">
+            <div class="sm-post-card">
+              <div class="sm-post-header">
+                <div class="sm-avatar" style="background:#010101;border:1px solid rgba(255,255,255,.2)">▶</div>
+                <div><div class="sm-post-name">@casaitaliana</div><div class="sm-post-time">Today · Reel</div></div>
+              </div>
+              <div class="sm-post-img-placeholder" style="background:linear-gradient(135deg,rgba(255,255,255,.05),rgba(105,201,208,.1))">🎬</div>
+              <div class="sm-engagement">
+                <button class="sm-like-btn" id="tt-like-btn" onclick="smLike('tt')" style="color:rgba(168,196,255,.7)">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                  <span id="tt-like-count">18.2k</span>
+                </button>
+                <span class="sm-eng-item">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                  <span id="tt-comment-count">891</span>
+                </span>
+                <span class="sm-eng-item">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                  <span id="tt-share-count">1.2k</span>
+                </span>
+              </div>
+            </div>
+            <div class="sm-followers-bar">
+              <div class="sm-fol-row">
+                <span class="sm-fol-label">Followers</span>
+                <div style="display:flex;align-items:center;gap:6px">
+                  <span class="sm-fol-count" id="tt-fol-count">0</span>
+                  <span class="sm-fol-delta" style="background:rgba(105,201,208,.15);color:#69C9D0">+2.1k this week</span>
+                </div>
+              </div>
+              <div class="sm-growth-track"><div class="sm-growth-fill tt-fill" id="tt-growth-bar" style="width:0%"></div></div>
+            </div>
+            <div class="sm-ticker" id="tt-ticker"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- 04 Paid Advertising -->
+    <div class="zz-row flip fade-up">
+      <div class="zz-text">
+        <div class="zz-num">04</div>
+        <div class="zz-icon-title">
+          <div class="zz-icon-wrap">
+            <svg class="zz-icon-svg" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/>
+              <circle cx="12" cy="12" r="6"/>
+              <circle cx="12" cy="12" r="2" fill="rgba(41,121,232,0.4)"/>
+              <line x1="22" y1="2" x2="14" y2="10" stroke-width="2.5"/>
+              <polyline points="16 2 22 2 22 8" stroke-width="2.5"/>
+            </svg>
+          </div>
+          <h3 class="zz-title" data-tr="p4-title">Paid Advertising</h3>
+        </div>
+        <p class="zz-desc" data-tr="p4-desc">Precision-targeted Meta and Google Ads that reach hungry customers near your location when they are ready to order. Every dollar tracked. Zero waste.</p>
+        <span class="pillar-tag" data-tr="p4-tag">PERFORMANCE DRIVEN</span>
+      </div>
+      <div class="zz-visual">
+        <div class="zz-visual-inner">
+          <div class="zz-vi-badge" style="display: flex; align-items: center; justify-content: space-between; width: 100%;" data-tr="p4-badge">
+            <span style="display:flex;align-items:center;gap:6px">
+              <svg viewBox="0 0 24 24" width="13" height="13" stroke="var(--accent)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="var(--accent)"/></svg>
+              Ad Performance
+            </span>
+            <button id="toggle-ad-btn" class="toggle-ad-btn" onclick="toggleAdCampaign()">Pause</button>
+          </div>
+          <div class="zz-vi-ad" id="ad-campaign-box">
+            <div style="font-size:12px;color:rgba(168,196,255,.6);margin-bottom:10px;font-weight:600;text-transform:uppercase;letter-spacing:.8px" id="ad-status-lbl" data-tr="p4-camp-lbl">Live Campaign</div>
+            <div class="ad-kpi">
+              <div class="ad-kpi-item"><div class="k1">ROAS</div><div class="k2" id="ad-roas">4.8×</div></div>
+              <div class="ad-kpi-item"><div class="k1">CPC</div><div class="k2" id="ad-cpc">$0.42</div></div>
+              <div class="ad-kpi-item"><div class="k1">CVR</div><div class="k2" id="ad-cvr">3%</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 Brand & Menu Design -->
+    <div class="zz-row fade-up">
+      <div class="zz-text">
+        <div class="zz-num">05</div>
+        <div class="zz-icon-title">
+          <div class="zz-icon-wrap">
+            <svg class="zz-icon-svg" viewBox="0 0 24 24">
+              <path d="M12 20h9"/>
+              <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+            </svg>
+          </div>
+          <h3 class="zz-title" data-tr="p5-title">Brand &amp; Menu Design</h3>
+        </div>
+        <p class="zz-desc" data-tr="p5-desc">Logo, color palette, typography, and menus (print and digital) designed to make your restaurant look unforgettable and premium at every touchpoint.</p>
+        <span class="pillar-tag" data-tr="p5-tag">CREATIVE PACKAGE</span>
+      </div>
+      <div class="zz-visual">
+        <div class="zz-visual-inner">
+          <div class="zz-vi-badge" data-tr="p5-badge">
+            <svg viewBox="0 0 24 24" width="13" height="13" stroke="var(--accent)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            Brand Identity
+          </div>
+          <div class="zz-vi-brand">
+            <div class="brand-row">
+              <div class="brand-chip" id="chip-logo" style="background:var(--navy);color:#fff;flex:1;cursor:pointer" onclick="previewBrand('logo')">Logo Design</div>
+              <div class="brand-chip" id="chip-palette" style="background:#FDE68A;color:#7A4F00;flex:1;cursor:pointer" onclick="previewBrand('palette')">Color Palette</div>
+            </div>
+            <div class="brand-row">
+              <div class="brand-chip" id="chip-typo" style="background:var(--light-bg);color:var(--accent);border:1px solid var(--border);flex:1;cursor:pointer" onclick="previewBrand('typo')">Typography</div>
+              <div class="brand-chip" id="chip-menu" style="background:var(--teal);color:#fff;flex:1;cursor:pointer" onclick="previewBrand('menu')">Menu Design</div>
+            </div>
+          </div>
+          <div style="margin-top:14px" id="brand-preview-box">
+            <div class="zz-vi-stat" style="font-size:28px" id="brand-stat">100%</div>
+            <div class="zz-vi-lbl" id="brand-lbl" data-tr="p5-custom-lbl">Custom — never templated</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section id="howto">
+  <div class="section-inner">
+    <div class="howto-header fade-up">
+      <p class="eyebrow" data-tr="howto-eyebrow">The Process</p>
+      <h2 class="section-h2" data-tr="howto-title">Simple. <em>Proven.</em> Fast.</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-item fade-up">
+        <div class="step-circle">01</div>
+        <div class="step-title" data-tr="step1-title">Free Consultation</div>
+        <div class="step-desc" data-tr="step1-desc">We learn your restaurant, goals, and digital challenges — no pitch, just listening.</div>
+      </div>
+      <div class="step-item fade-up d1">
+        <div class="step-circle">02</div>
+        <div class="step-title" data-tr="step2-title">Custom Strategy</div>
+        <div class="step-desc" data-tr="step2-desc">We build a tailored growth plan with clear goals, timelines, and measurable targets.</div>
+      </div>
+      <div class="step-item fade-up d2">
+        <div class="step-circle">03</div>
+        <div class="step-title" data-tr="step3-title">We Execute</div>
+        <div class="step-desc" data-tr="step3-desc">Our team launches your website, social accounts, ads, and Google presence — fast and professionally.</div>
+      </div>
+      <div class="step-item fade-up d3">
+        <div class="step-circle">04</div>
+        <div class="step-title" data-tr="step4-title">You Grow</div>
+        <div class="step-desc" data-tr="step4-desc">Watch reservations, orders, and reviews increase month after month with full support.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FEATURES ══ -->
+<section id="features">
+  <div class="section-inner">
+    <div class="features-header fade-up">
+      <p class="eyebrow" data-tr="feat-eyebrow">Features That Drive Results</p>
+      <h2 class="section-h2" data-tr="feat-title">Built for <em>restaurants</em>, not generic businesses</h2>
+    </div>
+    <div class="features-list fade-up">
+      <div class="feat-row">
+        <div class="feat-left"><span class="feat-emoji">🗓️</span><div><div class="feat-title" data-tr="feat-t-1">Online Reservation System</div><div class="feat-desc" data-tr="feat-d-1">Built directly into your website — customers book without leaving your page.</div></div></div>
+        <div class="feat-stat" data-tr="feat-s-1">+65%<small>more bookings</small></div>
+      </div>
+      <div class="feat-row">
+        <div class="feat-left"><span class="feat-emoji">⭐</span><div><div class="feat-title" data-tr="feat-t-2">Review Generation System</div><div class="feat-desc" data-tr="feat-d-2">Automated follow-ups that turn happy diners into 5-star Google reviewers.</div></div></div>
+        <div class="feat-stat" data-tr="feat-s-2">4.8★<small>avg. rating</small></div>
+      </div>
+      <div class="feat-row">
+        <div class="feat-left"><span class="feat-emoji">📊</span><div><div class="feat-title" data-tr="feat-t-3">Monthly Analytics Reports</div><div class="feat-desc" data-tr="feat-d-3">Clear dashboards showing traffic, orders, reservations, and ad ROI.</div></div></div>
+        <div class="feat-stat" data-tr="feat-s-3">100%<small>transparent</small></div>
+      </div>
+      <div class="feat-row">
+        <div class="feat-left"><span class="feat-emoji">🎬</span><div><div class="feat-title" data-tr="feat-t-4">Short-Form Video Content</div><div class="feat-desc" data-tr="feat-d-4">Reels and TikToks from your kitchen footage — turning food into viral content.</div></div></div>
+        <div class="feat-stat" data-tr="feat-s-4">10×<small>more reach</small></div>
+      </div>
+      <div class="feat-row">
+        <div class="feat-left"><span class="feat-emoji">💬</span><div><div class="feat-title" data-tr="feat-t-5">WhatsApp Order Integration</div><div class="feat-desc" data-tr="feat-d-5">Let customers order directly via WhatsApp — connected to your menu.</div></div></div>
+        <div class="feat-stat" data-tr="feat-s-5">+30%<small>direct orders</small></div>
+      </div>
+      <div class="feat-row">
+        <div class="feat-left"><span class="feat-emoji">🎯</span><div><div class="feat-title" data-tr="feat-t-6">Hyper-Local Ad Targeting</div><div class="feat-desc" data-tr="feat-d-6">Ads shown only to people within walking or delivery distance.</div></div></div>
+        <div class="feat-stat" data-tr="feat-s-6">3×<small>higher conversion</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INTEGRATIONS — scrolling (image 3) ══ -->
+<section id="integrations">
+  <div class="int-header fade-up">
+    <p class="eyebrow" data-tr="int-eyebrow">Integrations</p>
+    <h2 class="section-h2" data-tr="int-title">Works With Your <em>Existing Stack</em></h2>
+  </div>
+  <div class="int-track-wrap">
+    <!-- Row 1 -->
+    <div class="int-row">
+      <div class="int-track" id="t1">
+        <div class="int-chip" onclick="showIntegration('Mailchimp', '📧')"><span class="i">📧</span> Mailchimp</div>
+        <div class="int-chip" onclick="showIntegration('Stripe', '💳')"><span class="i">💳</span> Stripe</div>
+        <div class="int-chip" onclick="showIntegration('PayPal', '💰')"><span class="i">💰</span> PayPal</div>
+        <div class="int-chip" onclick="showIntegration('Meta Ads', '📣')"><span class="i">📣</span> Meta Ads</div>
+        <div class="int-chip" onclick="showIntegration('Google Ads', '🔍')"><span class="i">🔍</span> Google Ads</div>
+        <div class="int-chip" onclick="showIntegration('Google Analytics', '📊')"><span class="i">📊</span> Google Analytics</div>
+        <div class="int-chip" onclick="showIntegration('WhatsApp Business', '💬')"><span class="i">💬</span> WhatsApp Business</div>
+        <div class="int-chip" onclick="showIntegration('Instagram', '📸')"><span class="i">📸</span> Instagram</div>
+        <div class="int-chip" onclick="showIntegration('Facebook', '📘')"><span class="i">📘</span> Facebook</div>
+        <div class="int-chip" onclick="showIntegration('Google Calendar', '🗓️')"><span class="i">🗓️</span> Google Calendar</div>
+        <!-- duplicate for seamless loop -->
+        <div class="int-chip" onclick="showIntegration('Mailchimp', '📧')"><span class="i">📧</span> Mailchimp</div>
+        <div class="int-chip" onclick="showIntegration('Stripe', '💳')"><span class="i">💳</span> Stripe</div>
+        <div class="int-chip" onclick="showIntegration('PayPal', '💰')"><span class="i">💰</span> PayPal</div>
+        <div class="int-chip" onclick="showIntegration('Meta Ads', '📣')"><span class="i">📣</span> Meta Ads</div>
+        <div class="int-chip" onclick="showIntegration('Google Ads', '🔍')"><span class="i">🔍</span> Google Ads</div>
+        <div class="int-chip" onclick="showIntegration('Google Analytics', '📊')"><span class="i">📊</span> Google Analytics</div>
+        <div class="int-chip" onclick="showIntegration('WhatsApp Business', '💬')"><span class="i">💬</span> WhatsApp Business</div>
+        <div class="int-chip" onclick="showIntegration('Instagram', '📸')"><span class="i">📸</span> Instagram</div>
+        <div class="int-chip" onclick="showIntegration('Facebook', '📘')"><span class="i">📘</span> Facebook</div>
+        <div class="int-chip" onclick="showIntegration('Google Calendar', '🗓️')"><span class="i">🗓️</span> Google Calendar</div>
+      </div>
+    </div>
+    <!-- Row 2 -->
+    <div class="int-row">
+      <div class="int-track2">
+        <div class="int-chip" onclick="showIntegration('Google Maps', '🗺️')"><span class="i">🗺️</span> Google Maps</div>
+        <div class="int-chip" onclick="showIntegration('Zapier', '⚡')"><span class="i">⚡</span> Zapier</div>
+        <div class="int-chip" onclick="showIntegration('Mailjet', '📬')"><span class="i">📬</span> Mailjet</div>
+        <div class="int-chip" onclick="showIntegration('TikTok Ads', '🎯')"><span class="i">🎯</span> TikTok Ads</div>
+        <div class="int-chip" onclick="showIntegration('WooCommerce', '📦')"><span class="i">📦</span> WooCommerce</div>
+        <div class="int-chip" onclick="showIntegration('Shopify', '🛒')"><span class="i">🛒</span> Shopify</div>
+        <div class="int-chip" onclick="showIntegration('Webhooks', '🔗')"><span class="i">🔗</span> Webhooks</div>
+        <div class="int-chip" onclick="showIntegration('Typeform', '📝')"><span class="i">📝</span> Typeform</div>
+        <div class="int-chip" onclick="showIntegration('ActiveCampaign', '📡')"><span class="i">📡</span> ActiveCampaign</div>
+        <div class="int-chip" onclick="showIntegration('OpenTable', '🏨')"><span class="i">🏨</span> OpenTable</div>
+        <!-- duplicate -->
+        <div class="int-chip" onclick="showIntegration('Google Maps', '🗺️')"><span class="i">🗺️</span> Google Maps</div>
+        <div class="int-chip" onclick="showIntegration('Zapier', '⚡')"><span class="i">⚡</span> Zapier</div>
+        <div class="int-chip" onclick="showIntegration('Mailjet', '📬')"><span class="i">📬</span> Mailjet</div>
+        <div class="int-chip" onclick="showIntegration('TikTok Ads', '🎯')"><span class="i">🎯</span> TikTok Ads</div>
+        <div class="int-chip" onclick="showIntegration('WooCommerce', '📦')"><span class="i">📦</span> WooCommerce</div>
+        <div class="int-chip" onclick="showIntegration('Shopify', '🛒')"><span class="i">🛒</span> Shopify</div>
+        <div class="int-chip" onclick="showIntegration('Webhooks', '🔗')"><span class="i">🔗</span> Webhooks</div>
+        <div class="int-chip" onclick="showIntegration('Typeform', '📝')"><span class="i">📝</span> Typeform</div>
+        <div class="int-chip" onclick="showIntegration('ActiveCampaign', '📡')"><span class="i">📡</span> ActiveCampaign</div>
+        <div class="int-chip" onclick="showIntegration('OpenTable', '🏨')"><span class="i">🏨</span> OpenTable</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section id="testimonials">
+  <div class="section-inner">
+    <div class="testi-header fade-up">
+      <p class="eyebrow" data-tr="testi-eyebrow">Client Stories</p>
+      <h2 class="section-h2" data-tr="testi-title">What our restaurant partners say</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card fade-up">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote" data-tr="t-q-1">Within 3 months, our Instagram tripled and we started getting daily online reservations. The strategy was clear and worked immediately.</p>
+        <div class="testi-name">Ahmed Mohamud</div>
+        <div class="testi-biz">Casa Italiana, Mogadishu</div>
+      </div>
+      <div class="testi-card fade-up d1">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote" data-tr="t-q-2">Our café was invisible on Google Maps. After one month we're in the top 3 for 'best café near me'. fenixgrowth delivered exactly what they promised.</p>
+        <div class="testi-name">Fatima Abdi</div>
+        <div class="testi-biz">Nomad Café, Istanbul</div>
+      </div>
+      <div class="testi-card fade-up d2">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote" data-tr="t-q-3">The website looks stunning on mobile. Online orders jumped 45% in Q1. Their team is responsive, professional, and genuinely cares about results.</p>
+        <div class="testi-name">Omar Ibrahim</div>
+        <div class="testi-biz">Spice Garden, Dubai</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRICING ══ -->
+<section id="pricing">
+  <div class="section-inner">
+    <div class="pricing-header fade-up">
+      <p class="eyebrow" data-tr="price-eyebrow">Simple Pricing</p>
+      <h2 class="section-h2" data-tr="price-title">Choose your <em>growth</em> plan</h2>
+      <p style="font-size:15px;color:var(--muted);margin-top:10px" data-tr="price-sub">Starter is a one-time setup. Growth, Pro &amp; Scale are monthly partnerships.</p>
+    </div>
+    
+    <!-- Pricing Toggle Switch -->
+    <div class="pricing-toggle-wrap fade-up d1">
+      <span class="toggle-lbl active" id="billing-monthly" data-tr="toggle-monthly">Monthly Billing</span>
+      <label class="switch">
+        <input type="checkbox" id="pricing-checkbox" onchange="togglePricingDuration()">
+        <span class="slider"></span>
+      </label>
+      <span class="toggle-lbl" id="billing-annual" data-tr="toggle-annual">Annual (Save 20%)</span>
+    </div>
+    
+    <div class="pricing-grid">
+      <!-- Starter Card -->
+      <div class="price-card fade-up">
+        <div class="price-head">
+          <div class="price-name" data-tr="p-starter">Starter</div>
+          <div class="price-amount" data-monthly="250" data-annual="250">$<span class="p-val">250</span></div>
+          <div class="price-cadence" id="cadence-starter" data-tr="c-starter">One-time setup</div>
+        </div>
+        <div class="price-body">
+          <ul class="price-features">
+            <li data-tr="f-s-1">Custom Website</li>
+            <li data-tr="f-s-2">Google Maps Setup</li>
+            <li data-tr="f-s-3">Social Profiles Setup</li>
+            <li data-tr="f-s-4">Digital Strategy Guide</li>
+            <li data-tr="f-s-5">SEO Foundation</li>
+          </ul>
+          <button class="price-btn price-btn-out" onclick="openBookingModal('Starter Plan')" data-tr="price-btn">Get Started</button>
+        </div>
+      </div>
+      <!-- Growth Card -->
+      <div class="price-card popular fade-up d1">
+        <div class="price-head">
+          <div class="popular-badge">★ Most Popular</div>
+          <div class="price-name" data-tr="p-growth">Growth</div>
+          <div class="price-amount" data-monthly="400" data-annual="320">$<span class="p-val">400</span></div>
+          <div class="price-cadence" id="cadence-growth" data-tr="c-growth">/month</div>
+        </div>
+        <div class="price-body">
+          <ul class="price-features">
+            <li data-tr="f-g-1">Google Maps Management</li>
+            <li data-tr="f-g-2">10 Posts + Stories</li>
+            <li data-tr="f-g-3">Custom Website</li>
+            <li data-tr="f-g-4">Meta Ads Management</li>
+            <li data-tr="f-g-5">Monthly Report</li>
+            <li data-tr="f-g-6">Account Manager</li>
+          </ul>
+          <button class="price-btn price-btn-fill" onclick="openBookingModal('Growth Plan')" data-tr="price-btn">Get Started</button>
+        </div>
+      </div>
+      <!-- Pro Card -->
+      <div class="price-card fade-up d2">
+        <div class="price-head">
+          <div class="price-name" data-tr="p-pro">Pro</div>
+          <div class="price-amount" data-monthly="600" data-annual="480">$<span class="p-val">600</span></div>
+          <div class="price-cadence" id="cadence-pro" data-tr="c-pro">/month</div>
+        </div>
+        <div class="price-body">
+          <ul class="price-features">
+            <li data-tr="f-p-1">Everything in Growth</li>
+            <li data-tr="f-p-2">Higher Ads Budget</li>
+            <li data-tr="f-p-3">20 Posts + Stories</li>
+            <li data-tr="f-p-4">Reputation Management</li>
+            <li data-tr="f-p-5">Weekly Video Content</li>
+            <li data-tr="f-p-6">Bi-weekly Strategy Call</li>
+          </ul>
+          <button class="price-btn price-btn-out" onclick="openBookingModal('Pro Plan')" data-tr="price-btn">Get Started</button>
+        </div>
+      </div>
+      <!-- Scale Card -->
+      <div class="price-card fade-up d3">
+        <div class="price-head">
+          <div class="price-name" data-tr="p-scale">Scale</div>
+          <div class="price-amount" data-monthly="1000" data-annual="800">$<span class="p-val">1000</span></div>
+          <div class="price-cadence" id="cadence-scale" data-tr="c-scale">/month</div>
+        </div>
+        <div class="price-body">
+          <ul class="price-features">
+            <li data-tr="f-sc-1">Everything in Pro</li>
+            <li data-tr="f-sc-2">Daily Posts &amp; Stories</li>
+            <li data-tr="f-sc-3">Full Content Creation</li>
+            <li data-tr="f-sc-4">Influencer Marketing</li>
+            <li data-tr="f-sc-5">Custom Web Integrations</li>
+            <li data-tr="f-sc-6">Dedicated Account Team</li>
+          </ul>
+          <button class="price-btn price-btn-out" onclick="openBookingModal('Scale Plan')" data-tr="price-btn">Get Started</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section id="cta">
+  <div class="cta-inner">
+    <p class="eyebrow" data-tr="cta-eyebrow">Ready to Grow?</p>
+    <h2 class="section-h2" data-tr="cta-title">Let's build your restaurant's digital infrastructure</h2>
+    <p class="cta-sub" data-tr="cta-sub">Book your free 15-minute digital growth audit and strategy call. No pressure, no pitch. Just a clear roadmap for your business.</p>
+    <button class="btn-primary" onclick="openBookingModal('General CTA')" data-tr="cta-btn">Book Free Call →</button>
+    <div class="cta-email"><span data-tr="cta-email">Or email us at</span> <a href="mailto:hello@fenixgrowth.com">hello@fenixgrowth.com</a></div>
+    <div class="trust-badges">
+      <span class="trust-badge" data-tr="cta-b-1">🔒 Secure Booking</span>
+      <span class="trust-badge" data-tr="cta-b-2">📞 15-Min Briefing</span>
+      <span class="trust-badge" data-tr="cta-b-3">✨ Free Growth Audit Included</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BLOG ══ -->
+<section id="blog">
+  <div class="section-inner">
+    <div class="blog-header fade-up">
+      <p class="eyebrow" data-tr="blog-eyebrow">Insights &amp; Strategy</p>
+      <h2 class="section-h2" data-tr="blog-title">Latest from our growth library</h2>
+    </div>
+    <div class="blog-grid">
+      <!-- Card 1 (Google SEO) -->
+      <div class="blog-card fade-up" onclick="openBlogArticle(1)">
+        <div class="blog-img g1">
+          <!-- Location / SEO pin icon -->
+          <svg class="blog-svg-icon" viewBox="0 0 64 64">
+            <path d="M32 6C22.6 6 15 13.6 15 23c0 14 17 35 17 35s17-21 17-35c0-9.4-7.6-17-17-17z" stroke-width="2"/>
+            <circle cx="32" cy="23" r="6"/>
+            <path d="M20 52 Q32 58 44 52" stroke-dasharray="3 2" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="blog-body">
+          <span class="blog-tag" data-tr="blog-tag-1">Google SEO</span>
+          <h3 class="blog-title" id="blog-title-1">How we ranked Nomad Café #1 in Local Searches in 30 days</h3>
+          <div class="blog-date">May 12, 2026</div>
+        </div>
+      </div>
+      
+      <!-- Card 2 (Social Media) -->
+      <div class="blog-card fade-up d1" onclick="openBlogArticle(2)">
+        <div class="blog-img g2">
+          <!-- Share/network social icon -->
+          <svg class="blog-svg-icon" viewBox="0 0 64 64">
+            <circle cx="48" cy="16" r="6"/>
+            <circle cx="16" cy="32" r="6"/>
+            <circle cx="48" cy="48" r="6"/>
+            <line x1="22" y1="29" x2="42" y2="19"/>
+            <line x1="22" y1="35" x2="42" y2="45"/>
+            <circle cx="48" cy="16" r="3" fill="rgba(255,255,255,0.4)"/>
+            <circle cx="16" cy="32" r="3" fill="rgba(255,255,255,0.4)"/>
+            <circle cx="48" cy="48" r="3" fill="rgba(255,255,255,0.4)"/>
+          </svg>
+        </div>
+        <div class="blog-body">
+          <span class="blog-tag" data-tr="blog-tag-2">Social Media</span>
+          <h3 class="blog-title" id="blog-title-2">5 social media hacks to increase restaurant foot traffic immediately</h3>
+          <div class="blog-date">May 08, 2026</div>
+        </div>
+      </div>
+      
+      <!-- Card 3 (Web Design) -->
+      <div class="blog-card fade-up d2" onclick="openBlogArticle(3)">
+        <div class="blog-img g3">
+          <!-- Monitor / web icon -->
+          <svg class="blog-svg-icon" viewBox="0 0 64 64">
+            <rect x="8" y="12" width="48" height="32" rx="4"/>
+            <path d="M20 44L16 54M44 44L48 54M12 54h40"/>
+            <rect x="14" y="18" width="36" height="20" rx="2" fill="rgba(255,255,255,0.15)" stroke-width="1.4"/>
+            <path d="M24 25 L20 29 L24 33" stroke-width="2"/>
+            <path d="M40 25 L44 29 L40 33" stroke-width="2"/>
+            <line x1="33" y1="22" x2="31" y2="36" stroke-width="1.8"/>
+          </svg>
+        </div>
+        <div class="blog-body">
+          <span class="blog-tag" data-tr="blog-tag-3">Web Design</span>
+          <h3 class="blog-title" id="blog-title-3">Why generic website templates cost restaurants bookings</h3>
+          <div class="blog-date">May 02, 2026</div>
+        </div>
+      </div>
+      
+      <!-- Card 4 (Google Maps) -->
+      <div class="blog-card fade-up" onclick="openBlogArticle(4)">
+        <div class="blog-img g4">
+          <!-- Map / directions icon -->
+          <svg class="blog-svg-icon" viewBox="0 0 64 64">
+            <path d="M10 14 L22 8 L42 16 L54 10 V50 L42 56 L22 48 L10 54 V14Z"/>
+            <line x1="22" y1="8" x2="22" y2="48" stroke-width="1.5"/>
+            <line x1="42" y1="16" x2="42" y2="56" stroke-width="1.5"/>
+            <path d="M32 18 C27.6 18 25 21.1 25 25 C25 31 32 37 32 37 C32 37 39 31 39 25 C39 21.1 36.4 18 32 18 Z" fill="rgba(255,255,255,0.2)" stroke-width="1.8"/>
+            <circle cx="32" cy="25" r="3" fill="rgba(255,255,255,0.9)" stroke-width="0"/>
+          </svg>
+        </div>
+        <div class="blog-body">
+          <span class="blog-tag" data-tr="blog-tag-4">Google Maps</span>
+          <h3 class="blog-title" id="blog-title-4">How to claim and optimize your Google Business Profile</h3>
+          <div class="blog-date">Apr 27, 2026</div>
+        </div>
+      </div>
+      
+      <!-- Card 5 (Paid Ads) -->
+      <div class="blog-card fade-up d1" onclick="openBlogArticle(5)">
+        <div class="blog-img g5">
+          <!-- Target / bullseye with arrow -->
+          <svg class="blog-svg-icon" viewBox="0 0 64 64" style="stroke:rgba(11,31,58,0.85)">
+            <circle cx="32" cy="32" r="24" opacity="0.5"/>
+            <circle cx="32" cy="32" r="16" opacity="0.7"/>
+            <circle cx="32" cy="32" r="8"/>
+            <circle cx="32" cy="32" r="3" fill="rgba(11,31,58,0.7)" stroke-width="0"/>
+            <line x1="52" y1="12" x2="38" y2="26" stroke-width="2.5"/>
+            <polyline points="42 12 52 12 52 22" stroke-width="2.5"/>
+          </svg>
+        </div>
+        <div class="blog-body">
+          <span class="blog-tag" data-tr="blog-tag-5">Paid Ads</span>
+          <h3 class="blog-title" id="blog-title-5">Tracking ROI: The ultimate guide to food advertising online</h3>
+          <div class="blog-date">Apr 19, 2026</div>
+        </div>
+      </div>
+      
+      <!-- Card 6 (Branding) -->
+      <div class="blog-card fade-up d2" onclick="openBlogArticle(6)">
+        <div class="blog-img g6">
+          <!-- Pen / design brush icon -->
+          <svg class="blog-svg-icon" viewBox="0 0 64 64" style="stroke:rgba(11,31,58,0.85)">
+            <path d="M44 8 L56 20 L24 52 L8 56 L12 40 Z"/>
+            <line x1="36" y1="16" x2="48" y2="28" stroke-width="1.8"/>
+            <path d="M8 56 L12 40 L24 52 Z" fill="rgba(11,31,58,0.3)" stroke-width="0"/>
+            <line x1="18" y1="46" x2="22" y2="50" stroke-width="1.5" opacity="0.6"/>
+          </svg>
+        </div>
+        <div class="blog-body">
+          <span class="blog-tag" data-tr="blog-tag-6">Branding</span>
+          <h3 class="blog-title" id="blog-title-6">How menu engineering can boost average order values by 20%</h3>
+          <div class="blog-date">Apr 10, 2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <!-- Col 1 -->
+      <div class="footer-col">
+        <a href="#hero" class="nav-logo" aria-label="FenixGrowth home">
+          <svg class="logo-svg" viewBox="0 0 280 50" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="FenixGrowth logo">
+            <!-- Sunburst/flower logo graphics -->
+            <g stroke="#2979E8" stroke-width="6" stroke-linecap="round">
+              <line x1="30" y1="15" x2="30" y2="5" />
+              <line x1="30" y1="15" x2="30" y2="5" transform="rotate(45 30 25)" />
+              <line x1="30" y1="15" x2="30" y2="5" transform="rotate(90 30 25)" />
+              <line x1="30" y1="15" x2="30" y2="5" transform="rotate(135 30 25)" />
+              <line x1="30" y1="15" x2="30" y2="5" transform="rotate(180 30 25)" />
+              <line x1="30" y1="15" x2="30" y2="5" transform="rotate(225 30 25)" />
+              <line x1="30" y1="15" x2="30" y2="5" transform="rotate(270 30 25)" />
+              <line x1="30" y1="15" x2="30" y2="5" transform="rotate(315 30 25)" />
+            </g>
+            <!-- 4K clean typography -->
+            <text x="65" y="36" font-family="'DM Sans', Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#FFFFFF" letter-spacing="-1">fenix<tspan fill="#2979E8">growth</tspan></text>
+          </svg>
+        </a>
+        <p class="footer-tagline" data-tr="foot-tagline">We build the digital growth infrastructure that helps restaurants and cafés get more bookings, orders, and repeat customers.</p>
+        <div class="footer-socials">
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg>
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.74-3.94-1.74-.22-.2-.41-.43-.61-.65-.02 2.27.01 4.54-.01 6.81-.03 1.65-.4 3.32-1.35 4.67-1.12 1.66-2.98 2.68-4.97 2.89-2.09.28-4.32-.34-5.83-1.85-1.72-1.68-2.42-4.28-1.83-6.64.49-2.14 2.1-3.97 4.19-4.66.72-.25 1.48-.37 2.24-.37.01 2.05-.01 4.11.01 6.17-.41-.12-.86-.16-1.28-.08-.75.12-1.46.59-1.82 1.27-.47.83-.41 1.94.19 2.67.62.79 1.71 1.13 2.67.84.88-.24 1.57-.99 1.83-1.86.13-.48.16-.98.15-1.47.01-4.73.01-9.46.01-14.19z"/></svg>
+          </a>
+        </div>
+      </div>
+      <!-- Col 2 -->
+      <div class="footer-col">
+        <h4 data-tr="foot-h-1">Services</h4>
+        <ul class="footer-links">
+          <li><a href="#pillars" data-tr="nav-services">Google Maps SEO</a></li>
+          <li><a href="#pillars" data-tr="p2-title">Website Design</a></li>
+          <li><a href="#pillars" data-tr="p3-title">Social Media</a></li>
+          <li><a href="#pillars" data-tr="p4-title">Paid Ads Management</a></li>
+          <li><a href="#pillars" data-tr="p5-title">Menu Engineering</a></li>
+        </ul>
+      </div>
+      <!-- Col 3 -->
+      <div class="footer-col">
+        <h4 data-tr="foot-h-2">Company</h4>
+        <ul class="footer-links">
+          <li><a href="#hero" data-tr="nav-home">Home</a></li>
+          <li><a href="#howto" data-tr="nav-process">Our Process</a></li>
+          <li><a href="#pricing" data-tr="nav-pricing">Pricing Plans</a></li>
+          <li><a href="#testimonials" data-tr="nav-results">Client Stories</a></li>
+          <li><a href="#blog" data-tr="nav-blog">Blog Articles</a></li>
+        </ul>
+      </div>
+      <!-- Col 4 -->
+      <div class="footer-col">
+        <h4 data-tr="foot-h-3">Stay Updated</h4>
+        <p class="footer-tagline" style="margin-top:0; margin-bottom:12px" data-tr="foot-newsletter-desc">Get food marketing tips in your inbox.</p>
+        <form id="newsletter-form" onsubmit="handleNewsletterSubmit(event)" style="display:flex; gap:8px">
+          <input type="email" id="newsletter-email" required placeholder="Your email address" data-tr="foot-email-placeholder" style="padding:10px 14px; border-radius:8px; border:1px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.05); color:#fff; font-size:13px; outline:none; width:100%"/>
+          <button type="submit" style="background:var(--accent); color:#fff; border:none; padding:10px 16px; border-radius:8px; font-weight:600; font-size:13px; cursor:pointer; transition:background .18s" data-tr="foot-join-btn">Join</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 FenixGrowth. All rights reserved.</div>
+      <div style="display:flex; gap:16px">
+        <a href="#privacy" style="color:rgba(255,255,255,0.32); text-decoration:none; font-size:13px" data-tr="foot-privacy">Privacy Policy</a>
+        <a href="#terms" style="color:rgba(255,255,255,0.32); text-decoration:none; font-size:13px" data-tr="foot-terms">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ BOOKING MODAL ══ -->
+<div class="modal" id="booking-modal">
+  <div class="modal-backdrop" onclick="closeBookingModal()"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeBookingModal()">&times;</button>
+    
+    <!-- Step 1: Calendar -->
+    <div class="modal-step active" id="book-step-1">
+      <h3 class="modal-title" id="book-modal-title" data-tr="modal-date-title">Select Date &amp; Time</h3>
+      <p class="modal-desc" data-tr="modal-date-desc">Book your free 15-minute digital growth strategy call.</p>
+      
+      <div class="calendar-container">
+        <div class="calendar-header">
+          <button id="prev-month" onclick="changeMonth(-1)">&lt;</button>
+          <span id="calendar-month-year">June 2026</span>
+          <button id="next-month" onclick="changeMonth(1)">&gt;</button>
+        </div>
+        <div class="calendar-weekdays">
+          <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+        </div>
+        <div class="calendar-days" id="calendar-days">
+          <!-- Days injected dynamically -->
+        </div>
+      </div>
+      
+      <div class="time-slots-container">
+        <p class="time-slots-title"><span data-tr="modal-date-slots-title">Available Slots for</span> <strong id="selected-date-str">selecting a date...</strong></p>
+        <div class="time-slots" id="time-slots">
+          <!-- Time slots injected dynamically -->
+        </div>
+      </div>
+      
+      <button class="btn-primary full-width disabled" id="book-goto-step-2" onclick="gotoBookingStep(2)" data-tr="modal-continue-btn">Continue to Details →</button>
+    </div>
+    
+    <!-- Step 2: Form -->
+    <div class="modal-step" id="book-step-2">
+      <h3 class="modal-title" data-tr="modal-form-title">Your Contact Details</h3>
+      <p class="modal-desc" data-tr="modal-form-desc">Briefly tell us about your business so we can do a preliminary audit.</p>
+      
+      <form id="booking-form" onsubmit="handleBookingSubmit(event)">
+        <div class="form-group">
+          <label for="client-name" data-tr="label-name">Your Name *</label>
+          <input type="text" id="client-name" required placeholder="e.g. John Doe" data-tr="ph-name"/>
+        </div>
+        <div class="form-group">
+          <label for="client-email" data-tr="label-email">Email Address *</label>
+          <input type="email" id="client-email" required placeholder="e.g. john@yourrestaurant.com" data-tr="ph-email"/>
+        </div>
+        <div class="form-group">
+          <label for="restaurant-name" data-tr="label-restaurant">Restaurant Name *</label>
+          <input type="text" id="restaurant-name" required placeholder="e.g. Bosphorus Kitchen" data-tr="ph-restaurant"/>
+        </div>
+        <div class="form-group">
+          <label for="restaurant-website" data-tr="label-website">Website or Social Media Link</label>
+          <input type="url" id="restaurant-website" placeholder="e.g. https://instagram.com/myrestaurant" data-tr="ph-website"/>
+        </div>
+        <div class="form-group">
+          <label for="client-phone" data-tr="label-phone">Phone Number *</label>
+          <input type="tel" id="client-phone" required placeholder="e.g. +1 (555) 019-2834" data-tr="ph-phone"/>
+        </div>
+        <div class="form-group">
+          <label for="client-notes" data-tr="label-notes">What is your biggest growth challenge?</label>
+          <textarea id="client-notes" placeholder="e.g. Getting more walk-ins from Google Maps, redesigning our print menu, or launching Meta ads." data-tr="ph-notes"></textarea>
+        </div>
+        
+        <div class="form-btns">
+          <button type="button" class="btn-ghost" onclick="gotoBookingStep(1)" data-tr="form-back-btn">← Back</button>
+          <button type="submit" class="btn-primary" data-tr="form-confirm-btn">Confirm Booking ✓</button>
+        </div>
+      </form>
+    </div>
+    
+    <!-- Step 3: Success -->
+    <div class="modal-step text-center" id="book-step-3">
+      <div class="success-icon">✓</div>
+      <h3 class="modal-title" data-tr="success-title">Meeting Confirmed!</h3>
+      <p class="modal-desc" data-tr="success-desc">Your free 15-minute digital growth audit has been scheduled. A meeting invite with calendar details has been sent to your email.</p>
+      <div class="booking-summary-card">
+        <div class="bsc-row"><span data-tr="summary-type-lbl">Meeting type:</span><strong data-tr="summary-type-val">Free Growth Audit</strong></div>
+        <div class="bsc-row"><span data-tr="summary-date-lbl">Date:</span><strong id="summary-date">May 28, 2026</strong></div>
+        <div class="bsc-row"><span data-tr="summary-time-lbl">Time:</span><strong id="summary-time">10:00 AM - 10:15 AM (GMT)</strong></div>
+        <div class="bsc-row"><span data-tr="summary-restaurant-lbl">Restaurant:</span><strong id="summary-restaurant">Nomad Cafe</strong></div>
+      </div>
+      <button class="btn-primary" onclick="closeBookingModal()" data-tr="success-done-btn">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BLOG MODAL ══ -->
+<div class="modal" id="blog-modal">
+  <div class="modal-backdrop" onclick="closeBlogModal()"></div>
+  <div class="modal-content blog-modal-content">
+    <button class="modal-close" onclick="closeBlogModal()">&times;</button>
+    <div class="blog-article-body">
+      <div class="blog-article-header">
+        <span class="blog-tag" id="article-tag">SEO</span>
+        <h2 class="blog-article-title" id="article-title">How we ranked Nomad Café #1 in Local Searches in 30 days</h2>
+        <div class="blog-article-meta">
+          <span id="article-date">May 12, 2026</span> &bull; <span id="article-readtime">5 min read</span>
+        </div>
+      </div>
+      <div class="blog-article-hero-img" id="article-img-gradient">
+        <span id="article-emoji">🍝</span>
+      </div>
+      <div class="blog-article-text" id="article-text">
+        <!-- Text injected dynamically -->
+      </div>
+      <div class="blog-article-footer">
+        <p data-tr="blog-modal-cta">Want to implement this strategy for your restaurant?</p>
+        <button class="btn-primary" onclick="triggerBookingFromBlog()" data-tr="blog-modal-btn">Book a Free Consultation</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TOAST NOTIFICATIONS ══ -->
+<div class="toast-container" id="toast-container"></div>
+
+<!-- ══ DEVELOPER LEADS DASHBOARD ══ -->
+<div class="dev-dashboard-trigger" id="dev-trigger" onclick="toggleDevDashboard()" title="View database leads">
+  📊 Leads Panel
+</div>
+<div class="dev-dashboard" id="dev-dashboard">
+  <div class="dev-dashboard-header">
+    <h4>FenixGrowth Leads Panel</h4>
+    <button onclick="toggleDevDashboard()">&times;</button>
+  </div>
+  <div class="dev-dashboard-body">
+    <div class="dev-tabs">
+      <button class="dev-tab active" id="tab-bookings-btn" onclick="switchDevTab('bookings')">Bookings (<span id="dev-booking-count">0</span>)</button>
+      <button class="dev-tab" id="tab-newsletters-btn" onclick="switchDevTab('newsletters')">Newsletter (<span id="dev-news-count">0</span>)</button>
+    </div>
+    
+    <div class="dev-tab-content active" id="dev-tab-bookings">
+      <div class="dev-list" id="dev-bookings-list">
+        <!-- List of bookings -->
+      </div>
+    </div>
+    
+    <div class="dev-tab-content" id="dev-tab-newsletters">
+      <div class="dev-list" id="dev-news-list">
+        <!-- List of emails -->
+      </div>
+    </div>
+  </div>
+  <div class="dev-dashboard-footer">
+    <button class="btn-danger" onclick="clearAllLeads()">Clear All Data</button>
+    <button class="btn-primary" style="padding: 8px 12px; font-size: 11px" onclick="downloadLeadsJSON()">Export JSON</button>
+  </div>
+</div>
+
+<!-- ══ TRANSLATION DICTIONARY ══ -->
+<script>
+const translations = {
+  en: {
+    // navbar
+    "nav-home": "Home",
+    "nav-services": "Services",
+    "nav-process": "Process",
+    "nav-pricing": "Pricing",
+    "nav-results": "Results",
+    "nav-blog": "Blog",
+    "nav-cta": "Book Free Call",
+    
+    // hero
+    "hero-badge": "Restaurant Marketing Agency",
+    "hero-title": "We Get Customers<br/>For Your <em>Restaurant</em>",
+    "hero-sub": "We build your website, rank your business on Google Maps, run your social media, and launch local ads. Everything you need to fill your tables and increase orders, managed by one professional team.",
+    "hero-btn-start": "Start Growing Today →",
+    "hero-btn-results": "See Results",
+    "hero-trust": "<strong>120+ restaurants</strong> growing with FenixGrowth",
+    "card-order-lbl": "Avg. Order Increase",
+    "card-maps-lbl": "Google Maps Visibility",
+    
+    // trust
+    "trust-lbl": "Trusted by restaurants &amp; cafés across the globe",
+    
+    // stats
+    "stat-desc-1": "Restaurants &amp; cafés served",
+    "stat-desc-2": "Revenue generated for clients",
+    "stat-desc-3": "Avg. increase in online orders",
+    "stat-desc-4": "Google Maps visibility boost",
+    
+    // challenge
+    "prob-eyebrow": "The Challenge",
+    "prob-title": "Running a great restaurant<br/>shouldn't mean being <em>invisible</em> online",
+    "prob-sub": "Most restaurants lose customers every day because of gaps in their digital presence. Here's what's costing you.",
+    "pain-t-1": "No Google Maps presence",
+    "pain-d-1": "Customers search and find your competitors instead of you.",
+    "pain-t-2": "Weak social media",
+    "pain-d-2": "Inconsistent posting means zero brand loyalty or walk-ins.",
+    "pain-t-3": "Wasted ad spend",
+    "pain-d-3": "Generic ads not built for food businesses burn your budget fast.",
+    "sol-eyebrow": "The Solution",
+    "sol-title": "One agency replaces five separate tools",
+    "sol-sub": "We handle your entire online presence end-to-end — website, Google, social, ads, and branding — so you focus on the food.",
+    "sol-f-1": "Website Design &amp; SEO",
+    "sol-f-2": "Google Maps Optimization",
+    "sol-f-3": "Social Media Management",
+    "sol-f-4": "Targeted Paid Advertising",
+    "sol-f-5": "Menu Design &amp; Brand Identity",
+    
+    // pillars
+    "pillars-eyebrow": "Five Pillars. One Agency.",
+    "pillars-title": "How We Get Customers<br/>For Your <em>Restaurant</em>",
+    "p1-title": "Google Maps SEO",
+    "p1-desc": "Full Google Business Profile optimization — photos, reviews, keywords, and local ranking strategy so you appear first in local searches. We turn invisible restaurants into the #1 result near you.",
+    "p1-tag": "HIGH LOCAL IMPACT",
+    "p1-badge": "📍 Local Search Ranking",
+    "p1-rank-t": '#1 "Best restaurant near me"',
+    "p1-rank-d": "↑ Jumped from #12 to #1 in 30 days",
+    "p1-stat-lbl": "Google Maps visibility increase",
+    "p2-title": "Website Design",
+    "p2-desc": "High-performance websites optimized for Conversion Rate (CRO). Features direct online ordering, automated table booking, and local SEO to turn web traffic into immediate revenue.",
+    "p2-tag": "CORE DELIVERABLE",
+    "p2-badge": "🖥️ Website Performance",
+    "p2-stat-lbl-1": "PageSpeed Score",
+    "p2-stat-lbl-2": "Bookings increase",
+    "p3-title": "Social Media Management",
+    "p3-desc": "End-to-end social media growth. We manage content calendars, professional photography direction, Reels/TikTok video editing, and community building to drive consistent walk-ins.",
+    "p3-tag": "MONTHLY SERVICE",
+    "p3-badge": "📲 Content Calendar",
+    "p3-reach-lbl": "More reach",
+    "p3-posts-lbl": "Posts/month",
+    "p4-title": "Paid Advertising",
+    "p4-desc": "Precision-targeted Meta and Google Ads that reach hungry customers near your location when they are ready to order. Every dollar tracked. Zero waste.",
+    "p4-tag": "PERFORMANCE DRIVEN",
+    "p4-badge": "🎯 Ad Performance",
+    "p4-camp-lbl": "Live Campaign",
+    "p5-title": "Brand &amp; Menu Design",
+    "p5-desc": "Logo, color palette, typography, and menus (print and digital) designed to make your restaurant look unforgettable and premium at every touchpoint.",
+    "p5-tag": "CREATIVE PACKAGE",
+    "p5-badge": "✏️ Brand Identity",
+    "p5-custom-lbl": "Custom — never templated",
+    
+    // howitworks
+    "howto-eyebrow": "The Process",
+    "howto-title": "Simple. <em>Proven.</em> Fast.",
+    "step1-title": "Free Consultation",
+    "step1-desc": "We learn your restaurant, goals, and digital challenges — no pitch, just listening.",
+    "step2-title": "Custom Strategy",
+    "step2-desc": "We build a tailored growth plan with clear goals, timelines, and measurable targets.",
+    "step3-title": "We Execute",
+    "step3-desc": "Our team launches your website, social accounts, ads, and Google presence — fast and professionally.",
+    "step4-title": "You Grow",
+    "step4-desc": "Watch reservations, orders, and reviews increase month after month with full support.",
+    
+    // features
+    "feat-eyebrow": "Features That Drive Results",
+    "feat-title": "Built for <em>restaurants</em>, not generic businesses",
+    "feat-t-1": "Online Reservation System",
+    "feat-d-1": "Built directly into your website — customers book without leaving your page.",
+    "feat-s-1": "+65%<small>more bookings</small>",
+    "feat-t-2": "Review Generation System",
+    "feat-d-2": "Automated follow-ups that turn happy diners into 5-star Google reviewers.",
+    "feat-s-2": "4.8★<small>avg. rating</small>",
+    "feat-t-3": "Monthly Analytics Reports",
+    "feat-d-3": "Clear dashboards showing traffic, orders, reservations, and ad ROI.",
+    "feat-s-3": "100%<small>transparent</small>",
+    "feat-t-4": "Short-Form Video Content",
+    "feat-d-4": "Reels and TikToks from your kitchen footage — turning food into viral content.",
+    "feat-s-4": "10×<small>more reach</small>",
+    "feat-t-5": "WhatsApp Order Integration",
+    "feat-d-5": "Let customers order directly via WhatsApp — connected to your menu.",
+    "feat-s-5": "+30%<small>direct orders</small>",
+    "feat-t-6": "Hyper-Local Ad Targeting",
+    "feat-d-6": "Ads shown only to people within walking or delivery distance.",
+    "feat-s-6": "3×<small>higher conversion</small>",
+    
+    // integrations
+    "int-eyebrow": "Integrations",
+    "int-title": "Works With Your <em>Existing Stack</em>",
+    
+    // testimonials
+    "testi-eyebrow": "Client Stories",
+    "testi-title": "What our restaurant partners say",
+    "t-q-1": "Within 3 months, our Instagram tripled and we started getting daily online reservations. The strategy was clear and worked immediately.",
+    "t-q-2": "Our café was invisible on Google Maps. After one month we're in the top 3 for 'best café near me'. fenixgrowth delivered exactly what they promised.",
+    "t-q-3": "The website looks stunning on mobile. Online orders jumped 45% in Q1. Their team is responsive, professional, and genuinely cares about results.",
+    
+    // pricing
+    "price-eyebrow": "Simple Pricing",
+    "price-title": "Choose your <em>growth</em> plan",
+    "price-sub": "Starter is a one-time setup. Growth, Pro &amp; Scale are monthly partnerships.",
+    "toggle-monthly": "Monthly Billing",
+    "toggle-annual": "Annual (Save 20%)",
+    "p-starter": "Starter",
+    "p-growth": "Growth",
+    "p-pro": "Pro",
+    "p-scale": "Scale",
+    "c-starter": "One-time setup",
+    "c-growth": "/month",
+    "c-pro": "/month",
+    "c-scale": "/month",
+    "price-btn": "Get Started",
+    "f-s-1": "Custom Website",
+    "f-s-2": "Google Maps Setup",
+    "f-s-3": "Social Profiles Setup",
+    "f-s-4": "Digital Strategy Guide",
+    "f-s-5": "SEO Foundation",
+    "f-g-1": "Google Maps Management",
+    "f-g-2": "10 Posts + Stories",
+    "f-g-3": "Custom Website",
+    "f-g-4": "Meta Ads Management",
+    "f-g-5": "Monthly Report",
+    "f-g-6": "Account Manager",
+    "f-p-1": "Everything in Growth",
+    "f-p-2": "Higher Ads Budget",
+    "f-p-3": "20 Posts + Stories",
+    "f-p-4": "Reputation Management",
+    "f-p-5": "Weekly Video Content",
+    "f-p-6": "Bi-weekly Strategy Call",
+    "f-sc-1": "Everything in Pro",
+    "f-sc-2": "Daily Posts &amp; Stories",
+    "f-sc-3": "Full Content Creation",
+    "f-sc-4": "Influencer Marketing",
+    "f-sc-5": "Custom Web Integrations",
+    "f-sc-6": "Dedicated Account Team",
+    
+    // cta
+    "cta-eyebrow": "Ready to Grow?",
+    "cta-title": "Let's build your restaurant's digital infrastructure",
+    "cta-sub": "Book your free 15-minute digital growth audit and strategy call. No pressure, no pitch. Just a clear roadmap for your business.",
+    "cta-btn": "Book Free Call →",
+    "cta-email": "Or email us at",
+    "cta-b-1": "🔒 Secure Booking",
+    "cta-b-2": "📞 15-Min Briefing",
+    "cta-b-3": "✨ Free Growth Audit Included",
+    
+    // blog
+    "blog-eyebrow": "Insights &amp; Strategy",
+    "blog-title": "Latest from our growth library",
+    "blog-tag-1": "Google SEO",
+    "blog-tag-2": "Social Media",
+    "blog-tag-3": "Web Design",
+    "blog-tag-4": "Google Maps",
+    "blog-tag-5": "Paid Ads",
+    "blog-tag-6": "Branding",
+    
+    // footer
+    "foot-tagline": "We build the digital growth infrastructure that helps restaurants and cafés get more bookings, orders, and repeat customers.",
+    "foot-h-1": "Services",
+    "foot-h-2": "Company",
+    "foot-h-3": "Stay Updated",
+    "foot-newsletter-desc": "Get food marketing tips in your inbox.",
+    "foot-email-placeholder": "Your email address",
+    "foot-join-btn": "Join",
+    "foot-privacy": "Privacy Policy",
+    "foot-terms": "Terms of Service",
+    
+    // modal
+    "modal-date-title": "Select Date &amp; Time",
+    "modal-date-desc": "Book your free 15-minute digital growth strategy call.",
+    "modal-date-slots-title": "Available Slots for",
+    "modal-continue-btn": "Continue to Details →",
+    "modal-form-title": "Your Contact Details",
+    "modal-form-desc": "Briefly tell us about your business so we can do a preliminary audit.",
+    "label-name": "Your Name *",
+    "label-email": "Email Address *",
+    "label-restaurant": "Restaurant Name *",
+    "label-website": "Website or Social Media Link",
+    "label-phone": "Phone Number *",
+    "label-notes": "What is your biggest growth challenge?",
+    "ph-name": "e.g. John Doe",
+    "ph-email": "e.g. john@yourrestaurant.com",
+    "ph-restaurant": "e.g. Bosphorus Kitchen",
+    "ph-website": "e.g. https://instagram.com/myrestaurant",
+    "ph-phone": "e.g. +1 (555) 019-2834",
+    "ph-notes": "e.g. Getting more walk-ins from Google Maps, redesigning our print menu, or launching Meta ads.",
+    "form-back-btn": "← Back",
+    "form-confirm-btn": "Confirm Booking ✓",
+    "success-title": "Meeting Confirmed!",
+    "success-desc": "Your free 15-minute digital growth audit has been scheduled. A meeting invite with calendar details has been sent to your email.",
+    "summary-type-lbl": "Meeting type:",
+    "summary-type-val": "Free Growth Audit",
+    "summary-date-lbl": "Date:",
+    "summary-time-lbl": "Time:",
+    "summary-restaurant-lbl": "Restaurant:",
+    "success-done-btn": "Done",
+    "blog-modal-cta": "Want to implement this strategy for your restaurant?",
+    "blog-modal-btn": "Book a Free Consultation"
+  },
+  tr: {
+    // navbar
+    "nav-home": "Ana Sayfa",
+    "nav-services": "Hizmetler",
+    "nav-process": "Süreç",
+    "nav-pricing": "Fiyatlandırma",
+    "nav-results": "Sonuçlar",
+    "nav-blog": "Blog",
+    "nav-cta": "Ücretsiz Arama Ayarla",
+    
+    // hero
+    "hero-badge": "Restoran Pazarlama Ajansı",
+    "hero-title": "Restoranınıza<br/>Daha Fazla <em>Müşteri Çekin</em>",
+    "hero-sub": "Web sitenizi kuruyoruz, Google Haritalar'da üst sıralara çıkarıyoruz, sosyal medyanızı yönetiyoruz ve yerel reklamlar yayınlıyoruz. Masalarınızı doldurmak ve siparişlerinizi artırmak için ihtiyacınız olan her şey.",
+    "hero-btn-start": "Bugün Büyümeye Başlayın →",
+    "hero-btn-results": "Sonuçları Gör",
+    "hero-trust": "<strong>120+ restoran</strong> FenixGrowth ile büyüyor",
+    "card-order-lbl": "Ort. Sipariş Artışı",
+    "card-maps-lbl": "Google Haritalar Görünürlüğü",
+    
+    // trust
+    "trust-lbl": "Dünya çapındaki restoranlar ve kafeler tarafından güvenilen",
+    
+    // stats
+    "stat-desc-1": "Hizmet verilen restoran &amp; kafe",
+    "stat-desc-2": "Müşteriler için üretilen ciro",
+    "stat-desc-3": "Çevrimiçi siparişlerdeki ort. artış",
+    "stat-desc-4": "Google Haritalar görünürlük artışı",
+    
+    // challenge
+    "prob-eyebrow": "Zorluk",
+    "prob-title": "Harika bir restoran işletmek<br/>internette <em>görünmez</em> olmak anlamına gelmemeli",
+    "prob-sub": "Çoğu restoran, dijital dünyadaki boşluklar yüzünden her gün müşteri kaybediyor. İşte size olan maliyeti:",
+    "pain-t-1": "Google Haritalar'da yoksanız",
+    "pain-d-1": "Müşteriler arama yaptıklarında sizin yerinize rakiplerinizi bulur.",
+    "pain-t-2": "Zayıf sosyal medya",
+    "pain-d-2": "Düzensiz paylaşımlar, sıfır marka sadakati ve daha az müşteri demektir.",
+    "pain-t-3": "Boşa harcanan reklam bütçesi",
+    "pain-d-3": "Gıda sektörüne uygun tasarlanmamış genel reklamlar bütçenizi hızla tüketir.",
+    "sol-eyebrow": "Çözüm",
+    "sol-title": "Tek ajans, beş farklı aracın yerini alıyor",
+    "sol-sub": "Tüm dijital süreçlerinizi uçtan uca yönetiyoruz — web sitesi, Google, sosyal medya, reklamlar ve markalaşma — böylece siz lezzete odaklanabilirsiniz.",
+    "sol-f-1": "Web Tasarım &amp; SEO",
+    "sol-f-2": "Google Haritalar Optimizasyonu",
+    "sol-f-3": "Sosyal Medya Yönetimi",
+    "sol-f-4": "Hedefli Ücretli Reklamlar",
+    "sol-f-5": "Menü Tasarımı &amp; Marka Kimliği",
+    
+    // pillars
+    "pillars-eyebrow": "Beş Sütun. Tek Ajans.",
+    "pillars-title": "Restoranınıza Nasıl<br/><em>Müşteri Çekiyoruz</em>",
+    "p1-title": "Google Haritalar SEO",
+    "p1-desc": "Eksiksiz Google İşletme Profili optimizasyonu — fotoğraflar, yorumlar, anahtar kelimeler ve yerel sıralama stratejisi ile aramalarda ilk sırada görünün. Görünmez işletmeleri yerelde 1 numara yapıyoruz.",
+    "p1-tag": "YÜKSEK YEREL ETKİ",
+    "p1-badge": "📍 Yerel Arama Sıralaması",
+    "p1-rank-t": '"En yakın restoran" aramalarında #1',
+    "p1-rank-d": "↑ 30 günde #12'den #1'e yükseldi",
+    "p1-stat-lbl": "Google Haritalar görünürlük artışı",
+    "p2-title": "Web Tasarımı",
+    "p2-desc": "Dönüşüm Oranı (CRO) için optimize edilmiş yüksek performanslı web siteleri. Web trafiğini anında gelire dönüştürmek için çevrimiçi sipariş, otomatik masa rezervasyonu ve yerel SEO içerir.",
+    "p2-tag": "ANA HİZMET",
+    "p2-badge": "🖥️ Web Sitesi Performansı",
+    "p2-stat-lbl-1": "PageSpeed Skoru",
+    "p2-stat-lbl-2": "Rezervasyon artışı",
+    "p3-title": "Sosyal Medya Yönetimi",
+    "p3-desc": "Uçtan uca sosyal medya büyümesi. Düzenli müşteri çekmek için içerik takvimlerini, profesyonel fotoğrafçılık yönlendirmesini, Reels/TikTok video düzenlemesini ve topluluk oluşturmayı yönetiyoruz.",
+    "p3-tag": "AYLIK HİZMET",
+    "p3-badge": "📲 İçerik Takvimi",
+    "p3-reach-lbl": "Daha fazla erişim",
+    "p3-posts-lbl": "Gönderi/ay",
+    "p4-title": "Ücretli Reklamcılık",
+    "p4-desc": "Yakınınızdaki aç müşterilere sipariş vermeye hazır olduklarında ulaşan, hassas hedeflemeli Meta ve Google Reklamları. Harcanan her kuruş takip edilir, sıfır israf.",
+    "p4-tag": "PERFORMANS ODAKLI",
+    "p4-badge": "🎯 Reklam Performansı",
+    "p4-camp-lbl": "Aktif Kampanya",
+    "p5-title": "Marka &amp; Menü Tasarımı",
+    "p5-desc": "Restoranınızın her temas noktasında unutulmaz ve premium görünmesini sağlamak için tasarlanmış logo, renk paleti, tipografi ve menüler (baskı ve dijital).",
+    "p5-tag": "KREATİF PAKET",
+    "p5-badge": "✏️ Marka Kimliği",
+    "p5-custom-lbl": "Özgün Tasarım — asla şablon değil",
+    
+    // howitworks
+    "howto-eyebrow": "Süreç",
+    "howto-title": "Basit. <em>Kanıtlanmış.</em> Hızlı.",
+    "step1-title": "Ücretsiz Danışmanlık",
+    "step1-desc": "Restoranınızı, hedeflerinizi ve dijital zorluklarınızı öğreniyoruz — satış baskısı yok, sadece dinliyoruz.",
+    "step2-title": "Özel Strateji",
+    "step2-desc": "Net hedefler, zaman çizelgeleri ve ölçülebilir hedeflerle size özel bir büyüme planı hazırlıyoruz.",
+    "step3-title": "Uyguluyoruz",
+    "step3-desc": "Ekibimiz web sitenizi, sosyal medya hesaplarınızı, reklamlarınızı ve Google varlığınızı hızla ve profesyonelce yayına alıyor.",
+    "step4-title": "Büyüyorsunuz",
+    "step4-desc": "Tam destekle birlikte her ay artan rezervasyonları, siparişleri ve yorumları izleyin.",
+    
+    // features
+    "feat-eyebrow": "Sonuç Getiren Özellikler",
+    "feat-title": "Sıradan işletmeler için değil, <em>restoranlar</em> için yapıldı",
+    "feat-t-1": "Çevrimiçi Rezervasyon Sistemi",
+    "feat-d-1": "Web sitenize doğrudan entegre — müşteriler sayfanızdan ayrılmadan rezervasyon yapar.",
+    "feat-s-1": "+65%<small>daha fazla rezervasyon</small>",
+    "feat-t-2": "Yorum Toplama Sistemi",
+    "feat-d-2": "Mutlu müşterileri Google'da 5 yıldızlı yorumculara dönüştüren otomatik takip mesajları.",
+    "feat-s-2": "4.8★<small>ortalama puan</small>",
+    "feat-t-3": "Aylık Analiz Raporları",
+    "feat-d-3": "Trafiği, siparişleri, rezervasyonları ve reklam yatırım getirisini gösteren net paneller.",
+    "feat-s-3": "100%<small>şeffaf</small>",
+    "feat-t-4": "Kısa Video İçerikleri",
+    "feat-d-4": "Mutfak görüntülerinizden hazırlanan Reels ve TikTok videoları — yemeğinizi viral içeriğe dönüştürür.",
+    "feat-s-4": "10×<small>daha fazla erişim</small>",
+    "feat-t-5": "WhatsApp Sipariş Entegrasyonu",
+    "feat-d-5": "Müşterilerin menünüzle entegre bir şekilde doğrudan WhatsApp üzerinden sipariş vermesini sağlayın.",
+    "feat-s-5": "+30%<small>doğrudan sipariş</small>",
+    "feat-t-6": "Hiper-Yerel Reklam Hedeflemesi",
+    "feat-d-6": "Yalnızca yürüme veya teslimat mesafenizdeki kişilere gösterilen reklamlar.",
+    "feat-s-6": "3×<small>daha yüksek dönüşüm</small>",
+    
+    // integrations
+    "int-eyebrow": "Entegrasyonlar",
+    "int-title": "Mevcut <em>Sisteminizle</em> Uyumlu",
+    
+    // testimonials
+    "testi-eyebrow": "Müşteri Hikayeleri",
+    "testi-title": "Ortaklarımız ne diyor?",
+    "t-q-1": "3 ay içinde Instagram'ımız üç katına çıktı ve günlük çevrimiçi rezervasyonlar almaya başladık. Strateji netti ve hemen işe yaradı.",
+    "t-q-2": "Kafemiz Google Haritalar'da görünmezdi. Bir ay sonra 'yakınımdaki en iyi kafe' aramalarında ilk 3'teyiz. Fenixgrowth vaat ettiğini tam olarak teslim etti.",
+    "t-q-3": "Web sitesi mobilde harika görünüyor. Çevrimiçi siparişler 1. çeyrekte %45 arttı. Ekipleri duyarlı, profesyonel ve sonuçları gerçekten önemsiyor.",
+    
+    // pricing
+    "price-eyebrow": "Basit Fiyatlandırma",
+    "price-title": "Büyüme planınızı <em>seçin</em>",
+    "price-sub": "Starter tek seferlik bir kurulumdur. Growth, Pro ve Scale aylık iş ortaklıklarıdır.",
+    "toggle-monthly": "Aylık Ödeme",
+    "toggle-annual": "Yıllık Ödeme (Yıllık %20 Tasarruf)",
+    "p-starter": "Starter",
+    "p-growth": "Growth",
+    "p-pro": "Pro",
+    "p-scale": "Scale",
+    "c-starter": "Tek seferlik kurulum",
+    "c-growth": "/aylık",
+    "c-pro": "/aylık",
+    "c-scale": "/aylık",
+    "price-btn": "Başlayın",
+    "f-s-1": "Özel Web Sitesi",
+    "f-s-2": "Google Haritalar Kurulumu",
+    "f-s-3": "Sosyal Medya Kurulumu",
+    "f-s-4": "Dijital Strateji Rehberi",
+    "f-s-5": "Temel SEO Altyapısı",
+    "f-g-1": "Google Haritalar Yönetimi",
+    "f-g-2": "10 Gönderi + Hikaye",
+    "f-g-3": "Özel Web Sitesi",
+    "f-g-4": "Meta Reklam Yönetimi",
+    "f-g-5": "Aylık Performans Raporu",
+    "f-g-6": "Hesap Temsilcisi",
+    "f-p-1": "Growth Planındaki Her Şey",
+    "f-p-2": "Daha Yüksek Reklam Bütçesi",
+    "f-p-3": "20 Gönderi + Hikaye",
+    "f-p-4": "İtibar Yönetimi",
+    "f-p-5": "Haftalık Video İçerikleri",
+    "f-p-6": "İki Haftada Bir Strateji Görüşmesi",
+    "f-sc-1": "Pro Planındaki Her Şey",
+    "f-sc-2": "Günlük Gönderi &amp; Hikaye",
+    "f-sc-3": "Tam İçerik Üretimi",
+    "f-sc-4": "Influencer Pazarlama",
+    "f-sc-5": "Özel Entegrasyonlar",
+    "f-sc-6": "Özel Müşteri Ekibi",
+    
+    // cta
+    "cta-eyebrow": "Büyümeye Hazır Mısınız?",
+    "cta-title": "Restoranınızın dijital büyüme altyapısını kuralım",
+    "cta-sub": "Ücretsiz 15 dakikalık büyüme analizi ve strateji görüşmenizi planlayın. Baskı yok, satış yok. Sadece net bir yol haritası.",
+    "cta-btn": "Ücretsiz Arama Ayarla →",
+    "cta-email": "Veya e-posta gönderin:",
+    "cta-b-1": "🔒 Güvenli Rezervasyon",
+    "cta-b-2": "📞 15 Dk Ön Görüşme",
+    "cta-b-3": "✨ Ücretsiz Analiz Dahil",
+    
+    // blog
+    "blog-eyebrow": "Analizler &amp; Strateji",
+    "blog-title": "Büyüme kütüphanemizden güncel yazılar",
+    "blog-tag-1": "Google SEO",
+    "blog-tag-2": "Sosyal Medya",
+    "blog-tag-3": "Web Tasarım",
+    "blog-tag-4": "Google Haritalar",
+    "blog-tag-5": "Ücretli Reklamlar",
+    "blog-tag-6": "Markalaşma",
+    
+    // footer
+    "foot-tagline": "Restoranlar ve kafelerin daha fazla rezervasyon, sipariş ve sadık müşteri kazanmasını sağlayan dijital büyüme altyapısını kuruyoruz.",
+    "foot-h-1": "Hizmetler",
+    "foot-h-2": "Kurumsal",
+    "foot-h-3": "Güncel Kalın",
+    "foot-newsletter-desc": "E-postanızla restoran pazarlama ipuçları alın.",
+    "foot-email-placeholder": "E-posta adresiniz",
+    "foot-join-btn": "Katıl",
+    "foot-privacy": "Gizlilik Politikası",
+    "foot-terms": "Kullanım Koşulları",
+    
+    // modal
+    "modal-date-title": "Tarih ve Saat Seçin",
+    "modal-date-desc": "Ücretsiz 15 dakikalık dijital büyüme analizi görüşmenizi planlayın.",
+    "modal-date-slots-title": "Şunun için Uygun Saatler:",
+    "modal-continue-btn": "Detaylara Devam Et →",
+    "modal-form-title": "İletişim Bilgileriniz",
+    "modal-form-desc": "Görüşme öncesi ön analiz yapabilmemiz için restoranınız hakkında kısa bilgi verin.",
+    "label-name": "Adınız Soyadınız *",
+    "label-email": "E-posta Adresiniz *",
+    "label-restaurant": "Restoran Adı *",
+    "label-website": "Web Sitesi veya Sosyal Medya Linki",
+    "label-phone": "Telefon Numaranız *",
+    "label-notes": "En büyük büyüme sorununuz nedir?",
+    "ph-name": "Örn. Ahmet Yılmaz",
+    "ph-email": "Örn. ahmet@restoraniniz.com",
+    "ph-restaurant": "Örn. Bosphorus Kitchen",
+    "ph-website": "Örn. https://instagram.com/restoranimiz",
+    "ph-phone": "Örn. +90 (555) 123 4567",
+    "ph-notes": "Örn. Google Haritalar sıralaması, dijital menü tasarımı veya Instagram reklam bütçesi yönetimi.",
+    "form-back-btn": "← Geri",
+    "form-confirm-btn": "Rezervasyonu Onayla ✓",
+    "success-title": "Görüşme Onaylandı!",
+    "success-desc": "Ücretsiz 15 dakikalık büyüme analizi toplantınız planlandı. Detayları içeren takvim davetiyesi e-posta adresinize gönderildi.",
+    "summary-type-lbl": "Görüşme türü:",
+    "summary-type-val": "Ücretsiz Büyüme Analizi",
+    "summary-date-lbl": "Tarih:",
+    "summary-time-lbl": "Saat:",
+    "summary-restaurant-lbl": "Restoran:",
+    "success-done-btn": "Tamam",
+    "blog-modal-cta": "Restoranınızda bu stratejiyi uygulamak ister misiniz?",
+    "blog-modal-btn": "Ücretsiz Danışmanlık Ayarlayın"
+  }
+};
+
+const blogArticlesTR = {
+  1: {
+    tag: "Google SEO",
+    title: "Nomad Café'yi 30 Günde Yerel Arama Sonuçlarında Nasıl 1 Numaraya Taşıdık?",
+    date: "12 Mayıs 2026",
+    readtime: "5 dk okuma",
+    emoji: "🍝",
+    gradientClass: "g1",
+    content: `
+      <p>Nomad Café klasik bir dijital zorlukla karşı karşıyaydı: Şehirdeki en iyi kahve ve hamur işlerinden bazılarını sunmalarına rağmen, "yakınımdaki en iyi kafe" veya "İstanbul yakınındaki kahve dükkanı" gibi yerel arama terimlerinde tamamen görünmezlerdi. 12. sırada yer alıyorlardı ve bu da onları yerel arama sonuçlarında ikinci sayfaya mahkum ediyordu.</p>
+      <h4>Teşhis Aşaması</h4>
+      <p>İlk denetimimiz üç büyük sorunu ortaya çıkardı: Eksik hizmet özelliklerine sahip doğrulanmamış bir Google Benim İşletmem profili kaydı, yüksek kaliteli coğrafi etiketli görsellerin olmaması ve aktif olmayan bir inceleme toplama kanalı. Google yerel aramaları büyük ölçüde yakınlık, alaka düzeyi ve belirginliğe dayandığından, düşük belirginlik puanları onları geriye itiyordu.</p>
+      <h4>Uygulama Stratejimiz</h4>
+      <ul>
+        <li><strong>Profil Optimizasyonu:</strong> İşletme kaydını sahiplendik, doğruladık ve tamamen optimize ettik; ayrıntılı çalışma saatleri, menü öğesi kategorileri ve dijital sipariş sistemlerine bağlantılar ekledik.</li>
+        <li><strong>Yorum Toplama Sistemi:</strong> Müşterilerin ziyaretlerinden kısa bir süre sonra onlara doğrudan yorum bağlantısı içeren otomatik bir geri bildirim mesajı/e-postası gönderen bir sistem kurduk. 30 gün içinde yorumları 4.9 yıldız ortalamasıyla +140 arttı.</li>
+        <li><strong>Coğrafi Etiketli Fotoğraflar:</strong> Aktif operasyonların arama botlarına sinyalini vermek için 45 adet yüksek çözünürlüklü, coğrafi etiketli mutfak ve menü fotoğrafı yükledik.</li>
+      </ul>
+      <h4>Sonuçlar</h4>
+      <p>Sadece 4 hafta içinde Nomad Café 12. sıradan yerel kahve aramalarında ilk 3 pozisyona yükseldi ve sonunda 1 numarayı elde etti. Arama görünürlüğündeki bu artış, doğrudan mağaza içi yaya trafiğinde %34'lük bir artışa ve haftalık web sitesi menü ziyaretlerinin iki katına çıkmasına neden oldu.</p>
+    `
+  },
+  2: {
+    tag: "Sosyal Medya",
+    title: "Restoran yaya trafiğini hemen artırmak için 5 sosyal medya tüyosu",
+    date: "08 Mayıs 2026",
+    readtime: "4 dk okuma",
+    emoji: "📲",
+    gradientClass: "g2",
+    content: `
+      <p>Düzensiz sosyal medya hesapları restoranınızın durağan görünmesine neden olmakla kalmaz; aynı zamanda müşterileri aktif olarak günlük özel ürünler paylaşan rakiplere yönlendirir. İşte Instagram, TikTok ve Facebook üzerinden hafta sonu yaya trafiğini artırmaya yönelik 5 pratik tüyo.</p>
+      <h4>1. Mutfak Arkası Video Kancası</h4>
+      <p>Hazırlanan yemeklerin kısa videolarını yükleyin. İlk 3 saniye mutlaka görsel dokuları göstermelidir (cızırdayan biftek, dökülen sos, uzayan peynir). Yemek son derece görseldir ve duyusal tetikleyiciler kısa video algoritma akışlarında olağanüstü iyi performans gösterir.</p>
+      <h4>2. Etkileşimli Instagram Hikaye Anketleri</h4>
+      <p>Hikaye özelliklerini kullanarak müşterilere bu hafta sonu hangi menü öğelerinin özel indirimde olmasını istediklerini sorun. Bu mikro katılım, ortak bir sahiplik duygusu yaratır ve mağaza sadakatini artırır.</p>
+      <h4>3. Yerel Noktaları Coğrafi Etiketleme</h4>
+      <p>Sadece restoranınızın fiziksel adresini etiketlemeyin. Instagram'da yerel arama akışlarına göz atan yaya trafiğini yakalamak için yakınınızdaki popüler alışveriş merkezlerini, parkları veya iş merkezlerini coğrafi olarak etiketleyin.</p>
+      <h4>4. Otomatik DM Kupon Yanıtları</h4>
+      <p>Popüler bir tatlıyı gösteren bir gönderi paylaşın ve kullanıcılara anında %15 indirim kodu almak için "AÇIM" yazmalarını söyleyin. Kuponu anında DM ile göndermek için basit bir sohbet robotu kullanın. Bu, etkileşim metriklerini artırır ve hafta sonu ziyaretlerini garanti eder.</p>
+      <h4>5. Mutfak İş Birlikleri</h4>
+      <p>Yüksek kaliteli dikey bir video karşılığında yerel mikro etkileyicileri (1.000-10.000 takipçi) ücretsiz bir imza yemeğe davet edin. Mikro etkileyicilerin son derece yerelleştirilmiş, güvenen hedef kitleleri vardır ve bu da anında ziyaretçi sağlar.</p>
+    `
+  },
+  3: {
+    tag: "Web Tasarım",
+    title: "Sıradan web sitesi şablonları restoranlara neden müşteri kaybettirir?",
+    date: "02 Mayıs 2026",
+    readtime: "6 dk okuma",
+    emoji: "🖥️",
+    gradientClass: "g3",
+    content: `
+      <p>Birçok restoran sahibi, kurumsal siteler için tasarlanmış genel, ucuz WordPress şablonlarını satın alma hatasına düşüyor. Masaüstü bilgisayarda "temiz" görünseler de, cep telefonlarında rezervasyonları öldürürler.</p>
+      <h4>Mobil Deneyim Tuzağı</h4>
+      <p>Kullanıcıların %85'inden fazlası yolda yürürken veya arabada otururken restoran web sitelerine mobil cihazlardan göz atıyor. Kurumsal şablonlarda büyük başlık afişleri, yavaş yüklenen slayt gösterileri ve genel iletişim sayfaları bulunur. Aç bir kullanıcının PDF menüyü okumak için yakınlaştırması veya bir telefon numarası araması gerekiyorsa, 5 saniye içinde sayfadan çıkacaktır.</p>
+      <h4>PDF Menüler Neden Zararlıdır?</h4>
+      <p>PDF menüler dosya indirmeyi gerektirir, bu da mobil kullanıcı akışını bozar. Ayrıca, arama motoru tarayıcıları PDF resimlerinin içindeki metinleri kolayca analiz edemez ve organik SEO anahtar kelimelerinize zarar verir. Menüler temiz HTML ile oluşturulmalı, tüm ekran boyutlarına duyarlı olmalı ve şema işaretlemesiyle optimize edilmelidir.</p>
+      <h4>Rezervasyon Dönüşüm Hunisi</h4>
+      <p>Premium bir restoran web sitesi bir dönüşüm hunisi olarak oluşturulmalıdır. Rezervasyon butonu sabit olmalı ve tamamlanması için 3 adımdan fazlasını gerektirmemelidir. FenixGrowth web siteleri 1 saniyenin altında yüklenir, temiz HTML menü yapılarına sahiptir ve entegre rezervasyonlar kullanarak dönüşüm oranlarını ortalamada %65 artırır.</p>
+    `
+  },
+  4: {
+    tag: "Google Haritalar",
+    title: "Google İşletme Profili Nasıl Alınır ve Optimize Edilir?",
+    date: "27 Nisan 2026",
+    readtime: "5 dk okuma",
+    emoji: "📍",
+    gradientClass: "g4",
+    content: `
+      <p>Google İşletme Profiliniz restoranınızın dijital ön kapısıdır. Yerel yemek yiyenler aç olduklarında önce Google Haritalar'da arama yaparlar. Bu ücretsiz kaydı sahiplenmediyseniz veya optimize etmediyseniz, rakiplerinize bedava müşteri veriyorsunuz demektir.</p>
+      <h4>Profilinizi Nasıl Sahiplenirsiniz?</h4>
+      <p>Google'da restoranınızı aratın. "Bu işletmenin sahibi misiniz?" yazan bir buton görüyorsanız, tıklayın ve doğrulama adımlarını izleyin (genellikle posta kartı, telefon araması veya kısa video doğrulaması). Doğrulandıktan sonra yorumlar, listelemeler ve fotoğraflar üzerinde tam kontrole sahip olursunuz.</p>
+      <h4>Önemli Optimizasyon Alanları</h4>
+      <ul>
+        <li><strong>Birincil Kategori:</strong> Tam nişinizi seçin (örneğin sadece "Restoran" yerine "İtalyan Restoranı").</li>
+        <li><strong>İşletme Açıklaması:</strong> Konumunuzu, atmosferinizi, imza yemeklerinizi ve malzemelerinizi detaylandıran anahtar kelime açısından zengin 750 karakterlik bir özet yazın.</li>
+        <li><strong>Menü Entegrasyonu:</strong> Fiyatlandırma, açıklama ve resimlerle birlikte ürünleri eklemek için yerleşik Google menü düzenleyicisini kullanın.</li>
+      </ul>
+      <p>Özellikle resmi tatillerde çalışma saatlerinizi gerçek zamanlı olarak güncel tutun. Google açık olduğunu söylediği için kapalı bir restorana gelen bir müşteri, zarar verici 1 yıldızlı bir yorumla sonuçlanacaktır.</p>
+    `
+  },
+  5: {
+    tag: "Ücretli Reklamlar",
+    title: "Yatırım Getirisi (ROI) Takibi: İnternette yemek reklamcılığı kılavuzu",
+    date: "19 Nisan 2026",
+    readtime: "5 dk okuma",
+    emoji: "🎯",
+    gradientClass: "g5",
+    content: `
+      <p>Birçok gıda işletmesi, çok geniş bir kitleyi hedefledikleri için genel Meta/Google reklamlarına bütçelerini harcıyor. Yerel bir işletme işletirken reklam kuralları farklıdır. Dubai'de pizza satıyorsanız, 40 km uzaktaki birine reklam göstermek bütçe israfıdır.</p>
+      <h4>Hiper-Yerel Izgara Stratejisi</h4>
+      <p>Reklamları restoran konumunun kesinlikle 5 ila 8 km yarıçapında hedefliyoruz ve koordinatları aktif teslimat bölgesi sektörlerine daraltıyoruz. Ardından ilgi alanlarına göre segmentlere ayırıyoruz (örn. "gurmeler", "dışarıda yemek yeme" veya belirli yemek kategorileri).</p>
+      <h4>Görsel Yemek Tetikleyici Reklam Metni</h4>
+      <p>Stok görsellerden kaçının. Yüksek performanslı reklamlar, sıcak yemeklerin sunulduğu, peynir uzamalarının veya kömür ızgarasının ham, organik akıllı telefon videolarını kullanır. Bunu net bir eylem butonuyla birleştirin: Yerel bir indirim koduyla birlikte "Sipariş Ver" veya "Rezervasyon Yap".</p>
+      <h4>Gerçek ROI Hesaplama</h4>
+      <p>Rezervasyon sayfalarına ve dijital menülere izlenebilir dönüşüm pikselleri kurarak, hangi reklam tıklamasının doğrudan satın almayla sonuçlandığını tam olarak görebiliriz. Sağlıklı bir restoran reklam kampanyası en az 4 kat ila 5 kat ROAS sağlamalıdır, yani harcanan her 1 dolar doğrudan menü geliri olarak 5 dolar kazandırmalıdır.</p>
+    `
+  },
+  6: {
+    tag: "Markalaşma",
+    title: "Menü mühendisliği ortalama sipariş değerlerini %20 nasıl artırabilir?",
+    date: "10 Nisan 2026",
+    readtime: "4 dk okuma",
+    emoji: "✏️",
+    gradientClass: "g6",
+    content: `
+      <p>Menü mühendisliği, menü tasarımının satın alma davranışını nasıl etkilediğinin incelenmesidir. Menünüz rastgele bir yemek listesi olmamalıdır; yüksek marjlı yemeklerinizi vurgulamak için dikkatle tasarlanmış bir satış sayfası olmalıdır.</p>
+      <h4>Altın Üçgen Göz Yolu</h4>
+      <p>Bir menüyü okuyan müşteriler önce ortasına bakar, ardından sağ üst köşeyi ve ardından sol üst köşeyi tarar. Buna "Altın Üçgen" denir. Bu imza yüksek marjlı yemeklerinizi, bu özel yerleşim bölgelerine yerleştirerek satışlarını doğal olarak artırın.</p>
+      <h4>Psikolojik Fiyatlandırma Stratejisi</h4>
+      <p>Menü fiyatlandırmasından para birimi simgelerini ($ veya TL) kaldırın. Para birimi simgeleri, müşteri beyinlerinde "ödeme acısını" tetikler. Çalışmalar, "18.00 TL" yerine "18" şeklinde biçimlendirilen fiyatlandırmanın önemli ölçüde daha fazla harcamaya yol açtığını gösteriyor.</p>
+      <h4>Açıklayıcı Yemek Metinleri Yazma</h4>
+      <p>Sadece "Çikolatalı Kek" yazmak yerine, "Organik madagaskar vanilyalı dondurma ile servis edilen Sıcak Akışkan Çikolatalı Sufle" yazın. Ayrıntılı açıklamalar tüketici memnuniyet oranlarını artırır ve algılanan değeri yükselterek aynı malzemeler için daha yüksek fiyatlar talep etmenize olanak tanır.</p>
+    `
+  }
+};
+</script>
+
+<script>
+// State Variables
+let currentMonth = new Date().getMonth(); // 0-indexed
+let currentYear = new Date().getFullYear();
+let selectedDate = null;
+let selectedTime = null;
+let selectedPlan = 'General';
+let currentLang = 'en';
+
+// Constants
+const monthNames = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+const monthNamesTR = [
+  "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
+  "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
+];
+
+// Initialize Elements
+document.addEventListener("DOMContentLoaded", () => {
+  // Setup sticky nav on scroll
+  const nav = document.getElementById("main-nav");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      nav.classList.add("scrolled");
+    } else {
+      nav.classList.remove("scrolled");
+    }
+    highlightActiveNav();
+  });
+
+  // Mobile Menu Toggler
+  const toggleBtn = document.getElementById("nav-toggle");
+  const navLinks = document.getElementById("nav-links");
+  toggleBtn.addEventListener("click", () => {
+    toggleBtn.classList.toggle("open");
+    navLinks.classList.toggle("active");
+  });
+
+  // Close mobile menu when clicking a link
+  const linkItems = document.querySelectorAll(".nav-link-item, .nav-cta");
+  linkItems.forEach(item => {
+    item.addEventListener("click", () => {
+      toggleBtn.classList.remove("open");
+      navLinks.classList.remove("active");
+    });
+  });
+
+  // Intersection Observer for Animations
+  const animElements = document.querySelectorAll(".fade-up");
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  }, { threshold: 0.1 });
+  animElements.forEach(el => observer.observe(el));
+
+  // Initialize Live Ticker
+  startLiveTicker();
+
+  // Populate Dashboard on startup
+  updateDevDashboard();
+
+  // Initial Calendar load
+  renderCalendar();
+  
+  // Trigger initial PageSpeed animation scroll load
+  setupScrollAnimationsForStats();
+  
+  // Apply initial default brand preview
+  previewBrand('logo');
+
+  // Start social media posts cycling animation
+  cycleSocialMediaPosts();
+
+  // Init new service card animations when scrolled into view
+  initServiceCardAnimations();
+});
+
+/* ══════════════════════════════════════════
+   WEBSITE DESIGN CARD — FULL ANIMATION ENGINE
+══════════════════════════════════════════ */
+function initWebsiteCardAnim() {
+  const card = document.getElementById('pillar-web-card');
+  if (!card || card.dataset.webAnimDone) return;
+  card.dataset.webAnimDone = '1';
+
+  const loadBar   = document.getElementById('web-load-bar');
+  const cursor    = document.getElementById('web-cursor');
+  const ripple    = document.getElementById('web-ripple');
+  const cta       = document.getElementById('web-cta');
+  const m1        = document.getElementById('web-m1');
+  const m2        = document.getElementById('web-m2');
+  const m3        = document.getElementById('web-m3');
+  const chartBars = document.querySelectorAll('#web-chart-bars .web-chart-bar');
+  if (!loadBar) return;
+
+  // Step 1 — load bar sweeps across
+  setTimeout(() => { loadBar.style.width = '100%'; }, 200);
+
+  // Step 2 — CTA button pops in
+  setTimeout(() => { if(cta) cta.classList.add('visible'); }, 900);
+
+  // Step 3 — cursor drifts to CTA button position
+  setTimeout(() => {
+    if (cursor) { cursor.style.left = '110px'; cursor.style.top = '28px'; }
+  }, 1400);
+
+  // Step 4 — click ripple
+  setTimeout(() => {
+    if (ripple) {
+      ripple.style.left = '115px'; ripple.style.top  = '33px';
+      ripple.style.animation = 'web-ripple 0.5s ease forwards';
+      setTimeout(() => { ripple.style.animation = 'none'; }, 600);
+    }
+  }, 2000);
+
+  // Step 5 — metric counters
+  function animCount(el, target, suffix, duration) {
+    if (!el) return;
+    let start = 0, step = target / (duration / 16);
+    const t = setInterval(() => {
+      start = Math.min(start + step, target);
+      el.textContent = Math.floor(start) + suffix;
+      if (start >= target) clearInterval(t);
+    }, 16);
+  }
+  setTimeout(() => {
+    animCount(m1, 98, '',   900);
+    animCount(m2, 65, '%',  900);
+    animCount(m3, 1,  's',  900);
+  }, 2200);
+
+  // Step 6 — chart bars animate up
+  setTimeout(() => {
+    chartBars.forEach((bar, i) => {
+      setTimeout(() => {
+        bar.style.height = bar.dataset.h + '%';
+      }, i * 90);
+    });
+  }, 2600);
+
+  // Step 7 — cursor moves around, repeat loop
+  const positions = [
+    {l:'20px',  t:'10px'}, {l:'90px',  t:'50px'},
+    {l:'55px',  t:'80px'}, {l:'130px', t:'65px'},
+    {l:'110px', t:'28px'}, {l:'20px',  t:'10px'},
+  ];
+  let posIdx = 0;
+  setInterval(() => {
+    posIdx = (posIdx + 1) % positions.length;
+    if (cursor) {
+      cursor.style.left = positions[posIdx].l;
+      cursor.style.top  = positions[posIdx].t;
+    }
+  }, 1800);
+
+  // Step 8 — reload animation every 8s
+  setInterval(() => {
+    if (loadBar) { loadBar.style.transition = 'none'; loadBar.style.width = '0%'; }
+    if (m1) { m1.textContent = '0';  }
+    if (m2) { m2.textContent = '0%'; }
+    if (m3) { m3.textContent = '0s'; }
+    chartBars.forEach(b => { b.style.height = '4%'; });
+    setTimeout(() => {
+      if (loadBar) { loadBar.style.transition = 'width 0.6s ease'; loadBar.style.width = '100%'; }
+      setTimeout(() => {
+        animCount(m1, 98, '',  900);
+        animCount(m2, 65, '%', 900);
+        animCount(m3, 1,  's', 900);
+        chartBars.forEach((bar, i) => {
+          setTimeout(() => { bar.style.height = bar.dataset.h + '%'; }, i * 90);
+        });
+      }, 800);
+    }, 300);
+  }, 8000);
+}
+
+/* ══════════════════════════════════════════
+   SOCIAL MEDIA CARD — FULL ANIMATION ENGINE
+══════════════════════════════════════════ */
+const smFollowers = { fb: 12400, ig: 28700, tt: 54900 };
+const smTargets   = { fb: 12740, ig: 29520, tt: 57000 };
+const smActivePlatform = { val: 'fb' };
+
+function switchSMTab(platform) {
+  ['fb','ig','tt'].forEach(p => {
+    const tab  = document.getElementById('sm-tab-' + p);
+    const view = document.getElementById('sm-view-' + p);
+    if (tab)  tab.classList.toggle('active',  p === platform);
+    if (view) view.classList.toggle('active', p === platform);
+  });
+  smActivePlatform.val = platform;
+  animateSMPlatform(platform);
+}
+
+function animateSMPlatform(platform) {
+  // follower bar + counter
+  const bar   = document.getElementById(platform + '-growth-bar');
+  const count = document.getElementById(platform + '-fol-count');
+  const start = smFollowers[platform];
+  const end   = smTargets[platform];
+  if (bar)   { bar.style.width   = '0%'; setTimeout(() => { bar.style.width = '78%'; }, 80); }
+  if (count) {
+    let n = start, step = (end - start) / 60;
+    const t = setInterval(() => {
+      n = Math.min(n + step, end);
+      count.textContent = Math.floor(n).toLocaleString();
+      if (n >= end) clearInterval(t);
+    }, 18);
+  }
+  // ticker notifications
+  const tickerEl = document.getElementById(platform + '-ticker');
+  const ticks = {
+    fb: [
+      {dot:'#1877F2', txt:'👍 Ahmed liked your post — 12s ago'},
+      {dot:'#28C840', txt:'🆕 +18 new followers today'},
+      {dot:'#FFBD2E', txt:'💬 Fatima commented "Amazing food!"'},
+    ],
+    ig: [
+      {dot:'#E1306C', txt:'❤️ 3,100 likes on last Reel'},
+      {dot:'#FFDC80', txt:'📈 Reach grew 10× this week'},
+      {dot:'#28C840', txt:'🆕 +820 new followers this week'},
+    ],
+    tt: [
+      {dot:'#69C9D0', txt:'🎬 Video reached 92k views'},
+      {dot:'#fff',    txt:'🔥 Trending in Food & Dining'},
+      {dot:'#28C840', txt:'🆕 +2,100 new followers'},
+    ],
+  };
+  if (tickerEl) {
+    tickerEl.innerHTML = '';
+    ticks[platform].forEach((t, i) => {
+      const el = document.createElement('div');
+      el.className = 'sm-tick-item';
+      el.innerHTML = `<div class="sm-tick-dot" style="background:${t.dot}"></div><span>${t.txt}</span>`;
+      tickerEl.appendChild(el);
+      setTimeout(() => el.classList.add('show'), 300 + i * 350);
+    });
+  }
+}
+
+function smLike(platform) {
+  const btn   = document.getElementById(platform + '-like-btn');
+  const count = document.getElementById(platform + '-like-count');
+  if (!btn || btn.dataset.liked) return;
+  btn.dataset.liked = '1';
+  btn.classList.add('liked');
+  btn.style.color = '#E1306C';
+  // increment count display
+  if (count) {
+    const raw = count.textContent.replace('k','').replace(',','');
+    const num = parseFloat(raw) * (count.textContent.includes('k') ? 1000 : 1);
+    const newNum = num + 1;
+    count.textContent = newNum >= 1000 ? (newNum/1000).toFixed(1) + 'k' : newNum;
+  }
+  // floating heart burst
+  const parent = btn.closest('.sm-visual-inner') || btn.closest('.zz-visual-inner');
+  if (parent) {
+    const heart = document.createElement('span');
+    heart.className = 'sm-heart-burst';
+    heart.textContent = '❤️';
+    heart.style.cssText = 'position:absolute;left:' + (btn.offsetLeft + 10) + 'px;top:' + (btn.offsetTop - 10) + 'px;z-index:20';
+    parent.appendChild(heart);
+    setTimeout(() => heart.remove(), 1100);
+  }
+}
+
+function initSMCardAnim() {
+  const card = document.getElementById('pillar-sm-card');
+  if (!card || card.dataset.smAnimDone) return;
+  card.dataset.smAnimDone = '1';
+  animateSMPlatform('fb');
+
+  // auto rotate tabs every 4 seconds
+  const platforms = ['fb','ig','tt'];
+  let tabIdx = 0;
+  setInterval(() => {
+    tabIdx = (tabIdx + 1) % platforms.length;
+    switchSMTab(platforms[tabIdx]);
+  }, 4000);
+
+  // auto-like pulses on each platform periodically
+  setInterval(() => {
+    const platform = smActivePlatform.val;
+    const btn = document.getElementById(platform + '-like-btn');
+    if (btn && !btn.dataset.liked) {
+      const count = document.getElementById(platform + '-like-count');
+      if (count) {
+        const raw = count.textContent.replace('k','');
+        const num = parseFloat(raw) * (count.textContent.includes('k') ? 1000 : 1);
+        const newNum = num + Math.floor(Math.random() * 5 + 1);
+        count.textContent = newNum >= 1000 ? (newNum/1000).toFixed(1) + 'k' : newNum;
+      }
+    }
+  }, 2500);
+}
+
+function initServiceCardAnimations() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        if (entry.target.id === 'pillar-web-card') initWebsiteCardAnim();
+        if (entry.target.id === 'pillar-sm-card')  initSMCardAnim();
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const webCard = document.getElementById('pillar-web-card');
+  const smCard  = document.getElementById('pillar-sm-card');
+  if (webCard) observer.observe(webCard);
+  if (smCard)  observer.observe(smCard);
+}
+
+// Social Media Auto-cycling animation
+function cycleSocialMediaPosts() {
+  const posts = document.querySelectorAll(".post-cell");
+  const container = document.querySelector(".zz-vi-posts");
+  if (!posts.length || !container) return;
+  
+  let activeIndex = 0;
+  let isHovered = false;
+  
+  container.addEventListener("mouseenter", () => {
+    isHovered = true;
+    posts.forEach(p => p.classList.remove("active-anim"));
+  });
+  
+  container.addEventListener("mouseleave", () => {
+    isHovered = false;
+  });
+  
+  setInterval(() => {
+    if (isHovered) return;
+    posts.forEach((p, idx) => {
+      if (idx === activeIndex) {
+        p.classList.add("active-anim");
+      } else {
+        p.classList.remove("active-anim");
+      }
+    });
+    activeIndex = (activeIndex + 1) % posts.length;
+  }, 2200);
+}
+
+// Translation Toggle Trigger
+function toggleLanguage() {
+  currentLang = currentLang === 'en' ? 'tr' : 'en';
+  document.getElementById("lang-text").textContent = currentLang.toUpperCase();
+  
+  // translate all elements
+  const elements = document.querySelectorAll("[data-tr]");
+  elements.forEach(el => {
+    const key = el.getAttribute("data-tr");
+    if (translations[currentLang] && translations[currentLang][key] !== undefined) {
+      // Check if it's a form input placeholder
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = translations[currentLang][key].replace(/<br\s*\/?>/gi, ' ');
+      } else {
+        el.innerHTML = translations[currentLang][key];
+      }
+    }
+  });
+
+  // Update dynamic brand labels depending on selected lang
+  const brandActive = document.querySelector(".brand-chip[style*='box-shadow']");
+  if (brandActive) {
+    const activeType = brandActive.id.replace("chip-", "");
+    previewBrand(activeType);
+  } else {
+    previewBrand('logo');
+  }
+
+  // Reload Calendar
+  renderCalendar();
+  if (selectedDate) {
+    const dateStr = selectedDate.toLocaleDateString(currentLang === 'en' ? 'en-US' : 'tr-TR', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
+    document.getElementById("selected-date-str").textContent = dateStr;
+  } else {
+    document.getElementById("selected-date-str").textContent = currentLang === 'en' ? 'selecting a date...' : 'tarih seçin...';
+  }
+  
+  // Update pricing durations check
+  togglePricingDuration(true); // silent refresh
+  
+  showToast("Language", currentLang === 'en' ? "Language set to English." : "Dil Türkçe olarak ayarlandı.");
+}
+
+// Navigation Highlight Active Link
+function highlightActiveNav() {
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll(".nav-link-item");
+  let currentSec = "";
+  sections.forEach(sec => {
+    const secTop = sec.offsetTop;
+    if (window.scrollY >= secTop - 120) {
+      currentSec = sec.getAttribute("id");
+    }
+  });
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    const href = link.getAttribute("href").substring(1);
+    if (href === currentSec) {
+      link.classList.add("active");
+    }
+  });
+}
+
+// Dynamic Ticker Ticker Notifications
+const tickerQueueEN = [
+  { txt: "🍕 New reservation — Casa Mia, Dubai", time: "Just now" },
+  { txt: "🍣 Strategy call booked — Sumo Sushi, London", time: "2 min ago" },
+  { txt: "🥗 Online orders jump +40% — Green Garden, Riyadh", time: "5 min ago" },
+  { txt: "☕ 5-Star Google Review — Nomad Cafe, Istanbul", time: "12 min ago" },
+  { txt: "🍝 Logo & Menu Redesign approved — Casa Italiana, Mogadishu", time: "25 min ago" },
+  { txt: "📍 Ranked #1 for 'restaurant near me' — Spice Garden, Dubai", time: "30 min ago" }
+];
+const tickerQueueTR = [
+  { txt: "🍕 Yeni Rezervasyon — Casa Mia, Dubai", time: "Az önce" },
+  { txt: "🍣 Strateji araması planlandı — Sumo Sushi, Londra", time: "2 dk önce" },
+  { txt: "🥗 İnternet siparişleri %40 arttı — Green Garden, Riyad", time: "5 dk önce" },
+  { txt: "☕ 5 Yıldızlı Google Yorumu — Nomad Cafe, İstanbul", time: "12 dk önce" },
+  { txt: "🍝 Logo ve Menü Tasarımı onaylandı — Casa Italiana, Mogadişu", time: "25 dk önce" },
+  { txt: "📍 'Yakındaki restoranlar' aramasında #1 — Spice Garden, Dubai", time: "30 dk önce" }
+];
+
+let tickerIndex = 0;
+function startLiveTicker() {
+  const txtEl = document.getElementById("live-txt");
+  const timeEl = document.getElementById("live-time");
+  const container = document.getElementById("live-notification");
+  
+  setInterval(() => {
+    container.style.opacity = 0;
+    container.style.transform = "translateY(10px)";
+    setTimeout(() => {
+      tickerIndex = (tickerIndex + 1) % tickerQueueEN.length;
+      const queue = currentLang === 'en' ? tickerQueueEN : tickerQueueTR;
+      txtEl.textContent = queue[tickerIndex].txt;
+      timeEl.textContent = queue[tickerIndex].time;
+      container.style.opacity = 1;
+      container.style.transform = "translateY(0)";
+    }, 400);
+  }, 6000);
+}
+
+// Scroll counters & Stat elements animators
+function setupScrollAnimationsForStats() {
+  const statsSection = document.getElementById("stats");
+  const numbers = document.querySelectorAll(".stat-big");
+  let triggered = false;
+
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && !triggered) {
+      triggered = true;
+      numbers.forEach(num => {
+        const text = num.textContent;
+        const hasPlus = text.includes("+");
+        const hasDollar = text.includes("$");
+        const hasM = text.includes("M");
+        const hasX = text.includes("×");
+        const hasPercent = text.includes("%");
+        
+        let value = parseInt(text.replace(/[^0-9]/g, ''));
+        let start = 0;
+        let duration = 1500;
+        let startTime = null;
+
+        function animateNumber(timestamp) {
+          if (!startTime) startTime = timestamp;
+          let progress = timestamp - startTime;
+          let currentVal = Math.min(Math.floor((progress / duration) * value), value);
+          
+          let displayVal = currentVal;
+          if (hasDollar) displayVal = "$" + displayVal;
+          if (hasM) displayVal = displayVal + "M+";
+          else if (hasPlus) displayVal = displayVal + "+";
+          else if (hasX) displayVal = displayVal + "×";
+          else if (hasPercent) displayVal = displayVal + "%";
+
+          num.textContent = displayVal;
+          if (progress < duration) {
+            requestAnimationFrame(animateNumber);
+          } else {
+            num.textContent = text; // safety reset
+          }
+        }
+        requestAnimationFrame(animateNumber);
+      });
+    }
+  }, { threshold: 0.2 });
+  observer.observe(statsSection);
+}
+
+// Pillar Interaction: Google Maps SEO Rank Climbing
+let mapsRankState = 0; // 0 = default, 1 = climbing, 2 = finished
+function animateMapsPillar() {
+  const rankText = document.getElementById("map-rank-text");
+  const rankDesc = document.getElementById("map-rank-desc");
+  const rankStat = document.getElementById("map-rank-stat");
+  const mapSim = document.getElementById("map-simulation");
+  
+  if (mapsRankState === 0) {
+    mapsRankState = 1;
+    rankText.textContent = currentLang === 'en' ? "Analyzing ranks..." : "Sıralamalar analiz ediliyor...";
+    rankDesc.textContent = currentLang === 'en' ? "Google Local Search position is #12" : "Google Yerel Arama sırası: #12";
+    rankStat.textContent = "1×";
+    mapSim.style.background = "rgba(41,121,232,0.1)";
+    
+    let currentRank = 12;
+    const interval = setInterval(() => {
+      currentRank--;
+      rankText.textContent = currentLang === 'en' ? `#${currentRank} Local Position` : `#${currentRank} Yerel Sıralama`;
+      if (currentRank <= 1) {
+        clearInterval(interval);
+        mapsRankState = 2;
+        rankText.textContent = currentLang === 'en' ? '#1 "Best restaurant near me"' : '"En yakın restoran" aramalarında #1';
+        rankDesc.textContent = currentLang === 'en' ? "↑ Jumped from #12 to #1 in 30 days" : "↑ 30 günde #12'den #1'e yükseldi";
+        rankStat.textContent = "3×";
+        mapSim.style.background = "var(--light-bg)";
+        showToast("Success", currentLang === 'en' ? "Maps simulation optimization complete! Position #1 reached." : "Harita optimizasyon simülasyonu tamamlandı! 1. sıraya ulaşıldı.");
+      }
+    }, 180);
+  } else if (mapsRankState === 2) {
+    mapsRankState = 0;
+    rankText.textContent = currentLang === 'en' ? "#12 'restaurant near me'" : "#12 'yakındaki restoran'";
+    rankDesc.textContent = currentLang === 'en' ? "Click to run maps rank audit simulation" : "Sıralama analizi simülasyonunu başlatmak için tıklayın";
+    rankStat.textContent = "1×";
+  }
+}
+// Add listener to maps card
+document.getElementById("pillar-maps-card").addEventListener("click", animateMapsPillar);
+
+// Pillar Interaction: PageSpeed Counter
+let webPillarTriggered = false;
+function animateWebPillar() {
+  if (webPillarTriggered) return;
+  webPillarTriggered = true;
+  
+  const scoreEl = document.getElementById("web-pagespeed-stat");
+  const bars = document.querySelectorAll("#web-performance-bars .zz-bar");
+  
+  // Reset bar heights first
+  bars.forEach(bar => {
+    bar.dataset.targetHeight = bar.style.height;
+    bar.style.height = "5%";
+  });
+  
+  let score = 0;
+  const interval = setInterval(() => {
+    score += 2;
+    scoreEl.textContent = score;
+    if (score >= 98) {
+      clearInterval(interval);
+      scoreEl.textContent = 98;
+      // Grow bars
+      bars.forEach(bar => {
+        bar.style.height = bar.dataset.targetHeight;
+      });
+      showToast("Audit", currentLang === 'en' ? "PageSpeed diagnostics score: 98/100 Mobile Speed Verified!" : "PageSpeed analiz skoru: 98/100 Mobil Hız Doğrulandı!");
+    }
+  }, 25);
+}
+// Trigger when web card entered
+const webObserver = new IntersectionObserver((entries) => {
+  if (entries[0].isIntersecting) {
+    animateWebPillar();
+  }
+}, { threshold: 0.3 });
+webObserver.observe(document.getElementById("pillar-web-card"));
+document.getElementById("pillar-web-card").addEventListener("click", () => {
+  webPillarTriggered = false;
+  animateWebPillar();
+});
+
+// Pillar Interaction: Paid Ads status toggling
+let adsCampaignActive = true;
+function toggleAdCampaign() {
+  const btn = document.getElementById("toggle-ad-btn");
+  const statusLbl = document.getElementById("ad-status-lbl");
+  const roas = document.getElementById("ad-roas");
+  const cpc = document.getElementById("ad-cpc");
+  const cvr = document.getElementById("ad-cvr");
+  const container = document.getElementById("ad-campaign-box");
+
+  if (adsCampaignActive) {
+    // Pause
+    adsCampaignActive = false;
+    btn.textContent = currentLang === 'en' ? "Activate" : "Aktifleştir";
+    btn.classList.add("paused");
+    statusLbl.textContent = currentLang === 'en' ? "Campaign Paused" : "Kampanya Duraklatıldı";
+    container.style.opacity = 0.55;
+    
+    // Drop metrics
+    roas.textContent = "0.0×";
+    cpc.textContent = "$0.00";
+    cvr.textContent = "0%";
+    showToast("Ads", currentLang === 'en' ? "Meta Campaign Paused. Spending stopped." : "Meta Kampanyası Duraklatıldı. Harcama durdu.");
+  } else {
+    // Activate
+    adsCampaignActive = true;
+    btn.textContent = currentLang === 'en' ? "Pause" : "Durdur";
+    btn.classList.remove("paused");
+    statusLbl.textContent = currentLang === 'en' ? "Live Campaign" : "Aktif Kampanya";
+    container.style.opacity = 1;
+    
+    // Ticking restore
+    roas.textContent = "4.8×";
+    cpc.textContent = "$0.42";
+    cvr.textContent = "3%";
+    showToast("Ads", currentLang === 'en' ? "Meta Campaign Activated. Target Delivery: Live." : "Meta Kampanyası Aktifleştirildi. Gönderim: Canlı.");
+  }
+}
+
+// Pillar Interaction: Brand & Typography chip previews
+function previewBrand(type) {
+  const previewBox = document.getElementById("brand-preview-box");
+  const chips = document.querySelectorAll(".brand-chip");
+  
+  // Highlight clicked chip
+  chips.forEach(c => {
+    c.style.transform = "none";
+    c.style.boxShadow = "none";
+    c.style.background = "var(--light-bg)";
+    c.style.color = "var(--accent)";
+    c.style.border = "1px solid var(--border)";
+  });
+  
+  const activeChip = document.getElementById(`chip-${type}`);
+  activeChip.style.transform = "translateY(-2px)";
+  activeChip.style.boxShadow = "0 4px 10px rgba(0,0,0,0.12)";
+  activeChip.style.background = "var(--accent)";
+  activeChip.style.color = "#fff";
+  activeChip.style.border = "1px solid var(--accent)";
+  
+  if (type === 'logo') {
+    previewBox.innerHTML = `
+      <div class="brand-preview-wrap" style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px">
+        <svg class="logo-svg" style="width:220px; height:45px" viewBox="0 0 280 50" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="FenixGrowth logo">
+          <g stroke="#2979E8" stroke-width="6" stroke-linecap="round">
+            <line x1="30" y1="15" x2="30" y2="5" />
+            <line x1="30" y1="15" x2="30" y2="5" transform="rotate(45 30 25)" />
+            <line x1="30" y1="15" x2="30" y2="5" transform="rotate(90 30 25)" />
+            <line x1="30" y1="15" x2="30" y2="5" transform="rotate(135 30 25)" />
+            <line x1="30" y1="15" x2="30" y2="5" transform="rotate(180 30 25)" />
+            <line x1="30" y1="15" x2="30" y2="5" transform="rotate(225 30 25)" />
+            <line x1="30" y1="15" x2="30" y2="5" transform="rotate(270 30 25)" />
+            <line x1="30" y1="15" x2="30" y2="5" transform="rotate(315 30 25)" />
+          </g>
+          <text x="65" y="36" font-family="'DM Sans', Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#13253F" letter-spacing="-1">fenix<tspan fill="#2979E8">growth</tspan></text>
+        </svg>
+        <div class="zz-vi-lbl" style="margin-top:4px">${currentLang === 'en' ? 'Minimalist SVG Logo Design' : 'Minimalist SVG Logo Tasarımı'}</div>
+      </div>
+    `;
+  } else if (type === 'palette') {
+    previewBox.innerHTML = `
+      <div class="brand-preview-wrap">
+        <div class="brand-preview-colors">
+          <div class="brand-color-dot" style="background:#13253F" title="Navy #13253F"></div>
+          <div class="brand-color-dot" style="background:#2979E8" title="Accent #2979E8"></div>
+          <div class="brand-color-dot" style="background:#0EA5A0" title="Teal #0EA5A0"></div>
+          <div class="brand-color-dot" style="background:#FDE68A" title="Yellow #FDE68A"></div>
+          <div class="brand-color-dot" style="background:#F0F5FF" title="Light Blue #F0F5FF"></div>
+        </div>
+        <div class="zz-vi-lbl">${currentLang === 'en' ? 'Harmonious Palette System Swatch' : 'Uyumlu Renk Paleti Tasarım Örneği'}</div>
+      </div>
+    `;
+  } else if (type === 'typo') {
+    previewBox.innerHTML = `
+      <div class="brand-preview-wrap">
+        <div class="brand-preview-typo">Playfair Display</div>
+        <div class="brand-preview-typo-sub">DM Sans for UI Reading</div>
+        <div class="zz-vi-lbl">${currentLang === 'en' ? 'Typography Hierarchy Stack' : 'Tipografi Hiyerarşi Şablonu'}</div>
+      </div>
+    `;
+  } else if (type === 'menu') {
+    previewBox.innerHTML = `
+      <div class="brand-preview-wrap">
+        <div class="brand-preview-menu">
+          <div class="brand-preview-menu-item"><span>Filet Mignon</span><strong>$34</strong></div>
+          <div class="brand-preview-menu-item"><span>Truffle Gnocchi</span><strong>$22</strong></div>
+        </div>
+        <div class="zz-vi-lbl">${currentLang === 'en' ? 'Engineered Layout Design Template' : 'Mühendislik Odaklı Yerleşim Menü Şablonu'}</div>
+      </div>
+    `;
+  }
+}
+
+// Show Integration Tooltips
+function showIntegration(name, emoji) {
+  const msg = currentLang === 'en' 
+    ? `FenixGrowth platform supports native API sync with ${emoji} ${name}.`
+    : `FenixGrowth platformu ${emoji} ${name} ile doğrudan entegrasyonu destekler.`;
+  showToast("Integration", msg);
+}
+
+// Pricing Toggle Functionality
+function togglePricingDuration(silent = false) {
+  const checkbox = document.getElementById("pricing-checkbox");
+  const monthlyLabel = document.getElementById("billing-monthly");
+  const annualLabel = document.getElementById("billing-annual");
+  const amounts = document.querySelectorAll(".price-amount");
+  const cadenceStarter = document.getElementById("cadence-starter");
+  const cadenceGrowth = document.getElementById("cadence-growth");
+  const cadencePro = document.getElementById("cadence-pro");
+  const cadenceScale = document.getElementById("cadence-scale");
+
+  if (checkbox.checked) {
+    // Annual
+    monthlyLabel.classList.remove("active");
+    annualLabel.classList.add("active");
+    
+    // Animate values shifting
+    amounts.forEach(amount => {
+      const pVal = amount.querySelector(".p-val");
+      const annualVal = amount.dataset.annual;
+      
+      pVal.style.opacity = 0;
+      pVal.style.transform = "translateY(-4px)";
+      
+      setTimeout(() => {
+        pVal.textContent = annualVal;
+        pVal.style.opacity = 1;
+        pVal.style.transform = "translateY(0)";
+      }, 150);
+    });
+
+    cadenceStarter.textContent = currentLang === 'en' ? "One-time setup" : "Tek seferlik kurulum";
+    cadenceGrowth.textContent = currentLang === 'en' ? "/month (billed annually)" : "/aylık (yıllık ödenir)";
+    cadencePro.textContent = currentLang === 'en' ? "/month (billed annually)" : "/aylık (yıllık ödenir)";
+    cadenceScale.textContent = currentLang === 'en' ? "/month (billed annually)" : "/aylık (yıllık ödenir)";
+    if (!silent) showToast("Pricing", currentLang === 'en' ? "Annual Billing toggled. Save 20% discount applied!" : "Yıllık faturalandırma seçildi. %20 indirim uygulandı!");
+  } else {
+    // Monthly
+    monthlyLabel.classList.add("active");
+    annualLabel.classList.remove("active");
+    
+    amounts.forEach(amount => {
+      const pVal = amount.querySelector(".p-val");
+      const monthlyVal = amount.dataset.monthly;
+      
+      pVal.style.opacity = 0;
+      pVal.style.transform = "translateY(4px)";
+      
+      setTimeout(() => {
+        pVal.textContent = monthlyVal;
+        pVal.style.opacity = 1;
+        pVal.style.transform = "translateY(0)";
+      }, 150);
+    });
+
+    cadenceStarter.textContent = currentLang === 'en' ? "One-time setup" : "Tek seferlik kurulum";
+    cadenceGrowth.textContent = currentLang === 'en' ? "/month" : "/aylık";
+    cadencePro.textContent = currentLang === 'en' ? "/month" : "/aylık";
+    cadenceScale.textContent = currentLang === 'en' ? "/month" : "/aylık";
+    if (!silent) showToast("Pricing", currentLang === 'en' ? "Monthly Billing toggled." : "Aylık faturalandırma seçildi.");
+  }
+}
+
+// Modal open/close actions
+function openBookingModal(plan = 'General') {
+  selectedPlan = plan;
+  const modal = document.getElementById("booking-modal");
+  const title = document.getElementById("book-modal-title");
+  
+  if (plan !== 'General' && plan !== 'General CTA') {
+    title.textContent = currentLang === 'en' ? `Get Started: ${plan}` : `Hemen Başla: ${plan}`;
+  } else {
+    title.textContent = currentLang === 'en' ? "Select Date & Time" : "Tarih ve Saat Seçin";
+  }
+
+  // Reset steps
+  gotoBookingStep(1);
+  selectedDate = null;
+  selectedTime = null;
+  renderCalendar();
+  document.getElementById("selected-date-str").textContent = currentLang === 'en' ? "selecting a date..." : "tarih seçin...";
+  document.getElementById("time-slots").innerHTML = `
+    <div class="dev-empty" style="grid-column: 1 / -1; padding:10px 0">
+      ${currentLang === 'en' ? 'Please select a date on the calendar first.' : 'Lütfen önce takvimden bir tarih seçin.'}
+    </div>`;
+  document.getElementById("book-goto-step-2").classList.add("disabled");
+
+  modal.classList.add("open");
+  document.body.style.overflow = "hidden"; // disable scroll
+}
+
+function closeBookingModal() {
+  const modal = document.getElementById("booking-modal");
+  modal.classList.remove("open");
+  document.body.style.overflow = "auto";
+}
+
+function gotoBookingStep(stepNum) {
+  const steps = document.querySelectorAll(".modal-step");
+  steps.forEach(s => s.classList.remove("active"));
+  document.getElementById(`book-step-${stepNum}`).classList.add("active");
+}
+
+// Calendar Generator Functions
+function renderCalendar() {
+  const daysContainer = document.getElementById("calendar-days");
+  const monthYearLabel = document.getElementById("calendar-month-year");
+  
+  // Set month & year title
+  const activeMonthName = currentLang === 'en' ? monthNames[currentMonth] : monthNamesTR[currentMonth];
+  monthYearLabel.textContent = `${activeMonthName} ${currentYear}`;
+  daysContainer.innerHTML = "";
+
+  const firstDayIndex = new Date(currentYear, currentMonth, 1).getDay();
+  const lastDay = new Date(currentYear, currentMonth + 1, 0).getDate();
+  const prevLastDay = new Date(currentYear, currentMonth, 0).getDate();
+  
+  // Add empty spaces for previous month's overlapping days
+  for (let x = firstDayIndex; x > 0; x--) {
+    const dayEl = document.createElement("div");
+    dayEl.classList.add("calendar-day", "disabled");
+    dayEl.textContent = prevLastDay - x + 1;
+    daysContainer.appendChild(dayEl);
+  }
+
+  // Render current month days
+  const today = new Date();
+  for (let i = 1; i <= lastDay; i++) {
+    const dayEl = document.createElement("div");
+    dayEl.classList.add("calendar-day");
+    dayEl.textContent = i;
+    
+    // Mark passed days as disabled (only allow future bookings)
+    const thisDate = new Date(currentYear, currentMonth, i);
+    if (thisDate < today && thisDate.toDateString() !== today.toDateString()) {
+      dayEl.classList.add("disabled");
+    } else {
+      // Mark selected day
+      if (selectedDate && 
+          selectedDate.getDate() === i && 
+          selectedDate.getMonth() === currentMonth && 
+          selectedDate.getFullYear() === currentYear) {
+        dayEl.classList.add("selected");
+      }
+      
+      // Mark today's indicator
+      if (thisDate.toDateString() === today.toDateString()) {
+        dayEl.classList.add("today");
+      }
+      
+      dayEl.addEventListener("click", () => selectDate(i));
+    }
+    
+    daysContainer.appendChild(dayEl);
+  }
+}
+
+function changeMonth(direction) {
+  currentMonth += direction;
+  if (currentMonth < 0) {
+    currentMonth = 11;
+    currentYear--;
+  } else if (currentMonth > 11) {
+    currentMonth = 0;
+    currentYear++;
+  }
+  renderCalendar();
+}
+
+function selectDate(day) {
+  selectedDate = new Date(currentYear, currentMonth, day);
+  
+  // Update UI selected highlight
+  renderCalendar();
+  
+  // Show selected date string
+  const dateStr = selectedDate.toLocaleDateString(currentLang === 'en' ? 'en-US' : 'tr-TR', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
+  document.getElementById("selected-date-str").textContent = dateStr;
+  
+  // Populate mock slots
+  populateTimeSlots();
+}
+
+function populateTimeSlots() {
+  const container = document.getElementById("time-slots");
+  container.innerHTML = "";
+  
+  const slots = ["09:00 AM", "10:30 AM", "11:30 AM", "01:30 PM", "03:00 PM", "04:30 PM"];
+  
+  slots.forEach(slot => {
+    const div = document.createElement("div");
+    div.classList.add("time-slot");
+    div.textContent = slot;
+    
+    // Check if slot already selected
+    if (selectedTime === slot) {
+      div.classList.add("selected");
+    }
+    
+    div.addEventListener("click", () => {
+      const allSlots = document.querySelectorAll(".time-slot");
+      allSlots.forEach(s => s.classList.remove("selected"));
+      div.classList.add("selected");
+      selectedTime = slot;
+      
+      // Enable continue btn
+      document.getElementById("book-goto-step-2").classList.remove("disabled");
+    });
+    
+    container.appendChild(div);
+  });
+}
+
+// Booking Submit Handler
+function handleBookingSubmit(event) {
+  event.preventDefault();
+  
+  const name = document.getElementById("client-name").value.trim();
+  const email = document.getElementById("client-email").value.trim();
+  const restaurant = document.getElementById("restaurant-name").value.trim();
+  const website = document.getElementById("restaurant-website").value.trim();
+  const phone = document.getElementById("client-phone").value.trim();
+  const notes = document.getElementById("client-notes").value.trim();
+
+  if (!selectedDate || !selectedTime) {
+    showToast("Error", currentLang === 'en' ? "Please select a booking date and time." : "Lütfen bir randevu tarihi ve saati seçin.");
+    return;
+  }
+
+  const booking = {
+    id: 'B-' + Date.now(),
+    timestamp: new Date().toISOString(),
+    name,
+    email,
+    restaurant,
+    website,
+    phone,
+    notes,
+    date: selectedDate.toLocaleDateString(),
+    time: selectedTime,
+    plan: selectedPlan
+  };
+
+  const existingBookings = JSON.parse(localStorage.getItem("fg_bookings") || "[]");
+  existingBookings.push(booking);
+  localStorage.setItem("fg_bookings", JSON.stringify(existingBookings));
+
+  // Populate Step 3 Success Card
+  document.getElementById("summary-date").textContent = selectedDate.toLocaleDateString(currentLang === 'en' ? 'en-US' : 'tr-TR', { month: 'long', day: 'numeric', year: 'numeric' });
+  document.getElementById("summary-time").textContent = `${selectedTime} (Local Time)`;
+  document.getElementById("summary-restaurant").textContent = restaurant;
+
+  // Clear inputs
+  document.getElementById("booking-form").reset();
+  
+  updateDevDashboard();
+
+  gotoBookingStep(3);
+  showToast("Success", currentLang === 'en' ? "Call successfully scheduled!" : "Toplantınız başarıyla planlandı!");
+}
+
+// Newsletter Form Submit Handler
+function handleNewsletterSubmit(event) {
+  event.preventDefault();
+  const emailInput = document.getElementById("newsletter-email");
+  const email = emailInput.value.trim();
+
+  if (!email) return;
+
+  const subscriber = {
+    id: 'S-' + Date.now(),
+    timestamp: new Date().toISOString(),
+    email
+  };
+
+  const existingEmails = JSON.parse(localStorage.getItem("fg_newsletter") || "[]");
+  existingEmails.push(subscriber);
+  localStorage.setItem("fg_newsletter", JSON.stringify(existingEmails));
+
+  emailInput.value = "";
+  
+  updateDevDashboard();
+  showToast("Newsletter", currentLang === 'en' ? "Successfully joined our newsletter! Check your inbox." : "Bültenimize katıldınız! E-postanızı kontrol edin.");
+}
+
+// Toast Notification Engine
+function showToast(title, msg) {
+  const container = document.getElementById("toast-container");
+  
+  const toast = document.createElement("div");
+  toast.classList.add("toast");
+  if (title === "Success" || title === "Newsletter") {
+    toast.classList.add("success");
+  }
+
+  toast.innerHTML = `
+    <div>
+      <div style="font-weight:800; font-size:12px; text-transform:uppercase; letter-spacing:0.5px">${title}</div>
+      <div style="font-weight:400; font-size:11px; margin-top:2px; color:rgba(255,255,255,0.85)">${msg}</div>
+    </div>
+    <button class="toast-close" onclick="this.parentElement.remove()">&times;</button>
+  `;
+
+  container.appendChild(toast);
+  
+  setTimeout(() => {
+    toast.remove();
+  }, 3800);
+}
+
+// Blog Article Reader Functions
+function openBlogArticle(id) {
+  const article = blogArticles[id];
+  const trArticle = blogArticlesTR[id];
+  if (!article) return;
+
+  const selectedArticle = currentLang === 'en' ? article : trArticle;
+
+  document.getElementById("article-tag").textContent = currentLang === 'en' ? article.tag : trArticle.tag;
+  document.getElementById("article-title").textContent = selectedArticle.title;
+  document.getElementById("article-date").textContent = selectedArticle.date;
+  document.getElementById("article-readtime").textContent = selectedArticle.readtime;
+  document.getElementById("article-emoji").textContent = article.emoji;
+  
+  const imgBox = document.getElementById("article-img-gradient");
+  imgBox.className = `blog-article-hero-img ${article.gradientClass}`;
+
+  document.getElementById("article-text").innerHTML = selectedArticle.content;
+
+  // Open modal
+  const modal = document.getElementById("blog-modal");
+  modal.classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeBlogModal() {
+  const modal = document.getElementById("blog-modal");
+  modal.classList.remove("open");
+  document.body.style.overflow = "auto";
+}
+
+function triggerBookingFromBlog() {
+  closeBlogModal();
+  setTimeout(() => {
+    openBookingModal("Blog Article Callout");
+  }, 200);
+}
+
+// Developer Panel (Leads Dashboard)
+let devDashboardOpen = false;
+let activeDevTab = 'bookings';
+
+function toggleDevDashboard() {
+  const dashboard = document.getElementById("dev-dashboard");
+  devDashboardOpen = !devDashboardOpen;
+  
+  if (devDashboardOpen) {
+    updateDevDashboard();
+    dashboard.classList.add("open");
+  } else {
+    dashboard.classList.remove("open");
+  }
+}
+
+function switchDevTab(tab) {
+  activeDevTab = tab;
+  
+  const bBtn = document.getElementById("tab-bookings-btn");
+  const nBtn = document.getElementById("tab-newsletters-btn");
+  const bTab = document.getElementById("dev-tab-bookings");
+  const nTab = document.getElementById("dev-tab-newsletters");
+
+  if (tab === 'bookings') {
+    bBtn.classList.add("active");
+    nBtn.classList.remove("active");
+    bTab.classList.add("active");
+    nTab.classList.remove("active");
+  } else {
+    bBtn.classList.remove("active");
+    nBtn.classList.add("active");
+    bTab.classList.remove("active");
+    nTab.classList.add("active");
+  }
+}
+
+function updateDevDashboard() {
+  const bookings = JSON.parse(localStorage.getItem("fg_bookings") || "[]");
+  const newsletters = JSON.parse(localStorage.getItem("fg_newsletter") || "[]");
+
+  // Update counts
+  document.getElementById("dev-booking-count").textContent = bookings.length;
+  document.getElementById("dev-news-count").textContent = newsletters.length;
+
+  // Render Bookings
+  const bookingsList = document.getElementById("dev-bookings-list");
+  if (bookings.length === 0) {
+    bookingsList.innerHTML = '<div class="dev-empty">No calls booked yet. Test the scheduler!</div>';
+  } else {
+    bookingsList.innerHTML = bookings.map((b, idx) => `
+      <div class="dev-card">
+        <button class="dev-delete-item" onclick="deleteDevItem('bookings', ${idx})" title="Delete lead">&times;</button>
+        <div class="dev-card-title">${b.restaurant}</div>
+        <div class="dev-card-detail">Client: <strong>${b.name}</strong></div>
+        <div class="dev-card-detail">Contact: <strong>${b.email} | ${b.phone}</strong></div>
+        <div class="dev-card-detail">Schedule: <strong style="color:var(--accent)">${b.date} @ ${b.time}</strong></div>
+        <div class="dev-card-detail">Plan: <strong>${b.plan}</strong></div>
+        ${b.website ? `<div class="dev-card-detail">Website: <a href="${b.website}" target="_blank">${b.website}</a></div>` : ''}
+        ${b.notes ? `<div class="dev-card-detail" style="border-top:1px dashed #ccc; margin-top:6px; padding-top:4px">Notes: "${b.notes}"</div>` : ''}
+      </div>
+    `).join("");
+  }
+
+  // Render Newsletters
+  const newsList = document.getElementById("dev-news-list");
+  if (newsletters.length === 0) {
+    newsList.innerHTML = '<div class="dev-empty">No subscribers yet. Join newsletter in footer!</div>';
+  } else {
+    newsList.innerHTML = newsletters.map((n, idx) => `
+      <div class="dev-card">
+        <button class="dev-delete-item" onclick="deleteDevItem('newsletter', ${idx})">&times;</button>
+        <div class="dev-card-title">${n.email}</div>
+        <div class="dev-card-detail">Subscribed at: <strong>${new Date(n.timestamp).toLocaleString()}</strong></div>
+      </div>
+    `).join("");
+  }
+}
+
+function deleteDevItem(type, idx) {
+  if (type === 'bookings') {
+    const list = JSON.parse(localStorage.getItem("fg_bookings") || "[]");
+    list.splice(idx, 1);
+    localStorage.setItem("fg_bookings", JSON.stringify(list));
+    showToast("Database", "Booking lead removed.");
+  } else {
+    const list = JSON.parse(localStorage.getItem("fg_newsletter") || "[]");
+    list.splice(idx, 1);
+    localStorage.setItem("fg_newsletter", JSON.stringify(list));
+    showToast("Database", "Newsletter contact removed.");
+  }
+  updateDevDashboard();
+}
+
+function clearAllLeads() {
+  if (confirm("Are you sure you want to wipe local leads and dashboard database data?")) {
+    localStorage.removeItem("fg_bookings");
+    localStorage.removeItem("fg_newsletter");
+    showToast("Database", "All database items successfully cleared!");
+    updateDevDashboard();
+  }
+}
+
+function downloadLeadsJSON() {
+  const bookings = JSON.parse(localStorage.getItem("fg_bookings") || "[]");
+  const newsletters = JSON.parse(localStorage.getItem("fg_newsletter") || "[]");
+  
+  const data = {
+    bookings,
+    newsletter_subscribers: newsletters,
+    exported_at: new Date().toISOString()
+  };
+
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data, null, 2));
+  const dlAnchorElem = document.createElement('a');
+  dlAnchorElem.setAttribute("href",     dataStr     );
+  dlAnchorElem.setAttribute("download", `fenixgrowth_leads_${Date.now()}.json`);
+  dlAnchorElem.click();
+  showToast("Database", "JSON export completed.");
+}
+</script>
+
+</body>
+</html>

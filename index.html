@@ -256,6 +256,202 @@ nav.scrolled{box-shadow:0 4px 24px rgba(11,31,58,.10)}
 .sm-heart-burst{position:absolute;pointer-events:none;font-size:16px;animation:sm-heart-float 1s ease forwards}
 @keyframes sm-heart-float{0%{opacity:1;transform:translateY(0) scale(0.5)}100%{opacity:0;transform:translateY(-40px) scale(1.2)}}
 
+/* ══ GOOGLE MAPS SEO ANIMATION CARD ══ */
+.seo-search-mockup {
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 10px;
+  margin-top: 10px;
+}
+.seo-search-bar {
+  background: rgba(255,255,255,0.08);
+  border-radius: 6px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #fff;
+  margin-bottom: 8px;
+  height: 26px;
+  box-sizing: border-box;
+}
+.seo-search-input {
+  flex: 1;
+  font-family: 'DM Sans', sans-serif;
+  color: rgba(255,255,255,0.95);
+  font-weight: 500;
+  height: 100%;
+  line-height: 14px;
+}
+.seo-search-cursor {
+  color: var(--accent);
+  animation: seo-blink 0.8s infinite;
+  font-weight: 700;
+}
+@keyframes seo-blink {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+.seo-results {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+  overflow: hidden;
+}
+.seo-result-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 10px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.04);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.seo-result-item.competitor {
+  opacity: 0.5;
+}
+.seo-result-item.client {
+  background: rgba(41,121,232,0.05);
+  border-color: rgba(41,121,232,0.2);
+}
+.seo-rank {
+  font-weight: 700;
+  font-size: 10px;
+  color: rgba(168,196,255,.7);
+}
+.seo-result-item.client .seo-rank {
+  color: var(--accent);
+}
+.seo-res-details {
+  flex: 1;
+}
+.seo-res-name {
+  font-size: 10px;
+  font-weight: 600;
+  color: #fff;
+}
+.seo-res-stars {
+  font-size: 8px;
+  color: rgba(168,196,255,.5);
+}
+.seo-growth-tag {
+  font-size: 8px;
+  background: #28C840;
+  color: #fff;
+  padding: 1px 4px;
+  border-radius: 4px;
+  font-weight: 700;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.4s ease;
+}
+.seo-trend-path {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  transition: stroke-dashoffset 2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.seo-chart-dot {
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: 190px 5px;
+}
+
+/* ══ AD FUNNEL ANIMATION CARD ══ */
+.ad-funnel-svg {
+  filter: drop-shadow(0px 4px 12px rgba(41,121,232,0.15));
+}
+.fp {
+  opacity: 0;
+  transform-origin: center;
+}
+/* Particle movements in funnel flow */
+@keyframes flow-p1 {
+  0% { transform: translateY(0) translateX(0); opacity: 1; }
+  35% { transform: translateY(30px) translateX(20px) scale(0.8); opacity: 0.9; }
+  70% { transform: translateY(65px) translateX(25px) scale(0.6); opacity: 0.8; }
+  90% { transform: translateY(85px) translateX(22px) scale(0.5); opacity: 0.9; }
+  100% { transform: translateY(92px) translateX(22px) scale(0); opacity: 0; }
+}
+@keyframes flow-p2 {
+  0% { transform: translateY(0) translateX(0); opacity: 1; }
+  40% { transform: translateY(32px) translateX(-5px) scale(0.8); opacity: 0.9; }
+  75% { transform: translateY(68px) translateX(-2px) scale(0.6); opacity: 0.8; }
+  90% { transform: translateY(82px) translateX(-1px) scale(0.5); opacity: 0.9; }
+  100% { transform: translateY(90px) translateX(-1px) scale(0); opacity: 0; }
+}
+@keyframes flow-p3 {
+  0% { transform: translateY(0) translateX(0); opacity: 1; }
+  30% { transform: translateY(28px) translateX(-22px) scale(0.8); opacity: 0.9; }
+  65% { transform: translateY(62px) translateX(-18px) scale(0.6); opacity: 0.8; }
+  85% { transform: translateY(80px) translateX(-14px) scale(0.5); opacity: 0.9; }
+  100% { transform: translateY(88px) translateX(-14px) scale(0); opacity: 0; }
+}
+.fp.p1 { animation: flow-p1 3s infinite linear; }
+.fp.p2 { animation: flow-p2 3.4s infinite linear 0.8s; }
+.fp.p3 { animation: flow-p3 2.8s infinite linear 1.5s; }
+
+.fp.p4 { animation: flow-p1 3.2s infinite linear 0.4s; }
+.fp.p5 { animation: flow-p2 2.9s infinite linear 1.2s; }
+.fp.p6 { animation: flow-p3 3.5s infinite linear 0.2s; }
+.fp.p7 { animation: flow-p2 3.1s infinite linear 1.9s; }
+
+/* Coins landing at bottom */
+@keyframes coin-drop-1 {
+  0% { transform: translateY(0) scale(0.5); opacity: 0; }
+  80% { transform: translateY(0) scale(0.5); opacity: 0; }
+  85% { transform: translateY(-5px) scale(1.1); opacity: 1; }
+  90% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(3px) scale(0.9); opacity: 0; }
+}
+@keyframes coin-drop-2 {
+  0% { transform: translateY(0) scale(0.5); opacity: 0; }
+  85% { transform: translateY(0) scale(0.5); opacity: 0; }
+  90% { transform: translateY(-4px) scale(1.1); opacity: 1; }
+  95% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(2px) scale(0.9); opacity: 0; }
+}
+.fp-coin.coin1 { animation: coin-drop-1 3.2s infinite ease-out 0.3s; transform-origin: 50px 112px; }
+.fp-coin.coin2 { animation: coin-drop-2 3.0s infinite ease-out 1.4s; transform-origin: 45px 114px; }
+
+/* Campaign state toggling support */
+.paused #funnel-particles .fp,
+.paused #funnel-particles .fp-coin {
+  animation-play-state: paused;
+  opacity: 0.15;
+}
+
+/* Accessibility: Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .seo-search-cursor {
+    animation: none;
+  }
+  .seo-trend-path {
+    stroke-dashoffset: 0;
+    transition: none;
+  }
+  .seo-chart-dot {
+    opacity: 1;
+    transform: scale(1);
+    transition: none;
+  }
+  .fp, .fp-coin {
+    animation: none !important;
+    opacity: 0.8 !important;
+  }
+  .fp.p1 { transform: translateY(85px) translateX(22px) scale(0.7); }
+  .fp.p2 { transform: translateY(68px) translateX(-2px) scale(0.8); }
+  .fp.p3 { transform: translateY(30px) translateX(-22px) scale(0.9); }
+  .fp.p4 { transform: translateY(10px) translateX(0) scale(1); }
+  .fp-coin.coin1 { opacity: 0.9 !important; transform: scale(1); }
+  .fp-coin.coin2 { opacity: 0.9 !important; transform: scale(1); }
+}
+
 /* ══ HOW IT WORKS ══ */
 #howto{background:var(--white);padding:120px 32px}
 .howto-header{text-align:center;margin-bottom:60px}
@@ -842,22 +1038,69 @@ input:checked + .slider:before{transform:translateX(24px)}
         <p class="zz-desc" data-tr="p1-desc">Full Google Business Profile optimization — photos, reviews, keywords, and local ranking strategy so you appear first in local searches. We turn invisible restaurants into the #1 result near you.</p>
         <span class="pillar-tag" data-tr="p1-tag">HIGH LOCAL IMPACT</span>
       </div>
-      <div class="zz-visual" id="pillar-maps-card" style="cursor:pointer">
-        <div class="zz-visual-inner">
-          <div class="zz-vi-badge" data-tr="p1-badge">
-            <svg viewBox="0 0 24 24" width="13" height="13" stroke="var(--accent)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-            Local Search Ranking
+      <div class="zz-visual" id="pillar-maps-card" style="cursor:pointer; overflow:visible">
+        <div class="zz-visual-inner" style="background:#0B1F3A; padding:18px; position:relative">
+          <div class="zz-vi-badge" style="background:rgba(255,255,255,.1); color:#A8C4FF" data-tr="p1-badge">
+            <svg viewBox="0 0 24 24" width="13" height="13" stroke="#A8C4FF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            Local SEO Ranking
           </div>
-          <div class="zz-vi-map" id="map-simulation">
-            <svg viewBox="0 0 24 24" width="40" height="40" stroke="#2979E8" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M9 3L3 6v15l6-3 6 3 6-3V3l-6 3-6-3z"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/><path d="M12 8 C10.5 8 9.5 9 9.5 10.5 C9.5 12.5 12 15 12 15 C12 15 14.5 12.5 14.5 10.5 C14.5 9 13.5 8 12 8 Z" fill="rgba(41,121,232,0.25)"/><circle cx="12" cy="10.5" r="1" fill="#2979E8"/></svg>
-            <div class="map-text">
-              <div class="mt1" id="map-rank-text" data-tr="p1-rank-t">#1 "Best restaurant near me"</div>
-              <div class="mt2" id="map-rank-desc" data-tr="p1-rank-d">↑ Jumped from #12 to #1 in 30 days</div>
+          
+          <!-- Google Local Search Mockup -->
+          <div class="seo-search-mockup">
+            <div class="seo-search-bar">
+              <span class="seo-search-icon">🔍</span>
+              <div class="seo-search-input" id="seo-search-input">best restaurant near me</div>
+              <span class="seo-search-cursor" id="seo-search-cursor">|</span>
+            </div>
+            
+            <div class="seo-results" id="seo-results-list">
+              <div class="seo-result-item competitor" id="seo-comp-1">
+                <span class="seo-rank">#1</span>
+                <div class="seo-res-details">
+                  <div class="seo-res-name">Pizzeria Mario</div>
+                  <div class="seo-res-stars">★★★★☆ (82 reviews)</div>
+                </div>
+              </div>
+              <div class="seo-result-item competitor" id="seo-comp-2">
+                <span class="seo-rank">#2</span>
+                <div class="seo-res-details">
+                  <div class="seo-res-name">Bella Italia</div>
+                  <div class="seo-res-stars">★★★★☆ (104 reviews)</div>
+                </div>
+              </div>
+              <div class="seo-result-item client" id="seo-client-row" style="transform:translateY(0)">
+                <span class="seo-rank" id="seo-client-rank">#12</span>
+                <div class="seo-res-details">
+                  <div class="seo-res-name" style="color:#2979E8; font-weight:700">FenixGrowth Cafe</div>
+                  <div class="seo-res-stars" style="color:#FDE68A">★★★★★ (198 reviews)</div>
+                </div>
+                <span class="seo-growth-tag" id="seo-growth-tag">New!</span>
+              </div>
             </div>
           </div>
-          <div style="margin-top:14px">
-            <div class="zz-vi-stat" id="map-rank-stat">3×</div>
-            <div class="zz-vi-lbl" data-tr="p1-stat-lbl">Google Maps visibility increase</div>
+
+          <!-- Live Growth Chart below it -->
+          <div class="seo-chart-container" style="margin-top: 12px; height: 35px; position:relative">
+            <svg class="seo-chart-svg" viewBox="0 0 200 35" style="width:100%; height:100%">
+              <line x1="0" y1="12" x2="200" y2="12" stroke="rgba(255,255,255,0.05)" />
+              <line x1="0" y1="24" x2="200" y2="24" stroke="rgba(255,255,255,0.05)" />
+              <path d="M 10 32 Q 60 30 100 20 T 190 4" fill="none" stroke="url(#seo-gradient)" stroke-width="2.5" class="seo-trend-path" id="seo-trend-line" />
+              <circle cx="190" cy="4" r="3" fill="#0EA5A0" class="seo-chart-dot" id="seo-chart-dot" />
+              
+              <defs>
+                <linearGradient id="seo-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#2979E8" stop-opacity="0.2" />
+                  <stop offset="100%" stop-color="#0EA5A0" stop-opacity="1" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <div style="display:flex; justify-content:space-between; font-size:8px; color:rgba(168,196,255,.5); margin-top:2px">
+              <span id="seo-day-1">Day 1: #12 Position</span>
+              <span style="color:#0EA5A0; font-weight:700" id="seo-day-30">Day 30: #1 Position (3x Traffic)</span>
+            </div>
+          </div>
+          <div style="margin-top:10px; display:flex; gap:16px">
+            <div><div class="zz-vi-stat" id="map-rank-stat" style="font-size:24px">3×</div><div class="zz-vi-lbl" style="font-size:9px" data-tr="p1-stat-lbl">Maps visibility increase</div></div>
           </div>
         </div>
       </div>
@@ -1128,21 +1371,53 @@ input:checked + .slider:before{transform:translateX(24px)}
         <p class="zz-desc" data-tr="p4-desc">Precision-targeted Meta and Google Ads that reach hungry customers near your location when they are ready to order. Every dollar tracked. Zero waste.</p>
         <span class="pillar-tag" data-tr="p4-tag">PERFORMANCE DRIVEN</span>
       </div>
-      <div class="zz-visual">
-        <div class="zz-visual-inner">
-          <div class="zz-vi-badge" style="display: flex; align-items: center; justify-content: space-between; width: 100%;" data-tr="p4-badge">
-            <span style="display:flex;align-items:center;gap:6px">
-              <svg viewBox="0 0 24 24" width="13" height="13" stroke="var(--accent)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="var(--accent)"/></svg>
-              Ad Performance
+      <div class="zz-visual" id="pillar-ads-card" style="cursor:pointer; overflow:visible">
+        <div class="zz-visual-inner" style="background:#0B1F3A; padding:18px; position:relative">
+          <div class="zz-vi-badge" style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom:10px" data-tr="p4-badge">
+            <span style="display:flex;align-items:center;gap:6px;color:#A8C4FF">
+              <svg viewBox="0 0 24 24" width="13" height="13" stroke="#A8C4FF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="#A8C4FF"/></svg>
+              Ad Campaign Funnel
             </span>
-            <button id="toggle-ad-btn" class="toggle-ad-btn" onclick="toggleAdCampaign()">Pause</button>
+            <button id="toggle-ad-btn" class="toggle-ad-btn" onclick="toggleAdCampaign()" style="background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2); color:#fff; padding:4px 8px; border-radius:6px; font-size:10px; cursor:pointer; font-weight:700">Pause</button>
           </div>
-          <div class="zz-vi-ad" id="ad-campaign-box">
-            <div style="font-size:12px;color:rgba(168,196,255,.6);margin-bottom:10px;font-weight:600;text-transform:uppercase;letter-spacing:.8px" id="ad-status-lbl" data-tr="p4-camp-lbl">Live Campaign</div>
-            <div class="ad-kpi">
-              <div class="ad-kpi-item"><div class="k1">ROAS</div><div class="k2" id="ad-roas">4.8×</div></div>
-              <div class="ad-kpi-item"><div class="k1">CPC</div><div class="k2" id="ad-cpc">$0.42</div></div>
-              <div class="ad-kpi-item"><div class="k1">CVR</div><div class="k2" id="ad-cvr">3%</div></div>
+          
+          <div style="display:flex; gap:16px; align-items:center; min-height:140px">
+            <!-- Stats -->
+            <div style="flex:1" id="ad-campaign-box">
+              <div style="font-size:10px;color:rgba(168,196,255,.6);margin-bottom:6px;font-weight:600;text-transform:uppercase;letter-spacing:.8px" id="ad-status-lbl" data-tr="p4-camp-lbl">Live Campaign</div>
+              <div style="display:flex; flex-direction:column; gap:10px">
+                <div><div class="zz-vi-stat" style="font-size:24px; color:#2979E8" id="ad-roas">4.8×</div><div class="zz-vi-lbl" style="font-size:10px; margin-top:2px">ROAS (Return)</div></div>
+                <div><div class="zz-vi-stat" style="font-size:24px; color:#0EA5A0" id="ad-cpc">$0.42</div><div class="zz-vi-lbl" style="font-size:10px; margin-top:2px">Cost Per Click</div></div>
+                <div><div class="zz-vi-stat" style="font-size:24px; color:#FDE68A" id="ad-cvr">3%</div><div class="zz-vi-lbl" style="font-size:10px; margin-top:2px">Conversion Rate</div></div>
+              </div>
+            </div>
+            
+            <!-- SVG Marketing Funnel -->
+            <div style="flex:1; display:flex; justify-content:center; position:relative; height: 120px; overflow:hidden">
+              <svg class="ad-funnel-svg" viewBox="0 0 100 120" style="width:100px; height:120px">
+                <!-- Funnel Body -->
+                <polygon points="10,10 90,10 70,50 30,50" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" />
+                <polygon points="30,50 70,50 60,80 40,80" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" />
+                <polygon points="40,80 60,80 55,100 45,100" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" />
+                
+                <!-- Funnel Labels -->
+                <text x="50" y="8" font-size="6" fill="rgba(168,196,255,.6)" text-anchor="middle" font-weight="700">AWARENESS</text>
+                <text x="50" y="48" font-size="6" fill="rgba(168,196,255,.6)" text-anchor="middle" font-weight="700">CLICKS</text>
+                <text x="50" y="78" font-size="6" fill="rgba(168,196,255,.6)" text-anchor="middle" font-weight="700">ORDERS</text>
+
+                <!-- Flowing Particles -->
+                <g class="funnel-particles" id="funnel-particles">
+                  <circle cx="20" cy="15" r="1.5" fill="#2979E8" class="fp p1" />
+                  <circle cx="50" cy="12" r="1.5" fill="#2979E8" class="fp p2" />
+                  <circle cx="80" cy="18" r="1.5" fill="#2979E8" class="fp p3" />
+                  <circle cx="35" cy="30" r="1.5" fill="#0EA5A0" class="fp p4" />
+                  <circle cx="65" cy="32" r="1.5" fill="#0EA5A0" class="fp p5" />
+                  <circle cx="45" cy="60" r="1.5" fill="#0EA5A0" class="fp p6" />
+                  <circle cx="55" cy="62" r="1.5" fill="#0EA5A0" class="fp p7" />
+                  <text x="50" y="112" font-size="12" fill="#FDE68A" class="fp-coin coin1" font-weight="700">$</text>
+                  <text x="45" y="114" font-size="10" fill="#FDE68A" class="fp-coin coin2" font-weight="700">💰</text>
+                </g>
+              </svg>
             </div>
           </div>
         </div>
@@ -2486,6 +2761,103 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* ══════════════════════════════════════════
+   GOOGLE MAPS SEO CARD — FULL ANIMATION ENGINE
+══════════════════════════════════════════ */
+function initMapsCardAnim() {
+  const card = document.getElementById('pillar-maps-card');
+  if (!card || card.dataset.mapsAnimDone) return;
+  card.dataset.mapsAnimDone = '1';
+
+  const inputEl = document.getElementById('seo-search-input');
+  const clientRank = document.getElementById('seo-client-rank');
+  const clientRow = document.getElementById('seo-client-row');
+  const comp1 = document.getElementById('seo-comp-1');
+  const comp2 = document.getElementById('seo-comp-2');
+  const growthTag = document.getElementById('seo-growth-tag');
+  const trendLine = document.getElementById('seo-trend-line');
+  const chartDot = document.getElementById('seo-chart-dot');
+  const statEl = document.getElementById('map-rank-stat');
+
+  const query = "best restaurant near me";
+  let charIdx = 0;
+  
+  if (inputEl) inputEl.textContent = "";
+
+  // Check reduced motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (inputEl) inputEl.textContent = query;
+    if (clientRank) clientRank.textContent = "#1";
+    if (clientRow) {
+      clientRow.style.background = "rgba(40, 200, 64, 0.15)";
+      clientRow.style.borderColor = "#28C840";
+      const list = document.getElementById('seo-results-list');
+      if (list && clientRow) {
+        list.insertBefore(clientRow, comp1);
+      }
+    }
+    if (growthTag) { growthTag.style.opacity = "1"; growthTag.style.transform = "scale(1)"; }
+    if (trendLine) trendLine.style.strokeDashoffset = "0";
+    if (chartDot) { chartDot.style.opacity = "1"; chartDot.style.transform = "scale(1)"; }
+    if (statEl) statEl.textContent = "3×";
+    return;
+  }
+
+  // Step 1: Type Query
+  function typeQuery() {
+    if (charIdx < query.length) {
+      if (inputEl) inputEl.textContent += query.charAt(charIdx);
+      charIdx++;
+      setTimeout(typeQuery, 60);
+    } else {
+      setTimeout(performSearch, 500);
+    }
+  }
+
+  // Step 2: Perform Search & Climb Results
+  function performSearch() {
+    let curStat = 1;
+    const statInterval = setInterval(() => {
+      curStat += 0.2;
+      if (curStat >= 3) {
+        clearInterval(statInterval);
+        if (statEl) statEl.textContent = "3×";
+      } else {
+        if (statEl) statEl.textContent = curStat.toFixed(1) + "×";
+      }
+    }, 100);
+
+    setTimeout(() => {
+      if (clientRank) clientRank.textContent = "#1";
+      if (clientRow) {
+        clientRow.style.background = "rgba(40, 200, 64, 0.15)";
+        clientRow.style.borderColor = "#28C840";
+        const list = document.getElementById('seo-results-list');
+        if (list) {
+          list.insertBefore(clientRow, comp1);
+        }
+      }
+      if (growthTag) {
+        growthTag.style.opacity = "1";
+        growthTag.style.transform = "scale(1)";
+      }
+      showToast("SEO", currentLang === 'en' ? "SEO rank optimization simulated! Position #1 reached." : "SEO sıralama optimizasyon simülasyonu yapıldı! 1. sıraya ulaşıldı.");
+    }, 400);
+
+    setTimeout(() => {
+      if (trendLine) trendLine.style.strokeDashoffset = "0";
+      setTimeout(() => {
+        if (chartDot) {
+          chartDot.style.opacity = "1";
+          chartDot.style.transform = "scale(1)";
+        }
+      }, 1500);
+    }, 200);
+  }
+
+  typeQuery();
+}
+
+/* ══════════════════════════════════════════
    WEBSITE DESIGN CARD — FULL ANIMATION ENGINE
 ══════════════════════════════════════════ */
 function initWebsiteCardAnim() {
@@ -2708,14 +3080,17 @@ function initServiceCardAnimations() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
+        if (entry.target.id === 'pillar-maps-card') initMapsCardAnim();
         if (entry.target.id === 'pillar-web-card') initWebsiteCardAnim();
         if (entry.target.id === 'pillar-sm-card')  initSMCardAnim();
       }
     });
   }, { threshold: 0.3 });
 
+  const mapsCard = document.getElementById('pillar-maps-card');
   const webCard = document.getElementById('pillar-web-card');
   const smCard  = document.getElementById('pillar-sm-card');
+  if (mapsCard) observer.observe(mapsCard);
   if (webCard) observer.observe(webCard);
   if (smCard)  observer.observe(smCard);
 }
@@ -2900,44 +3275,38 @@ function setupScrollAnimationsForStats() {
   observer.observe(statsSection);
 }
 
-// Pillar Interaction: Google Maps SEO Rank Climbing
-let mapsRankState = 0; // 0 = default, 1 = climbing, 2 = finished
-function animateMapsPillar() {
-  const rankText = document.getElementById("map-rank-text");
-  const rankDesc = document.getElementById("map-rank-desc");
-  const rankStat = document.getElementById("map-rank-stat");
-  const mapSim = document.getElementById("map-simulation");
+// Add reset & replay trigger listener to maps card
+document.getElementById("pillar-maps-card").addEventListener("click", () => {
+  const card = document.getElementById('pillar-maps-card');
+  if (card) card.removeAttribute('data-maps-anim-done');
   
-  if (mapsRankState === 0) {
-    mapsRankState = 1;
-    rankText.textContent = currentLang === 'en' ? "Analyzing ranks..." : "Sıralamalar analiz ediliyor...";
-    rankDesc.textContent = currentLang === 'en' ? "Google Local Search position is #12" : "Google Yerel Arama sırası: #12";
-    rankStat.textContent = "1×";
-    mapSim.style.background = "rgba(41,121,232,0.1)";
-    
-    let currentRank = 12;
-    const interval = setInterval(() => {
-      currentRank--;
-      rankText.textContent = currentLang === 'en' ? `#${currentRank} Local Position` : `#${currentRank} Yerel Sıralama`;
-      if (currentRank <= 1) {
-        clearInterval(interval);
-        mapsRankState = 2;
-        rankText.textContent = currentLang === 'en' ? '#1 "Best restaurant near me"' : '"En yakın restoran" aramalarında #1';
-        rankDesc.textContent = currentLang === 'en' ? "↑ Jumped from #12 to #1 in 30 days" : "↑ 30 günde #12'den #1'e yükseldi";
-        rankStat.textContent = "3×";
-        mapSim.style.background = "var(--light-bg)";
-        showToast("Success", currentLang === 'en' ? "Maps simulation optimization complete! Position #1 reached." : "Harita optimizasyon simülasyonu tamamlandı! 1. sıraya ulaşıldı.");
-      }
-    }, 180);
-  } else if (mapsRankState === 2) {
-    mapsRankState = 0;
-    rankText.textContent = currentLang === 'en' ? "#12 'restaurant near me'" : "#12 'yakındaki restoran'";
-    rankDesc.textContent = currentLang === 'en' ? "Click to run maps rank audit simulation" : "Sıralama analizi simülasyonunu başlatmak için tıklayın";
-    rankStat.textContent = "1×";
+  const inputEl = document.getElementById('seo-search-input');
+  const clientRank = document.getElementById('seo-client-rank');
+  const clientRow = document.getElementById('seo-client-row');
+  const comp1 = document.getElementById('seo-comp-1');
+  const comp2 = document.getElementById('seo-comp-2');
+  const growthTag = document.getElementById('seo-growth-tag');
+  const trendLine = document.getElementById('seo-trend-line');
+  const chartDot = document.getElementById('seo-chart-dot');
+  const statEl = document.getElementById('map-rank-stat');
+  const list = document.getElementById('seo-results-list');
+
+  if (inputEl) inputEl.textContent = "";
+  if (clientRank) clientRank.textContent = "#12";
+  if (clientRow) {
+    clientRow.style.background = "rgba(255,255,255,0.02)";
+    clientRow.style.borderColor = "rgba(255,255,255,0.04)";
+    if (list && comp2) {
+      list.appendChild(clientRow);
+    }
   }
-}
-// Add listener to maps card
-document.getElementById("pillar-maps-card").addEventListener("click", animateMapsPillar);
+  if (growthTag) { growthTag.style.opacity = "0"; growthTag.style.transform = "scale(0.8)"; }
+  if (trendLine) trendLine.style.strokeDashoffset = "400";
+  if (chartDot) { chartDot.style.opacity = "0"; chartDot.style.transform = "scale(0)"; }
+  if (statEl) statEl.textContent = "1×";
+
+  setTimeout(initMapsCardAnim, 300);
+});
 
 // Pillar Interaction: PageSpeed Counter
 let webPillarTriggered = false;
@@ -2990,6 +3359,7 @@ function toggleAdCampaign() {
   const cpc = document.getElementById("ad-cpc");
   const cvr = document.getElementById("ad-cvr");
   const container = document.getElementById("ad-campaign-box");
+  const funnel = document.getElementById("funnel-particles");
 
   if (adsCampaignActive) {
     // Pause
@@ -2998,6 +3368,7 @@ function toggleAdCampaign() {
     btn.classList.add("paused");
     statusLbl.textContent = currentLang === 'en' ? "Campaign Paused" : "Kampanya Duraklatıldı";
     container.style.opacity = 0.55;
+    if (funnel) funnel.classList.add("paused");
     
     // Drop metrics
     roas.textContent = "0.0×";
@@ -3011,6 +3382,7 @@ function toggleAdCampaign() {
     btn.classList.remove("paused");
     statusLbl.textContent = currentLang === 'en' ? "Live Campaign" : "Aktif Kampanya";
     container.style.opacity = 1;
+    if (funnel) funnel.classList.remove("paused");
     
     // Ticking restore
     roas.textContent = "4.8×";
